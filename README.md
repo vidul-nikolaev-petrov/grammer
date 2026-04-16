@@ -8,4 +8,4 @@
 <br>
 Написана е на чист JS (независим код), така че работи и офлайн.
 
-![example.com](https://vidul-nikolaev-petrov.github.io/grammer/example.png)
+![example](https://vidul-nikolaev-petrov.github.io/grammer/example.png)
