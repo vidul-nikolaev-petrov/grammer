@@ -1,4 +1,7 @@
-## Официален правописен речник на българския език
+<h2 align="center">
+  <i>Правопис и пунктуация — Standalone Search Engine</i>
+</h2>
+
 
 Може да се ползва и локално (офлайн режим), и [онлайн](https://vidul-nikolaev-petrov.github.io/grammer/).
 
