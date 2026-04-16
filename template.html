@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="bg">
+    <head>
+        <meta charset="UTF-8" />
+        <title>БЕРОН: Локално търсене</title>
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='20' y='10' width='60' height='80' rx='5' fill='%232980b9'/%3E%3Cpath d='M30 10v80M20 25h60M20 40h60' stroke='white' stroke-width='2'/%3E%3Ctext x='42' y='65' fill='white' font-family='Arial' font-weight='bold' font-size='40'%3EБ%3C/text%3E%3C/svg%3E"
+        />
+        <style>
+            body {
+                font-family: "Segoe UI", Tahoma, sans-serif;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 40px 20px;
+                background: #f4f7f6;
+                color: #333;
+            }
+            .card {
+                background: white;
+                padding: 2rem;
+                border-radius: 12px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            }
+            h1 {
+                color: #2980b9;
+                text-align: center;
+                margin-bottom: 30px;
+                font-weight: 700;
+                letter-spacing: 2px;
+            }
+
+            input {
+                width: 100%;
+                padding: 15px 25px;
+                font-size: 1.2rem;
+                border: 2px solid #eee;
+                border-radius: 50px;
+                outline: none;
+                box-sizing: border-box;
+                transition: all 0.3s ease;
+            }
+            input:focus {
+                border-color: #3498db;
+                box-shadow: 0 0 15px rgba(52, 152, 219, 0.1);
+            }
+
+            .results {
+                margin-top: 30px;
+            }
+            .item {
+                padding: 20px;
+                border-bottom: 1px solid #eee;
+                text-decoration: none;
+                display: block;
+                color: inherit;
+                border-radius: 8px;
+                transition: 0.2s;
+            }
+            .item:hover {
+                background: #fdfdfd;
+                transform: scale(1.01);
+            }
+            .type-tag {
+                font-size: 0.7rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                padding: 3px 10px;
+                border-radius: 12px;
+                margin-bottom: 8px;
+                display: inline-block;
+            }
+            .title {
+                font-size: 1.3rem;
+                font-weight: 600;
+                color: #2980b9;
+                display: block;
+            }
+            .parent {
+                font-size: 0.85rem;
+                color: #7f8c8d;
+                margin-bottom: 5px;
+                display: block;
+            }
+            .url {
+                font-size: 0.75rem;
+                color: #bdc3c7;
+                display: block;
+                margin-top: 10px;
+                word-break: break-all;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="card">
+            <h1>БЕРОН</h1>
+            <!-- list="suggestions" enables the autocomplete -->
+            <input
+                type="text"
+                id="q"
+                list="suggestions"
+                placeholder="Търси дума или правило..."
+                autofocus
+                autocomplete="off"
+            />
+            <datalist id="suggestions"></datalist>
+
+            <div id="res" class="results"></div>
+        </div>
+
+        <script>
+            const dictionary = []; // Generator replaces this
+            const BASE = "https://beron.mon.bg/rechnik";
+
+            const input = document.getElementById("q");
+            const list = document.getElementById("res");
+            const datalist = document.getElementById("suggestions");
+
+            input.addEventListener("input", (e) => {
+                const val = e.target.value.toLowerCase();
+
+                // Clear lists if input is too short
+                if (val.length < 2) {
+                    list.innerHTML = "";
+                    datalist.innerHTML = "";
+                    return;
+                }
+
+                // 1. FILTER RESULTS
+                const matches = dictionary.filter((i) =>
+                    i.t.toLowerCase().includes(val),
+                );
+
+                // 2. UPDATE AUTOCOMPLETE (Datalist)
+                // Show top 10 unique headwords as suggestions
+                const suggestions = matches
+                    .filter((i) => i.type === "headword")
+                    .slice(0, 10);
+
+                datalist.innerHTML = suggestions
+                    .map((m) => `<option value="${m.t}">`)
+                    .join("");
+
+                // 3. RENDER SEARCH RESULTS
+                const displayMatches = matches.slice(0, 40);
+                list.innerHTML = displayMatches
+                    .map((m) => {
+                        const fileName = m.l.replace(/.*\/(\d+)\.html$/, "$1");
+                        const fullUrl = `${BASE}/${fileName}`;
+
+                        return `
+                    <a href="${fullUrl}" target="_blank" class="item">
+                        <span class="type-tag" style="background: ${m.type === "headword" ? "#ebf5fb" : "#eafaf1"}; color: ${m.type === "headword" ? "#2980b9" : "#27ae60"}">
+                            ${m.type === "headword" ? "Дума" : "Параграф"}
+                        </span>
+                        ${m.parent ? `<span class="parent">Към: ${m.parent}</span>` : ""}
+                        <span class="title">${m.t}</span>
+                        <span class="url">${fullUrl}</span>
+                    </a>
+                `;
+                    })
+                    .join("");
+            });
+        </script>
+    </body>
+</html>
