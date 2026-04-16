@@ -2,7 +2,10 @@
 <html lang="bg">
     <head>
         <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        />
         <title>Правопис и пунктуация</title>
         <link
             rel="icon"
@@ -10,11 +13,12 @@
             href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='20' y='10' width='60' height='80' rx='5' fill='%232980b9'/%3E%3Cpath d='M30 10v80M20 25h60M20 40h60' stroke='white' stroke-width='2'/%3E%3Ctext x='42' y='65' fill='white' font-family='Arial' font-weight='bold' font-size='40'%3EБ%3C/text%3E%3C/svg%3E"
         />
         <style>
+            /* Force body to be exactly the size of the screen */
             html,
             body {
                 height: 100%;
                 margin: 0;
-                overflow: hidden;
+                overflow: hidden; /* Prevents background bounce */
             }
 
             body {
@@ -22,18 +26,21 @@
                 background: #f1f3f4;
                 color: #202124;
                 display: flex;
-                align-items: flex-start; /* Keeps it near the top */
+                align-items: flex-start;
                 justify-content: center;
-                padding: 20px 16px; /* Vertical and horizontal safety gap */
+                padding: 0 16px; /* Horizontal padding */
                 box-sizing: border-box;
             }
 
             .card {
                 background: white;
                 width: 100%;
-                max-width: 600px;
-                /* Set max-height to 85% of the viewport to ensure it never touches the bottom */
-                max-height: 85vh;
+                max-width: 800px;
+                /* THE FIX: Use percentage of screen height and force a bottom margin */
+                max-height: 82%;
+                margin-top: 20px;
+                margin-bottom: 40px; /* Explicitly forces a gap at the bottom */
+
                 padding: 24px;
                 border-radius: 28px;
                 box-shadow:
@@ -42,38 +49,45 @@
                 display: flex;
                 flex-direction: column;
                 overflow: hidden;
-                margin-top: 10px; /* Small gap from the very top */
+                box-sizing: border-box;
             }
 
             h1 {
                 color: #2980b9;
                 text-align: center;
-                margin: 0 0 20px 0;
+                margin: 0 0 16px 0;
                 font-weight: 700;
-                font-size: 1.8rem;
+                font-size: 1.6rem;
                 letter-spacing: 0.5px;
             }
 
-            /* The rest of your styles (input, results, item) remain the same */
             input {
                 width: 100%;
-                padding: 14px 24px;
+                padding: 14px 20px;
                 font-size: 16px;
                 border: 1px solid #dadce0;
                 border-radius: 28px;
                 outline: none;
                 box-sizing: border-box;
                 background: #fff;
+                -webkit-appearance: none; /* Fixes iOS shadow issues */
+            }
+
+            input:focus {
+                border-color: transparent;
+                box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
             }
 
             .results {
-                margin-top: 16px;
+                margin-top: 12px;
                 overflow-y: auto;
                 flex-grow: 1;
+                /* Smooth scrolling for mobile */
+                -webkit-overflow-scrolling: touch;
             }
 
             .item {
-                padding: 16px;
+                padding: 14px;
                 text-decoration: none;
                 display: block;
                 color: inherit;
@@ -82,38 +96,37 @@
                 margin-bottom: 4px;
             }
 
-            .item:hover,
             .item:active {
-                background: #f8f9fa;
+                background: #f1f3f4;
             }
 
             .type-tag {
-                font-size: 11px;
-                font-weight: 500;
+                font-size: 10px;
+                font-weight: 700;
                 text-transform: uppercase;
-                padding: 4px 12px;
+                padding: 2px 10px;
                 border-radius: 8px;
-                margin-bottom: 8px;
+                margin-bottom: 6px;
                 display: inline-block;
             }
 
             .title {
-                font-size: 18px;
+                font-size: 17px;
                 font-weight: 600;
                 color: #2980b9;
                 display: block;
             }
             .parent {
-                font-size: 13px;
+                font-size: 12px;
                 color: #5f6368;
-                margin-bottom: 4px;
+                margin-bottom: 2px;
                 display: block;
             }
             .url {
-                font-size: 11px;
-                color: #70757a;
+                font-size: 10px;
+                color: #9aa0a6;
                 display: block;
-                margin-top: 8px;
+                margin-top: 6px;
                 word-break: break-all;
             }
         </style>
@@ -155,7 +168,7 @@
 
                 datalist.innerHTML = matches
                     .filter((i) => i.type === "headword")
-                    .slice(0, 10)
+                    .slice(0, 8)
                     .map((m) => `<option value="${m.t}">`)
                     .join("");
 
