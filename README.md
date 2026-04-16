@@ -1,5 +1,5 @@
 <h2 align="center">
-  <i>Правопис и пунктуация — Standalone Search Engine</i>
+  Правопис и пунктуация — Standalone Search Engine
 </h2>
 
 
