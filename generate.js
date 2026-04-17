@@ -3,20 +3,21 @@ const fs = require("fs");
 // Load indexed data
 const dataModule = require("./dictionaryData.js");
 
-// Load HTML template
+
 let template = fs.readFileSync("./template.html", "utf8");
 
-// Inject and save
-const jsonData = JSON.stringify(
-    dataModule.map((i) => ({
-        ...i,
-        lowT: i.t.toLowerCase(),
-    })),
+const string = JSON.stringify;
+const dictionary = dataModule;
+const searchIndex = dataModule.map(i => (i.t || "").toLowerCase());
+
+let finalHtml = template.replace(
+    `const dictionary = ["placeholder"];`,
+    `const dictionary = ${string(dictionary)};`,
 );
 
-const finalHtml = template.replace(
-    "const dictionary = ['placeholder'];",
-    `const dictionary = ${jsonData};`,
+finalHtml = finalHtml.replace(
+    `const searchIndex = ["placeholder"];`,
+    `const searchIndex = ${string(searchIndex)};`,
 );
 
 fs.writeFileSync("./index.html", finalHtml);

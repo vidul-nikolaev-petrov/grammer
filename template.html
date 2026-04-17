@@ -274,7 +274,8 @@
         </div>
 
         <script>
-            const dictionary = ['placeholder'];
+            const dictionary = ["placeholder"];
+            const searchIndex = ["placeholder"];
             const maxResults = 64;
             const BASE = "https://beron.mon.bg/rechnik";
             const input = document.getElementById("q");
@@ -296,14 +297,7 @@
                     return;
                 }
 
-                const matches = [];
-
-                for (let i = 0; i < dictionary.length; i++) {
-                    if (dictionary[i].lowT.includes(val)) {
-                        matches.push(dictionary[i]);
-                        if (matches.length >= maxResults) break;
-                    }
-                }
+                const matches = performSearch(val);
 
                 datalist.innerHTML = matches
                     .filter((i) => i.type === "headword")
@@ -318,16 +312,17 @@
                         const fullUrl = `${BASE}/${fileName}`;
                         const isWord = m.type === "headword";
                         return `<a href="${fullUrl}" target="_blank" class="item">
-                        <span class="type-tag" style="background: var(${isWord ? "--tag-word-bg" : "--tag-rule-bg"}); color: var(${isWord ? "--tag-word-text" : "--tag-rule-text"})">${isWord ? "Дума" : "Параграф"}</span>
-                        ${m.parent ? `<span class="parent">Към: ${m.parent}</span>` : ""}
-                        <span class="title">${m.t}</span>
-                        <span class="url">${fullUrl}</span>
-                    </a>`;
+                                    <span class="type-tag" style="background: var(${isWord ? "--tag-word-bg" : "--tag-rule-bg"}); color: var(${isWord ? "--tag-word-text" : "--tag-rule-text"})">${isWord ? "Дума" : "Параграф"}</span>
+                                    ${m.parent ? `<span class="parent">Към: ${m.parent}</span>` : ""}
+                                    <span class="title">${m.t}</span>
+                                    <span class="url">${fullUrl}</span>
+                                </a>`;
                     })
                     .join("");
             });
 
             const themeToggle = document.getElementById("theme-toggle");
+
             if (localStorage.getItem("theme") === "dark")
                 document.documentElement.setAttribute("data-theme", "dark");
 
@@ -343,6 +338,20 @@
                     localStorage.setItem("theme", "dark");
                 }
             });
+
+            function performSearch(val) {
+                const matches = [];
+                const total = searchIndex.length;
+
+                for (let i = 0; i < total; i++) {
+                    if (searchIndex[i].includes(val)) {
+                        matches.push(dictionary[i]);
+                        if (matches.length >= maxResults) break;
+                    }
+                }
+
+                return matches;
+            }
         </script>
     </body>
 </html>
