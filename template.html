@@ -7,11 +7,13 @@
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
         <title>Правопис и пунктуация</title>
+        <!-- Corrected Favicon -->
         <link
             rel="icon"
             type="image/svg+xml"
             href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='20' y='10' width='60' height='80' rx='5' fill='%232980b9'/%3E%3Cpath d='M30 10v80M20 25h60M20 40h60' stroke='white' stroke-width='2'/%3E%3Ctext x='42' y='65' fill='white' font-family='Arial' font-weight='bold' font-size='40'%3EБ%3C/text%3E%3C/svg%3E"
         />
+
         <style>
             :root {
                 --bg-body: #f1f3f4;
@@ -81,10 +83,9 @@
                 transition:
                     background 0.3s ease,
                     min-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                min-height: 200px; /* Default height when typing */
+                min-height: 200px;
             }
 
-            /* The "Empty" state: creates more space under the input */
             .card.is-empty {
                 min-height: 450px;
             }
@@ -151,6 +152,7 @@
                 color: inherit;
                 border-radius: 16px;
                 margin-bottom: 4px;
+                transition: background 0.2s;
             }
             .item:hover {
                 background: var(--item-hover);
@@ -187,7 +189,6 @@
         </style>
     </head>
     <body>
-        <!-- Added "is-empty" class by default -->
         <div class="card is-empty" id="main-card">
             <button id="theme-toggle" aria-label="Toggle Theme">
                 <svg viewBox="0 0 24 24">
@@ -202,10 +203,12 @@
                 <input
                     type="text"
                     id="q"
+                    list="suggestions"
                     placeholder="Търси дума или правило..."
                     autofocus
                     autocomplete="off"
                 />
+                <datalist id="suggestions"></datalist>
             </div>
             <div id="res" class="results"></div>
         </div>
@@ -215,12 +218,12 @@
             const BASE = "https://beron.mon.bg/rechnik";
             const input = document.getElementById("q");
             const list = document.getElementById("res");
+            const datalist = document.getElementById("suggestions");
             const card = document.getElementById("main-card");
 
             input.addEventListener("input", (e) => {
                 const val = e.target.value.toLowerCase();
 
-                // Toggle "is-empty" class based on text presence
                 if (val.length > 0) {
                     card.classList.remove("is-empty");
                 } else {
@@ -229,11 +232,20 @@
 
                 if (val.length < 2) {
                     list.innerHTML = "";
+                    datalist.innerHTML = "";
                     return;
                 }
+
                 const matches = dictionary.filter((i) =>
                     i.t.toLowerCase().includes(val),
                 );
+
+                datalist.innerHTML = matches
+                    .filter((i) => i.type === "headword")
+                    .slice(0, 8)
+                    .map((m) => `<option value="${m.t}">`)
+                    .join("");
+
                 list.innerHTML = matches
                     .slice(0, 40)
                     .map((m) => {
@@ -250,7 +262,6 @@
                     .join("");
             });
 
-            // Theme Toggle Logic
             const themeToggle = document.getElementById("theme-toggle");
             if (localStorage.getItem("theme") === "dark")
                 document.documentElement.setAttribute("data-theme", "dark");
