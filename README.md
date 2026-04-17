@@ -1,15 +1,12 @@
-<h2 align="center">
-  Правопис и пунктуация — Standalone Search Engine
-</h2>
-<br>
-Може да се ползва и локално (офлайн режим), и [онлайн](https://vidul-nikolaev-petrov.github.io/grammer/).
+# Правопис и пунктуация — Standalone Search Engine
 
-Страницата онлайн ползва възможно най-бързото търсене
+Може да се ползва и офлайн, и [онлайн](https://vidul-nikolaev-petrov.github.io/grammer/).
+
+### Предимства:
+* **Бързина:** Страницата ползва оптимизирано търсене чрез структура на индексите в паметта (само 1.2MB).
+* **Независимост:** Написана е на чист JS, което позволява пълноценна работа в офлайн режим.
+
 <br>
-чрез структура на индексите в паметта, която е само 1.2MB.
 <br>
-Написана е на чист JS (независим код), така че работи и офлайн.
-<br>
-<br>
-<br>
-![example](https://vidul-nikolaev-petrov.github.io/grammer/example.png)
+
+![example](https://vidul-nikolaev-petrov.github.io/grammer/example.png?refresh=true)
