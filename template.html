@@ -274,17 +274,13 @@
         </div>
 
         <script>
-            const dictionary = [];
+            const dictionary = ['placeholder'];
             const maxResults = 64;
             const BASE = "https://beron.mon.bg/rechnik";
             const input = document.getElementById("q");
             const list = document.getElementById("res");
             const datalist = document.getElementById("suggestions");
             const card = document.getElementById("main-card");
-            const processedDict = dictionary.map((i) => ({
-                ...i,
-                lowT: i.t.toLowerCase(),
-            }));
 
             input.addEventListener("input", (e) => {
                 const val = e.target.value.toLowerCase();
@@ -302,9 +298,9 @@
 
                 const matches = [];
 
-                for (let i = 0; i < processedDict.length; i++) {
-                    if (processedDict[i].lowT.includes(val)) {
-                        matches.push(processedDict[i]);
+                for (let i = 0; i < dictionary.length; i++) {
+                    if (dictionary[i].lowT.includes(val)) {
+                        matches.push(dictionary[i]);
                         if (matches.length >= maxResults) break;
                     }
                 }
