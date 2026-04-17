@@ -191,6 +191,14 @@
                 margin-top: 6px;
                 word-break: break-all;
             }
+            #pulse {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                margin-top: auto;
+                padding-top: 100px;
+            }
         </style>
     </head>
     <body>
@@ -215,7 +223,54 @@
                 />
                 <datalist id="suggestions"></datalist>
             </div>
-            <div id="res" class="results"></div>
+            <div id="res" class="results">
+                <div id="pulse">
+                    <svg
+                        width="200"
+                        height="60"
+                        viewBox="0 0 200 60"
+                        xmlns="http://w3.org"
+                    >
+                        <style>
+                            .ekg-line {
+                                fill: none;
+                                stroke: #2980b9; /* Match your primary blue */
+                                stroke-width: 2;
+                                stroke-linecap: round;
+                                stroke-linejoin: round;
+                                stroke-dasharray: 1000;
+                                stroke-dashoffset: 1000;
+                                animation: heart-scan 3s linear infinite;
+                            }
+
+                            [data-theme="dark"] .ekg-line {
+                                stroke: #8ab4f8; /* Match your dark mode primary */
+                            }
+
+                            @keyframes heart-scan {
+                                to {
+                                    stroke-dashoffset: 0;
+                                }
+                            }
+                        </style>
+
+                        <!-- Background "Base" line (optional, subtle gray) -->
+                        <path
+                            d="M0 30 L40 30 L45 25 L55 35 L60 30 L80 30 L85 10 L95 50 L100 30 L120 30 L125 25 L135 35 L140 30 L200 30"
+                            stroke="#dadce0"
+                            stroke-width="1"
+                            fill="none"
+                            opacity="0.3"
+                        />
+
+                        <!-- Animated Pulse line -->
+                        <path
+                            class="ekg-line"
+                            d="M0 30 L40 30 L45 25 L55 35 L60 30 L80 30 L85 10 L95 50 L100 30 L120 30 L125 25 L135 35 L140 30 L200 30"
+                        />
+                    </svg>
+                </div>
+            </div>
         </div>
 
         <script>
