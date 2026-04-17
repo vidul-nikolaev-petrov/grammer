@@ -7,13 +7,11 @@
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
         <title>Правопис и пунктуация</title>
-        <!-- Corrected Favicon -->
         <link
             rel="icon"
             type="image/svg+xml"
             href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='20' y='10' width='60' height='80' rx='5' fill='%232980b9'/%3E%3Cpath d='M30 10v80M20 25h60M20 40h60' stroke='white' stroke-width='2'/%3E%3Ctext x='42' y='65' fill='white' font-family='Arial' font-weight='bold' font-size='40'%3EБ%3C/text%3E%3C/svg%3E"
         />
-
         <style>
             :root {
                 --bg-body: #f1f3f4;
@@ -113,11 +111,18 @@
             }
 
             h1 {
-                color: var(--primary);
                 text-align: center;
                 margin: 0 0 20px 0;
                 font-size: 1.6rem;
                 letter-spacing: 1px;
+            }
+            h1 a {
+                color: var(--primary);
+                text-decoration: none;
+                transition: opacity 0.2s;
+            }
+            h1 a:hover {
+                opacity: 0.8;
             }
 
             .input-wrapper {
@@ -198,7 +203,7 @@
                     <path d="M12,4a8,8,0,0,0,0,16V4Z" />
                 </svg>
             </button>
-            <h1>БЕРОН</h1>
+            <h1><a href=".">БЕРОН</a></h1>
             <div class="input-wrapper">
                 <input
                     type="text"
@@ -215,6 +220,7 @@
 
         <script>
             const dictionary = [];
+            // Fixed BASE URL
             const BASE = "https://beron.mon.bg/rechnik";
             const input = document.getElementById("q");
             const list = document.getElementById("res");
@@ -223,7 +229,6 @@
 
             input.addEventListener("input", (e) => {
                 const val = e.target.value.toLowerCase();
-
                 if (val.length > 0) {
                     card.classList.remove("is-empty");
                 } else {
