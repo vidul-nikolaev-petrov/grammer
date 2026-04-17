@@ -275,12 +275,16 @@
 
         <script>
             const dictionary = [];
-            // Fixed BASE URL
+            const maxResults = 64;
             const BASE = "https://beron.mon.bg/rechnik";
             const input = document.getElementById("q");
             const list = document.getElementById("res");
             const datalist = document.getElementById("suggestions");
             const card = document.getElementById("main-card");
+            const processedDict = dictionary.map((i) => ({
+                ...i,
+                lowT: i.t.toLowerCase(),
+            }));
 
             input.addEventListener("input", (e) => {
                 const val = e.target.value.toLowerCase();
@@ -296,9 +300,14 @@
                     return;
                 }
 
-                const matches = dictionary.filter((i) =>
-                    i.t.toLowerCase().includes(val),
-                );
+                const matches = [];
+
+                for (let i = 0; i < processedDict.length; i++) {
+                    if (processedDict[i].lowT.includes(val)) {
+                        matches.push(processedDict[i]);
+                        if (matches.length >= maxResults) break;
+                    }
+                }
 
                 datalist.innerHTML = matches
                     .filter((i) => i.type === "headword")
@@ -338,6 +347,25 @@
                     localStorage.setItem("theme", "dark");
                 }
             });
+
+            function findFirstMatch(val) {
+                let low = 0;
+                let high = sortedDict.length - 1;
+                let result = -1;
+
+                while (low <= high) {
+                    let mid = Math.floor((low + high) / 2);
+                    if (sortedDict[mid].lowT.startsWith(val)) {
+                        result = mid;
+                        high = mid - 1;
+                    } else if (sortedDict[mid].lowT < val) {
+                        low = mid + 1;
+                    } else {
+                        high = mid - 1;
+                    }
+                }
+                return result;
+            }
         </script>
     </body>
 </html>
