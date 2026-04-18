@@ -3,7 +3,7 @@
 Може да се ползва и офлайн, и [онлайн](https://vidul-nikolaev-petrov.github.io/grammer/).
 
 * **Производителност**
-  - Oптимизирано търсене ([parallel arrays](https://en.wikipedia.org/wiki/Parallel_array)) в паметта (~2MB).
+  - Oптимизирано търсене (`linear access pattern`) в кеша (`L2/3`).
 * **Независимост**
   - Чист код (vanilla JS), позволяващ пълноценна работа офлайн.
   - Тази информация може да се извлече и от [тези хубавци](https://www.google.com/search?q=site%3Aberon.mon.bg%2Frechnik+%D0%BE%D1%81%D0%B2%D0%B5%D0%BD), <br>
