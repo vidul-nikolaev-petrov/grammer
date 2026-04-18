@@ -319,13 +319,13 @@
             const dictionary = ["placeholder"];
             const searchIndex = ["placeholder"];
             const maxResults = 100;
+            const minInputLength = 2;
             const BASE = "https://beron.mon.bg/rechnik";
             const input = document.getElementById("q");
             const list = document.getElementById("res");
             const datalist = document.getElementById("suggestions");
             const card = document.getElementById("main-card");
             const counter = document.getElementById("result-count");
-            let debounceTimer;
 
             input.addEventListener("input", (e) => {
                 const val = e.target.value.toLowerCase();
@@ -336,50 +336,43 @@
                     card.classList.add("is-empty");
                 }
 
-                if (val.length < 2) {
+                if (val.length < minInputLength) {
                     list.innerHTML = "";
                     datalist.innerHTML = "";
                     counter.textContent = "";
                     return;
                 }
 
-                clearTimeout(debounceTimer);
+                const matches = performSearch(val);
+                const matchCount = matches.length;
+                counter.textContent = matchCount;
+                counter.classList.remove("pulse-up");
+                void counter.offsetWidth;
+                counter.classList.add("pulse-up");
 
-                debounceTimer = setTimeout(() => {
-                    const matches = performSearch(val);
-                    const matchCount = matches.length;
-                    counter.textContent = matchCount;
-                    counter.classList.remove("pulse-up");
-                    void counter.offsetWidth;
-                    counter.classList.add("pulse-up");
+                datalist.innerHTML = matches
+                    .filter((i) => i.type === "headword")
+                    .slice(0, 8)
+                    .map((m) => `<option value="${m.t}">`)
+                    .join("");
 
-                    datalist.innerHTML = matches
-                        .filter((i) => i.type === "headword")
-                        .slice(0, 8)
-                        .map((m) => `<option value="${m.t}">`)
-                        .join("");
-
-                    list.innerHTML = matches
-                        .map((m) => {
-                            const fileName = m.l.replace(
-                                /.*\/(\d+)\.html$/,
-                                "$1",
-                            );
-                            const fullUrl = `${BASE}/${fileName}`;
-                            const isWord = m.type === "headword";
-                            return `<a href="${fullUrl}" target="_blank" class="item">
-                                        <span class="type-tag"
-                                            style="background: var(${isWord ? "--tag-word-bg" : "--tag-rule-bg"});
-                                            color: var(${isWord ? "--tag-word-text" : "--tag-rule-text"})">
-                                                ${isWord ? "Дума" : "Параграф"}
-                                        </span>
-                                        ${m.parent ? `<span class="parent">Към: ${m.parent}</span>` : ""}
-                                        <span class="title">${m.t}</span>
-                                        <span class="url">${fullUrl}</span>
-                                    </a>`;
-                        })
-                        .join("");
-                }, 100);
+                list.innerHTML = matches
+                    .map((m) => {
+                        const fileName = m.l.replace(/.*\/(\d+)\.html$/, "$1");
+                        const fullUrl = `${BASE}/${fileName}`;
+                        const isWord = m.type === "headword";
+                        return `<a href="${fullUrl}" target="_blank" class="item">
+                                    <span class="type-tag"
+                                        style="background: var(${isWord ? "--tag-word-bg" : "--tag-rule-bg"});
+                                        color: var(${isWord ? "--tag-word-text" : "--tag-rule-text"})">
+                                            ${isWord ? "Дума" : "Параграф"}
+                                    </span>
+                                    ${m.parent ? `<span class="parent">Към: ${m.parent}</span>` : ""}
+                                    <span class="title">${m.t}</span>
+                                    <span class="url">${fullUrl}</span>
+                                </a>`;
+                    })
+                    .join("");
             });
 
             const themeToggle = document.getElementById("theme-toggle");
