@@ -37,8 +37,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             border-bottom: 2px solid #2980b9;
             background-color: rgba(52, 152, 219, 0.05);
         }}
-        h1 {{ color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }}
-        h2 {{ color: #2980b9; margin-top: 1.8em; font-size: 2em; }}
+        h1 {{ color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 1.4em; }}
+        h2 {{ color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }}
         .samp {{
             background-color: #f4f4f4;
             border-left: 5px solid #2980b9;
