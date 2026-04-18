@@ -276,7 +276,7 @@
         <script>
             const dictionary = ["placeholder"];
             const searchIndex = ["placeholder"];
-            const maxResults = 64;
+            const maxResults = 100;
             const BASE = "https://beron.mon.bg/rechnik";
             const input = document.getElementById("q");
             const list = document.getElementById("res");
@@ -306,7 +306,6 @@
                     .join("");
 
                 list.innerHTML = matches
-                    .slice(0, 40)
                     .map((m) => {
                         const fileName = m.l.replace(/.*\/(\d+)\.html$/, "$1");
                         const fullUrl = `${BASE}/${fileName}`;
