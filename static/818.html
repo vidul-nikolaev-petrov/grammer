@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="6" data-ref="Употреба на главни и малки букви" id="bski347">Употреба на главни и малки букви</h1><p>Правилата за употреба на главни и малки букви се определят от морфологичния и от синтактичния правописен принцип.</p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="820.html" class=""><label>Морфологична употреба на главни и малки букви</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="821.html" class=""><label>Главни букви</label></a></span></p><p><span class="XTUiN"><a href="964.html" class=""><label>Малки букви</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1114.html" class=""><label>Синтактична употреба на главни букви</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="1116.html" class=""><label>Главна буква в началото на изречение и текст</label></a></span></p><p><span class="XTUiN"><a href="1122.html" class=""><label>Главна буква в заглавия и подзаглавия</label></a></span></p><p><span class="XTUiN"><a href="1126.html" class=""><label>Главна буква в ремарки</label></a></span></p><p><span class="XTUiN"><a href="1133.html" class=""><label>Главна буква в таблици</label></a></span></p><p><span class="XTUiN"><a href="1137.html" class=""><label>Главна буква в диаграми и под.</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1144.html" class=""><label>Стилистична употреба на главни букви</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="1146.html" class=""><label>Главна буква при местоимения</label></a></span></p><p><span class="XTUiN"><a href="1163.html" class=""><label>Главна буква при съществителни нарицателни</label></a></span></p><p><span class="XTUiN"><a href="1183.html" class=""><label>Главна буква при думи, отнасящи се до Бог</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1200.html" class=""><label>Графична употреба на главни букви</label></a></span></h3></div></div>
+</body>
+</html>

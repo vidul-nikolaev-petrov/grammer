@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Кога не се пише точка" id="bski1107">Кога не се пише точка</h1><h2 data-lvl="0" data-ref="110." id="110">110.</h2><p>Не се пише точка в следните случаи:</p><h2 data-lvl="0" data-ref="110.1." id="110.1">110.1.</h2><p>При графични съкращения на мерните единици.</p><div class="samp first-samp collapsed"><p><i class="ex">мм</i> и <i class="ex">mm</i> (милиметър), <i class="ex">м</i> и <i class="ex">m</i> (метър), <i class="ex">км</i> и <i class="ex">km</i> (километър), <i class="ex">кг</i> и</p></div><div class="samp"><p><i class="ex">kg</i> (килограм), <i class="ex">г</i> и <i class="ex">g</i> (грам), <i class="ex">мг</i> и <i class="ex">mg</i> (милиграм), <i class="ex">ч</i> и <i class="ex">h</i> (час), <i class="ex">мин</i> и <i class="ex">min</i> (минута)</p></div><h2 data-lvl="0" data-ref="110.1.1." id="110.1.1">110.1.1.</h2><p>Точка се пише при графичните съкращения на мерните единици <i class="ex">час, минута, секунда</i>, когато се означава определен момент от денонощието.</p><div class="samp"><p><i class="ex">Точно 7 ч. и 25 мин. сочеше часовникът.</i></p></div><h2 data-lvl="0" data-ref="110.2." id="110.2">110.2.</h2><p>Не се пише точка след арабски цифри в следните случаи:</p><h2 data-lvl="0" data-ref="110.2.1." id="110.2.1">110.2.1.</h2><p>При отбелязване на дати, когато името на месеца е изписано с букви, и при означаване на години.</p><div class="samp first-samp collapsed"><p><i class="ex">22 септември, 24 май, 3 юни т.г.</i></p></div><div class="samp"><p><i class="ex">681 г., 1968 г., 2009 г.</i></p></div><h2 data-lvl="0" data-ref="110.2.2." id="110.2.2">110.2.2.</h2><p>Когато арабските цифри са разположени след знаците за номер</p><p>[№], параграф [§] и след съкращения от типа на <i class="ex">с.</i> (страница), <i class="ex">т.</i> (точка), <i class="ex">фиг.</i> (фигура) и др.</p><div class="samp first-samp collapsed"><p><i class="ex">Жилището се намира на ул. „Лилия“ № 9 в кв. „Лозенец“.</i></p></div><div class="samp"><p><i class="ex">Коментарът се намира в § 5 от III част.</i></p></div><div class="samp"><p><i class="ex">На с. 3 е обяснена схемата.</i></p></div><div class="samp"><p><i class="ex">Материята се разисква в т. 6 от I глава.</i></p></div><div class="samp"><p><i class="ex">Фиг. 18 представя чертеж на обекта.</i></p></div><h2 data-lvl="0" data-ref="110.3." id="110.3">110.3.</h2><p>Не се пише точка след римска цифра с изключение на случаите в т. <a href="#109.4">109.4</a> и <a href="#109.5">109.5</a>.</p><div class="samp"><p><i class="ex">V в., VII конгрес на кинолозите, XXIV народно събрание</i></p></div><p>[За съчетаване на точка с други пунктуационни и непунктуационни знаци вж. т. <a href="#135">135</a>.]</p></div></div>
+</body>
+</html>

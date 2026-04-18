@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="2" data-ref="Имена с повече от една главна буква" id="bski359">Имена с повече от една главна буква</h1><h2 data-lvl="0" data-ref="39.2." id="39.2">39.2.</h2><p>Когато съставното собствено име съдържа и друго собствено име, то също се пише с главна буква.</p><div class="samp first-samp collapsed"><p><i class="ex">Пипи Дългото чорапче, Петър Моканина, Голяма Богородица, Баба Меца, Кумчо Вълчо, Трифон Зарезан,</i> (остров) <i class="ex">Света Елена, Санкт Петербург, Сен Тропе, Северна Европа, Република България, Стара Загора, Горна Оряховица, „Зелени Балкани“</i> (име на неформална организация)<i class="ex">, Устав на Организацията на обединените нации, Древна Гърция, Древен Рим, Крали Марко, Старият Пловдив, Пловдивски университет „Паисий Хилендарски“, Средно общообразователно училище „Проф. Марин Дринов“;</i></p></div><div class="samp"><p><i class="ex">Виринея Вихра</i> (псевдоним на Вера Иванова)<i class="ex">, Елин Пелин</i> (псевдоним на Димитър Иванов)<i class="ex">, Сирак Скитник</i> (псевдоним на П. Христов)<i class="ex">, Радой Ралин</i> (псевдоним на Димитър Стоянов)<i class="ex">, Ран Босилек</i> (псевдоним на Г. Негенцов)<i class="ex">, Чичо Стоян</i> (псевдоним на Ст. Попов)</p></div><h2 data-lvl="0" data-ref="39.2.1." id="39.2.1">39.2.1.</h2><p>С главна буква се пишат съществителни нарицателни имена, утвърдили се като част от съставно собствено име на лице, митологичен или литературен персонаж.</p><div class="samp"><p><i class="ex">Баба Марта, Баба Тонка, Баба Яга, Бай Ганьо, Бачо Киро, Братя Миладинови, Дон Кихот, Даскал Манол, Дева Мария, Дядо Коледа, Дядо Вазов, Кума Лиса, Кумчо Вълчо, Мечо Пух, Отец Паисий, Патриарх Евтимий, Презвитер Козма, Хаджи Димитър, Райна Княгиня, Настрадин Ходжа, Ежко Бежко, Зайо Байо, Косе Босе, Охльо Бохльо</i></p></div><h2 data-lvl="0" data-ref="39.2.2." id="39.2.2">39.2.2.</h2><p>С главна буква се пишат прилагателни и числителни имена, установили се като съставна част от собствени имена на лица.</p><div class="samp"><p><i class="ex">Ана Австрийска, Евтимий Търновски, Иван Грозни, Крум Страшни, Матей Преображенски, Паисий Хилендарски, Пипин Къси, Филип Хубави, Хитър Петър, Борис Първи</i> (и <i class="ex">Борис I</i>)<i class="ex">, Александър Втори</i> (и <i class="ex">Александър II</i>)<i class="ex">, Хенри Осми</i> (и <i class="ex">Хенри VIII</i>)</p></div><h2 data-lvl="0" data-ref="39.2.3." id="39.2.3">39.2.3.</h2><p>С главна буква се пишат прилагателните <i class="ex">източен</i>, <i class="ex">западен</i>, <i class="ex">северен</i>, <i class="ex">южен</i> и производните от тях, когато са първа част на съставни собствени имена.</p><div class="samp"><p><i class="ex">Северна България, Южна Франция, Западна Стара планина, Източна Европа, Югоизточна Азия, Северозападна Африка</i></p></div><p>[Срв. Малки букви, т. <a href="#41.3">41.3</a>.]</p></div></div>
+</body>
+</html>

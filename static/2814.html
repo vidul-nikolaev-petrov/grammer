@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Точка при съкращаване на думи" id="bski1123">Точка при съкращаване на думи</h1><h2 data-lvl="0" data-ref="109.1." id="109.1">109.1.</h2><p>Точка се използва при съкращаване на думи и изрази с изключение на случаите в т. <a href="#110.1">110.1</a>.</p><div class="samp first-samp collapsed"><p><i class="ex">Посетихме о. Света Елена.</i></p></div><div class="samp"><p><i class="ex">Претича бързо през бул. „Мадрид“.</i></p></div><div class="samp"><p><i class="ex">На обсъждането присъства и проф. Иванов.</i></p></div><div class="samp"><p><i class="ex">Този предмет е датиран от 3. в. пр.н.е.</i></p></div><div class="samp"><p><i class="ex">Фирмата предлага кошери, пчели, мед, восък и т.н.</i></p></div><p>[Вж. Езикови съкращения, т. <a href="#72.1">72.1</a> и <a href="#72.3">72.3</a>.]</p></div></div>
+</body>
+</html>

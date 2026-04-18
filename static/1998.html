@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="2" data-ref="Обособени части" id="bski424">Обособени части</h1><h2 data-lvl="0" data-ref="80." id="80">80.</h2><p>Обособени части.</p><h2 data-lvl="0" data-ref="80.1." id="80.1">80.1.</h2><p>Обособените части на изречението, въведени безсъюзно, се отделят със запетая от останалите части на изречението.</p><div class="samp first-samp collapsed"><p><i class="ex">Изморена от пристъпите на въображението си, тя заспа призори.</i></p></div><div class="samp"><p><i class="ex">Отец Ередиа пишеше нещо на масата, отрупана с много книжа.</i></p></div><div class="samp"><p><i class="ex">Децата, родени извън брака, имат равни права с родените в брака.</i></p></div><div class="samp"><p><i class="ex">Иван, новият ни колега, се справяше добре с работата.</i></p></div><div class="samp"><p><i class="ex">А долу, в долината, виждате ли каква млечна пелена се разстила?</i></p></div><div class="samp"><p><i class="ex">Тогава полковникът избяга с жена си тук, в старата колиба.</i></p></div><div class="samp"><p><i class="ex">Днес, 15.09.2010 г., се проведе заседание със следния дневен ред.</i></p></div><div class="samp"><p><i class="ex">И тогава, в това мълчание, всички чуха тропот на конски копита.</i></p></div><div class="samp"><p><i class="ex">Мислейки за предстоящото заседание на Управителния съвет на банката, Заимов неусетно извървя разстоянието от университета до бившия царски дворец.</i></p></div><div class="samp"><p><i class="ex">Аз се долепих до гърба на баща си, превеждайки му шепнешком думите на хана.</i></p></div><p>[За употреба на тире вж. т. <a href="#102.3">102.3</a>; за употреба на скоби вж. т. <a href="#100.1">100.1</a>.]</p><h2 data-lvl="0" data-ref="80.2." id="80.2">80.2.</h2><p>Обособените части на изречението, въведени с <i class="frag">макар и, сиреч,</i> <i class="frag">т.е., или</i> (в значение на <i class="frag">т.е., сиреч</i>), <i class="frag">като</i> и др., се отделят със запетаи от останалите части на изречението.</p><div class="samp first-samp collapsed"><p><i class="ex">Днешният ден, макар и обикновен делничен ден, беше великолепен.</i></p></div><div class="samp"><p><i class="ex">Александър II бил женен за лелята на принц Александър – Мария фон Хесен, сиреч за сестрата на баща си.</i></p></div><div class="samp"><p><i class="ex">Съдът се произнася единствено върху конкретно дело, т.е. върху конкретно обвинение.</i></p></div><div class="samp"><p><i class="ex">Лаокоон, или за отношението на изкуството към действителността.</i></p></div><div class="samp"><p><i class="ex">Гласните струни, или гласилките, представляват две мускулни ленти вътре в ларинкса.</i></p></div><div class="samp"><p><i class="ex">Ние, като истински професионалисти, не сме съгласни с такова решение.</i></p></div><div class="samp"><p><i class="ex">Някои страни, като България и Русия, отхвърлиха предложението.</i></p></div><p>[За употреба на тире вж. т. <a href="#102.3">102.3</a>; за употреба на скоби вж. т. <a href="#100.1">100.1</a>.]</p><h2 data-lvl="0" data-ref="80.3." id="80.3">80.3.</h2><p>Не се отделят със запетая неударен едносричен съюз и разположена непосредствено след него обособена част.</p><div class="samp first-samp collapsed"><p><i class="ex">И уверен в късмета си, Христо отказал да се застрахова.</i></p></div><div class="samp"><p><i class="ex">Но тръгвайки на такъв тежък преход през зимата, рискуваш живота си.</i></p></div><p>[За употреба на тире вж. т. <a href="#102.3.2">102.3.2</a>.]</p></div></div>
+</body>
+</html>

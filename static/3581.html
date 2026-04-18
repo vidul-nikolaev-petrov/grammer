@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Оформяне на текст на пиеса, либрето, сценарий" id="bski928">Оформяне на текст на пиеса, либрето, сценарий</h1><p>Текстът на пиеса, либрето, сценарий съдържа репликите на действащите лица, техните имена и роли, описания на реакциите и поведението им, на обстановката и действието на сцената (ремарки).</p><h2 data-lvl="0" data-ref="133." id="133">133.</h2><p>Текст на пиеса, либрето, сценарий се оформя по следния начин:</p><h2 data-lvl="0" data-ref="133.1." id="133.1">133.1.</h2><p>Названието (името или ролята) на действащото лице и неговата реплика се оформят в един абзац и се отделят с точка или с двоеточие. Названието на действащото лице се пише с шрифт, различен от основния.</p><div class="samp first-samp collapsed"><p>АКОРДЕОНИСТА. Един ден ще спечеля много пари и ще си взема билет за самолет, който лети само на запад. Само на запад и само следобед. И ще преследвам един залез.</p><p>ПЯСЪЧНИЯ ЧОВЕК. Обективно погледнато, това е най-хубавият залез, който съм виждал.
+</p></div>
+<div class="samp"><p>ЖАНА: Ти колко приятелки си имал досега! Десет? Дори не им помниш имената. Не ги ли зарязваше от страх?</p><p>ФИЛИП: От страх – не. Просто умирах от скука…</p></div><h2 data-lvl="0" data-ref="133.2." id="133.2">133.2.</h2><p>Репликите на действащите лица се оформят според общите правописни и пунктуационни правила.</p><h2 data-lvl="0" data-ref="133.3." id="133.3">133.3.</h2><p>Ремарка, която се отнася до реакциите или поведението на действащо лице, се разполага преди, в средата или след репликата, пише се с курсив и се поставя в скоби.</p><h2 data-lvl="0" data-ref="133.4." id="133.4">133.4.</h2><p>Ремарка, която е разположена след репликата или между части на репликата, се пише с главна буква и точка накрая.
+</p><div class="samp"><p>АНАТОЛ. Вие търсите във всяка жена мръсницата (Поглежда Барона.), а аз винаги съм търсил във всяка мръсница жената!</p><p>АВГУСТ. Това са думи на персонаж, това е цитат от литература. Аз не отговарям за... (Пауза. Тишина.) Нелепо е да ми го вменявате... (Оглежда се, но Докторът е изчезнал. Тишина.)</p>
+</div><h2 data-lvl="0" data-ref="133.5." id="133.5">133.5.</h2><p>Ремарка, която е разположена след названието на действащото лице и преди репликата, се пише с малка буква, а точката или двоеточието е след затварящата скоба.</p><div class="samp"><p>ЖАНА (към Виктор). Ти пееш ли наистина? Никога не ми е хрумвало.</p>
+</div><h2 data-lvl="0" data-ref="133.6." id="133.6">133.6.</h2><p>Ремарките, които се отнасят до обстановката и действието на сцената, се оформят като самостоятелен абзац, пишат се в курсив и не се поставят в скоби.</p><div class="samp"><p>БОДИГАРДА: Обаждам се, спокойно, обаждам се... (Вади мобилен телефон, за да го успокои.) Ето, обаждам се, спо...</p><p>Изведнъж на сцената звукът рязко спира. Бодигардът продължава да говори, но нищо не се чува. Внезапно звукът се връща заедно с клубната музика и накъсаните реплики на Бодигарда.</p><p>БОДИГАРДА: ...сно е вече за лекар. Няма смисъл, той е за моргата…</p>
+</div><h2 data-lvl="0" data-ref="133.7." id="133.7">133.7.</h2><p>Всяко от имената (ролите) на действащите лица в началото на пиесата се пише на нов ред. Пояснителните текстове към тях се оформят с шрифт, различен от този на имената (ролите), и се отделят със запетая.</p><div class="samp">
+<p>ЖАНА, писателка</p>
+<p>ЛОРА, собственичка на заведение</p>
+</div>
+</div></div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Препратки към библиографски списък" id="bski901">Препратки към библиографски списък</h1><h2 data-lvl="0" data-ref="130.4." id="130.4">130.4.</h2><p>Препратките към библиографския списък се оформят по следния начин:</p><h2 data-lvl="0" data-ref="130.4.1." id="130.4.1">130.4.1.</h2><p>Ако списъкът с цитираната литература е номериран, за препратки в текста служат арабски цифри, които препращат към номерата на съответните библиографски описания в списъка. Препратките с цифри се ограждат в квадратни или в кръгли скоби.
+</p><div class="samp"><p>Според мнението на български демографи особено важен въпрос при изследването на населението е „не само колко сме, но и какви сме“[1].</p><p>[В библиографския списък:]</p><p>1. Минков, Минко П. Демография. София: Албатрос, 1999, с. 259. ISBN 954-8555-62-X.</p></div><h2 data-lvl="0" data-ref="130.4.2." id="130.4.2">130.4.2.</h2><p>Ако списъкът не е номериран, за препратка служи фамилното име на автора, дума от заглавието (обикновено първата) или съкращение на източника, след което се посочват годината на издаване на публикацията и цитираните страници. Препратката се огражда в квадратни или в кръгли скоби.
+</p><div class="samp first-samp collapsed"><p>Винаги е будил любопитство въпросът доколко българската приказка е повлияна от европейската или от силната ориенталска традиция (Хоралек, 1989, с. 10 – 11).</p><p>[В библиографския списък:]</p><p>Хоралек, Карел. За ориенталските приказки в българската фолклорна традиция. – В: Български фолклор, 1989, № 1, с. 10 – 17. ISSN 0323-9861.</p>
+</div>
+<div class="samp"><p>Марцианопол се намирал в Долна Мизия, на която бил главен град [Лат. извори..., 1958, с. 394].</p><p>[В библиографския списък:]</p><p>Латински извори за историята на България. Т. 1. под ред. на Иван Дуйчев и др. София: БАН, 1958. 454 с.</p>
+</div><h2 data-lvl="0" data-ref="130.4.2.1." id="130.4.2.1">130.4.2.1.</h2><p>Ако се цитират две или повече публикации от един и същ автор, след името му се добавя дума (или няколко думи) от заглавието на съответната публикация.
+</p><div class="samp"><p>Съществуват мнения, че това понятие принадлежи едновременно и на трудовото, и на административното право (Димитров, Добри. Административно..., 1994, с. 65; Димитров, Добри. Държавнослужебно..., 2010, с. 273).</p><p>[В библиографския списък:]</p><p>Димитров, Добри. Административно право. Обща част. София: Сиби, 1994, с. 65. ISBN 954-8150-16-6.</p><p>Димитров, Добри. Държавнослужебно право на Република България. София: Сиела, 2010, с. 273. ISBN 978-954-2806-424.</p>
+</div></div></div>
+</body>
+</html>

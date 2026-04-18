@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Думи с вметнат [ъ]" id="bski499">Думи с вметнат [ъ]</h1><h2 data-lvl="0" data-ref="8." id="8">8.</h2><p>Думи с вметнато <span>[<i class="frag">ъ</i>]</span> в последната сричка, което изпада в някои от формите им, се пишат с <i class="frag">ъ</i> в основната си форма. Такива думи са:</p><h2 data-lvl="0" data-ref="8.1." id="8.1">8.1.</h2><p>Прилагателни имена със завършек на <i class="frag">-ър</i>, -<i class="frag">ъл</i>, -<i class="frag">ък</i>, -<i class="frag">ъв</i>, <i class="frag">-ъг</i>, както и някои местоимения на <i class="frag">-ъв</i>, при които <span>[<i class="frag">ъ</i>]</span> изпада от членуваните им форми и от формите им за ж.р., ср.р. и мн.ч.
+</p><div class="samp"><p><i class="ex">близък – близкия(т), близка, близко, близки;</i></p><p><i class="ex">бодър – бодрия(т), бодра, бодро, бодри;</i></p><p><i class="ex">малък – малкия(т), малка, малко, малки;</i></p><p><i class="ex">недорасъл – недораслия(т), недорасла, недорасло, недорасли;</i></p><p><i class="ex">рядък – редкия(т), рядка, рядко, редки;</i></p><p><i class="ex">светъл – светлия(т), светла, светло, светли;</i></p><p><i class="ex">сладък – сладкия(т), сладка, сладко, сладки;</i></p><p><i class="ex">еднакъв – еднаквия(т), еднаква, еднакво, еднакви;</i></p><p><i class="ex">мъртъв – мъртвия(т), мъртва, мъртво, мъртви;</i></p><p><i class="ex">инакъв – инаквия(т), инаква, инакво, инакви;</i></p><p><i class="ex">какъв – каква, какво, какви;</i></p><p><i class="ex">всякакъв – всякаква, всякакво, всякакви;</i></p><p><i class="ex">дълъг – дългия(т), дълга, дълго, дълги</i>
+</p></div>
+<h2 data-lvl="0" data-ref="8.2." id="8.2">8.2.</h2><p>Минали свършени деятелни причастия на <i class="frag">-ъл</i>, при които <span>[<i class="frag">ъ</i>]</span> изпада от членуваните им форми и от формите им за ж.р., ср.р и мн.ч.
+</p><div class="samp"><p><i class="ex">донесъл – донеслия(т), донесла, донесло, донесли;</i></p><p><i class="ex">облякъл – облеклия(т), облякла, облякло, облекли;</i></p><p><i class="ex">расъл – раслия(т), расла, расло, расли;</i></p><p><i class="ex">слязъл – слезлия(т)слязла, слязло, слезли</i>
+</p></div><h2 data-lvl="0" data-ref="8.3." id="8.3">8.3.</h2><p>Съществителни имена от чужд произход със завършек на <i class="frag">-ър</i>, <i class="frag">-ъл</i>, при които <span>[<i class="frag">ъ</i>]</span> изпада от формите за мн.ч., но се запазва в членуваните форми и в бройната форма на съществителни имена за нелица.</p><div class="samp"><p><i class="ex">компютър – компютърът, -а, два компютъра, компютри; министър – министърът, -а, министри; спектакъл – спектакълът, -а, два спектакъла, спектакли; театър – театърът, -а, два театъра, театри</i></p></div><h2 data-lvl="0" data-ref="8.4." id="8.4">8.4.</h2><p>Съществителни имена от чужд произход със завършек на <i class="frag">-изъм</i> и <i class="frag">-азъм</i>, при които <span>[<i class="frag">ъ</i>]</span> изпада от членуваните им форми и от формите им за мн.ч. (ако те са възможни), но се запазва в бройната им форма.</p><div class="samp"><p><i class="ex">катаклизъм, катаклизмът, -а, два катаклизъма, катаклизми; модернизъм, модернизмът, -а; оптимизъм, оптимизмът, -а; организъм, организмът, -а, два организъма, организми; тероризъм, тероризмът, -а; плеоназмът, плеоназмът, - а, два плеоназъма, плеоназми</i></p></div></div></div>
+</body>
+</html>

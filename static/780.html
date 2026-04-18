@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="6" data-ref="Транслитерация на български собствени имена с латински букви" id="bski596">Транслитерация на български собствени имена с латински букви</h1><p>Транслитерацията е предаване на буквения състав на думите от една графична система в друга. Транслитерацията на българските собствени имена е предаването на буквения им състав чрез латински букви или съчетания от тях. Тя се извършва в съответствие със <a href="https://www.mrrb.bg/bg/zakon-za-transliteraciyata/">Закона за транслитерацията</a>.</p><h2 data-lvl="0" data-ref="33." id="33">33.</h2><p>Латинските съответствия на българските кирилски букви са следните:</p><table class="samptable transliteration">
+<thead><tr><th colspan="2">Българска Кирилица</th><th colspan="2">Латинска версия</th><th>Примери</th></tr>
+</thead>
+<tbody><tr><td>А</td><td>а</td><td>A</td><td>a</td><td><i class="frag">А</i>йтос – <i class="frag">A</i>ytos, <i class="frag">А</i>лбен<i class="frag">а</i> – <i class="frag">A</i>lben<i class="frag">a</i></td></tr><tr><td>Б</td><td>б</td><td>B</td><td>b</td><td><i class="frag">Б</i>ояна – <i class="frag">B</i>oyana, <i class="frag">Б</i>оряна – <i class="frag">B</i>oryana</td></tr><tr><td>В</td><td>в</td><td>V</td><td>v</td><td><i class="frag">В</i>арна – <i class="frag">V</i>arna, <i class="frag">В</i>асил – <i class="frag">V</i>asil</td></tr><tr><td>Г</td><td>г</td><td>G</td><td>g</td><td><i class="frag">Г</i>радище – <i class="frag">G</i>radishte, <i class="frag">Г</i>ер<i class="frag">г</i>ана – <i class="frag">G</i>er<i class="frag">g</i>ana</td></tr><tr><td>Д</td><td>д</td><td>D</td><td>d</td><td><i class="frag">Д</i>журово – <i class="frag">D</i>zhurovo, <i class="frag">Д</i>имо – <i class="frag">D</i>imo</td></tr><tr><td>Е</td><td>е</td><td>E</td><td>e</td><td><i class="frag">Е</i>лхово – <i class="frag">E</i>lhovo, <i class="frag">Е</i>вг<i class="frag">е</i>ния – <i class="frag">E</i>vg<i class="frag">e</i>nia</td></tr><tr><td>Ж</td><td>ж</td><td>Zh</td><td>zh</td><td><i class="frag">Ж</i>еравна – <i class="frag">Zh</i>eravna, <i class="frag">Ж</i>ана – <i class="frag">Zh</i>ana</td></tr><tr><td>З</td><td>з</td><td>Z</td><td>z</td><td><i class="frag">З</i>емен – <i class="frag">Z</i>emen, <i class="frag">З</i>дравка – <i class="frag">Z</i>dravka</td></tr><tr><td>И</td><td>и</td><td>I</td><td>i</td><td><i class="frag">И</i>скрец – <i class="frag">I</i>skrets, <i class="frag">И</i>вайло – <i class="frag">I</i>vaylo</td></tr><tr><td>Й</td><td>й</td><td>Y</td><td>y</td><td><i class="frag">Й</i>оглав – <i class="frag">Y</i>oglav, <i class="frag">Й</i>овка – <i class="frag">Y</i>ovka</td></tr><tr><td>К</td><td>к</td><td>K</td><td>k</td><td><i class="frag">К</i>аменарци – <i class="frag">K</i>amenartsi, <i class="frag">К</i>алина – <i class="frag">K</i>alina</td></tr><tr><td>Л</td><td>л</td><td>L</td><td>l</td><td><i class="frag">Л</i>юбомир – <i class="frag">L</i>yubomir, <i class="frag">Л</i>озен – <i class="frag">L</i>ozen</td></tr><tr><td>М</td><td>м</td><td>M</td><td>m</td><td><i class="frag">М</i>арица – <i class="frag">М</i>aritsa, <i class="frag">М</i>ария – <i class="frag">M</i>aria</td></tr><tr><td>Н</td><td>н</td><td>N</td><td>n</td><td><i class="frag">Н</i>есебър – <i class="frag">N</i>esebar, <i class="frag">Н</i>адежда – <i class="frag">N</i>adezhda</td></tr><tr><td>О</td><td>о</td><td>O</td><td>o</td><td><i class="frag">О</i>муртаг – <i class="frag">O</i>murtag, <i class="frag">О</i>лга – <i class="frag">O</i>lga</td></tr><tr><td>П</td><td>п</td><td>P</td><td>P</td><td><i class="frag">П</i>левен – <i class="frag">P</i>leven, <i class="frag">П</i>етър – <i class="frag">P</i>etar</td></tr><tr><td>Р</td><td>р</td><td>R</td><td>r</td><td><i class="frag">Р</i>авнец – <i class="frag">R</i>avnets, <i class="frag">Р</i>айна – <i class="frag">R</i>ayna</td></tr><tr><td>С</td><td>с</td><td>S</td><td>s</td><td><i class="frag">С</i>ливен – <i class="frag">S</i>liven, <i class="frag">С</i>ава – <i class="frag">S</i>ava</td></tr><tr><td>Т</td><td>т</td><td>T</td><td>t</td><td><i class="frag">Т</i>рявна – <i class="frag">T</i>ryavna, <i class="frag">Т</i>одор – <i class="frag">T</i>odor</td></tr><tr><td>У</td><td>у</td><td>U</td><td>u</td><td><i class="frag">У</i>гърчин – <i class="frag">U</i>garchin, <i class="frag">У</i>ляна – Ulyana</td></tr><tr><td>Ф</td><td>ф</td><td>F</td><td>f</td><td><i class="frag">Ф</i>отиново – <i class="frag">F</i>otinovo, <i class="frag">Ф</i>илип – <i class="frag">F</i>ilip</td></tr><tr><td>Х</td><td>х</td><td>H</td><td>h</td><td><i class="frag">Х</i>асково – <i class="frag">H</i>askovo, <i class="frag">Х</i>ристо – <i class="frag">H</i>risto</td></tr><tr><td>Ц</td><td>ц</td><td>Ts</td><td>ts</td><td><i class="frag">Ц</i>арево – <i class="frag">Ts</i>arevo, <i class="frag">Ц</i>ветана – <i class="frag">T</i>svetana</td></tr><tr><td>Ч</td><td>ч</td><td>Ch</td><td>ch</td><td><i class="frag">Ч</i>ирпан – <i class="frag">Ch</i>irpan, <i class="frag">Ч</i>авдар – <i class="frag">Ch</i>avdar</td></tr><tr><td>Ш</td><td>ш</td><td>sh</td><td>sh</td><td><i class="frag">Ш</i>абла – Shabla</td></tr><tr><td>Щ</td><td>щ</td><td>Sht</td><td>sht</td><td><i class="frag">Щ</i>ърково – <i class="frag">Sht</i>arkovo, <i class="frag">Щ</i>ерьо – <i class="frag">Sht</i>eryo</td></tr><tr><td>Ъ</td><td>ъ</td><td>A</td><td>a</td><td><i class="frag">Ъ</i>глен – <i class="frag">A</i>glen</td></tr><tr><td>Ь</td><td>ь</td><td>Y</td><td>y</td><td><i class="frag">П</i>еньово – <i class="frag">P</i>enyovo, <i class="frag">К</i>ольо – <i class="frag">K</i>olyo</td></tr><tr><td>Ю</td><td>ю</td><td>Yu</td><td>yu</td><td><i class="frag">Ю</i>ндола – <i class="frag">Y</i>undola, <i class="frag">Ю</i>лия – <i class="frag">Yu</i>lia,</td></tr><tr><td>Я</td><td>я</td><td>Ya</td><td>ya</td><td><i class="frag">Я</i>мбол – <i class="frag">Ya</i>mbol, <i class="frag">Я</i>нка – <i class="frag">Ya</i>nka</td></tr>
+</tbody>
+</table><h2 data-lvl="0" data-ref="33.1." id="33.1">33.1.</h2><p>Собственото име <i class="ex">България</i> се предава като <i class="ex">Bulgaria</i>.</p><h2 data-lvl="0" data-ref="33.1.1." id="33.1.1">33.1.1.</h2><p>Допуска се прилагателното име <i class="ex">български</i> в състава на изрази, употребени като собствени имена, да се транслитерира като <i class="ex">balgarski</i> и като <i class="ex">bulgarski</i>.</p><div class="samp"><p><i class="ex">„Българска коприна“</i> <i class="ex">– Balgarska koprina</i> и <i class="ex">Bulgarska koprina, „Българска роза“ – Balgarska roza</i> и <i class="ex">Bulgarska roza</i></p></div><h2 data-lvl="0" data-ref="33.2." id="33.2">33.2.</h2><p>Буквеното съчетание <i class="frag">-ия-</i> се предава, както следва:</p><h2 data-lvl="0" data-ref="33.2.1." id="33.2.1">33.2.1.</h2><p>Вътре в собственото име – чрез съчетанието <i class="frag">-iya-</i>.</p><div class="samp"><p><i class="ex">Вел<i class="frag">ия</i>н – Vel<i class="frag">iya</i>n, Д<i class="frag">ия</i>на – D<i class="frag">iya</i>na, Ил<i class="frag">ия</i>н – Il<i class="frag">iya</i>n, Мар<i class="frag">ия</i>на –</i> <i class="ex">Mar<i class="frag">iya</i>na, П<i class="frag">ия</i>вец – P<i class="frag">iya</i>vets</i></p></div><h2 data-lvl="0" data-ref="33.2.2." id="33.2.2">33.2.2.</h2><p>В края на собственото име – чрез съчетанието <i class="frag">-ia</i>.</p><div class="samp"><p><i class="ex">Ил<i class="frag">ия</i> – Il<i class="frag">ia</i>, Мар<i class="frag">ия</i> – Mar<i class="frag">ia</i>, Розал<i class="frag">ия</i> – Rozal<i class="frag">ia</i>, Соф<i class="frag">ия</i> – Sof<i class="frag">ia</i></i></p></div><h2 data-lvl="0" data-ref="34." id="34">34.</h2><p>Транслитерират се собствени имена на географски обекти, на населени места, както и лични, бащини, фамилни имена и прозвища.</p><div class="samp first-samp collapsed"><p><i class="ex">Камчия – Kamchia, Люлин – Lyulin, Луда Яна – Luda Yana, Марица – Maritsa, Рила – Rila, Стара планина – Stara planina;</i></p></div><div class="samp"><p><i class="ex">Балчик – Balchik, Враца – Vratsa, Добрич – Dobrich, Крумовград – Krumovgrad, Монтана – Montana, Пещера – Peshtera, Стара</i> <i class="ex">Загора – Stara Zagora;</i></p></div><div class="samp"><p><i class="ex">Мария Димитрова Михайлова – Maria Dimitrova Mihaylova, Г.</i> <i class="ex">Данчев – Зографина – G. Danchev – Zografina, Г. Д. Павлов –</i> <i class="ex">Павлето – G. D. Pavlov – Pavleto</i></p></div><h2 data-lvl="0" data-ref="34.1." id="34.1">34.1.</h2><p>Съществителните нарицателни имена, включени в географски имена, се транслитерират, ако са част от собственото име.</p><div class="samp"><p><i class="ex">Аспарухов вал – Asparuhov val, Баеви ливади – Baevi livadi,</i> <i class="ex">Варненски вълнолом – Varnenski valnolom, Лазарова могила – Lazarova mogila, Френдов чукар – Frendov chukar</i></p></div><h2 data-lvl="0" data-ref="35." id="35">35.</h2><p>Допуска се да се превеждат думи и словосъчетания, използвани като собствени имена.</p><div class="samp"><p><i class="ex">Златни пясъци – Zlatni pyasatsi</i> и <i class="ex">Golden Sands, Седемте езера – Sedemte ezera</i> и <i class="ex">Seven Lakes, Слънчев бряг – Slanchev bryag</i> и   <i class="ex">Sunny Beach, Черно море – Cherno more</i> и <i class="ex">Black Sea</i></p></div><h2 data-lvl="0" data-ref="36." id="36">36.</h2><p>Не се транслитерират, а се превеждат наименованията на институции, природни забележителности, паметници и др.</p><div class="samp"><p><i class="ex">Исторически музей (Батак) – History Museum (Batak), Министерство на вътрешните работи – Ministry of Internal Affairs,</i> <i class="ex">Музей на градския бит (Русе) – Museum of Town Life Style (Ruse),</i> <i class="ex">Палата на физиката (Казанлък) – The Pavilion of Physics (Kazanlak)</i></p></div><h2 data-lvl="0" data-ref="37." id="37">37.</h2><p>При транслитерираните съставни собствени имена се спазват правописните правила за употреба на главни букви, за слято и разделно писане и за употреба на членувани форми, установени в съвременния български книжовен език.</p><div class="samp first-samp collapsed"><p><i class="ex">Бели Вит – Beli Vit</i> и <i class="ex">Бял кладенец – Byal kladenets; Благоевградска Бистрица – Blagoevgradska Bistritsa</i> и <i class="ex">Благоевградска котловина – Blagoevgradska kotlovina; Вълча поляна – Valcha polyana</i> и <i class="ex">Вълчата река – Valchata reka, Горна Оряховица – Gorna Oryahovitsa</i> и <i class="ex">Горна нива – Gorna niva</i>; <i class="ex">Долно Ботево – Dolno Botevo</i> и <i class="ex">Долно поле – Dolno pole; Стара Кресна – Stara Kresna</i> и <i class="ex">Стара планина – Stara planina;</i></p></div><div class="samp"><p><i class="ex">Белоградчик – Belogradchik</i> и <i class="ex">Белите скали – Belite skali; Златовръх – Zlatovrah</i> и <i class="ex">Златна нива – Zlatna niva; Средногорци – Srednogortsi</i> и <i class="ex">Средна гора – Sredna gora;</i></p></div><div class="samp"><p><i class="ex">Ефрейтор Бакалово – Efreytor Bakalovo;</i></p></div><div class="samp"><p><i class="ex">Белия бряг – Belia bryag; Водна река – Vodna reka</i> и <i class="ex">Водната пещера – Vodnata peshtera; Дълбок дол – Dalbok dol</i> и <i class="ex">Дълбокото</i> <i class="ex">дере – Dalbokoto dere</i></p></div></div></div>
+</body>
+</html>

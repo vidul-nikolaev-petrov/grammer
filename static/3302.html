@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Отделяне на авторов текст от цитат" id="bski849">Отделяне на авторов текст от цитат</h1><p>Цитатът представлява текст (дума, словосъчетание, едно или повече изречения), който е включен без изменение в друг текст.</p><h2 data-lvl="0" data-ref="127." id="127">127.</h2><p>Текст с цитат се оформя по следния начин:</p><h2 data-lvl="0" data-ref="127.1." id="127.1">127.1.</h2><p>Цитатът се огражда в кавички.</p><div class="samp"><p>Н. Фрай обобщава: „И така, Библията изглежда много по-близка до поезията, отколкото до научното списание“.</p></div><p>[Вж. Кавички, т. <a href="#104.1">104.1</a>.]</p><h2 data-lvl="0" data-ref="127.1.1." id="127.1.1">127.1.1.</h2><p>Ако е оформен с шрифт, различен от основния, цитатът не се огражда в кавички.</p><div class="samp">Н. Фрай обобщава: <i class="ex">И така, Библията изглежда много по-близка до поезията, отколкото до научното списание.</i>
+</div><h2 data-lvl="0" data-ref="127.1.2." id="127.1.2">127.1.2.</h2><p>Частите на цитат, разделен от пояснителен израз, не се ограждат в отделни кавички.</p><div class="samp"><p>„Свободното време позволява на мозъка да преработи получената информация – твърди авторът – докато постоянната стимулация възпрепятства процеса на познанието.“</p></div><h2 data-lvl="0" data-ref="127.1.3." id="127.1.3">127.1.3.</h2><p>Когато цитат или друг ограден в кавички текст е включен в края на друг цитат, кавичките не се удвояват.
+</p><div class="samp"><p>Целта на автора е била да накара еднородците си да се вгледат в своите недостатъци: „Аз питая в себе си вяра, че ще дойде един ден, когато ти, след като прочетеш тази книжка, ще се позамислиш, ще въздъхнеш и ще речеш: „Европейци сме ний, ама все не сме дотам“.</p><p>По-нататък авторът съветва: „По-добре да не си припомняме филма „Да продадеш игрите“. „По-добре да не си припомняме филма „Да продадеш игрите“, съветва по-нататък авторът.</p><p>(Но: „По-добре да не си припомняме филма „Да продадеш игрите“.“ Това съветва по-нататък авторът.)
+</p></div></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3319.html" class=""><label>Правописни особености на цитиран текст</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3330.html" class=""><label>Пунктуация на цитиран текст</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3355.html" class=""><label>Авторов текст, предхождащ цитат</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3390.html" class=""><label>Цитат от лирически текст</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3401.html" class=""><label>Промени в цитиран текст</label></a></span></h3></div></div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Образуване на инициални съкращения" id="bski570">Образуване на инициални съкращения</h1><h2 data-lvl="0" data-ref="76." id="76">76.</h2><p>Инициалните съкращения се образуват от:</p><h2 data-lvl="0" data-ref="76.1." id="76.1">76.1.</h2><p>Първата буква на всяка самостойна дума в съкращавания израз (съставно собствено име, номенклатурно название, устойчиво словосъчетание или термин); първите букви на самостойните думи и първите букви на основите на сложните думи в съкращавания израз; първите букви на основите, образуващи съкращаваната сложна дума.</p><div class="samp"><p><i class="ex">СУ – Софийски университет, СЗО – Световна здравна организация, ЕС – Европейски съюз, БНТ – Българска национална телевизия, ДВ – Държавен вестник, ДДС – данък върху добавената стойност, АД – акционерно дружество, АТЦ – автоматична телефонна централа, БВП – брутен вътрешен продукт, ООД – дружество с ограничена отговорност; ХДС – Християндемократически съюз, ВВС – Военновъздушни сили, ССА – Селскостопанска академия, АЕЦ – атомна електроцентрала, ППК – противопожарен кран; ЕКГ – електрокардиограма, електрокардиологичен, АГ – акушеро-гинекологичен, тв – телевизионен, жп – железопътен</i></p></div><h2 data-lvl="0" data-ref="76.2." id="76.2">76.2.</h2><p>Първите букви на всички самостойни думи или основи на сложни думи и допълнителни букви от някои от тях, за да се избегне омонимията.</p><div class="samp"><p><i class="ex">И<i class="frag">Мик</i>Б – Институт по <i class="frag">мик</i>робиология,</i> и <i class="ex">ИМБ – Институт по молекулярна биология; М<i class="frag">Вн</i>Р – Министерство на <i class="frag">вън</i>шните</i> <i class="ex">работи,</i> и <i class="ex">МВР – Министерство на вътрешните работи</i></p></div><h2 data-lvl="0" data-ref="76.3." id="76.3">76.3.</h2><p>Допуска се по традиция или за благозвучие в отделни инициални съкращения да се включат съюз <i class="ex">и</i> и буква от предлог.</p><div class="samp"><p><i class="ex">НИИГ<i class="frag">И</i>К – Научноизследователски институт по геодезия <i class="frag">и</i> картография, В<i class="frag">и</i>К – Водоснабдяване <i class="frag">и</i> канализация, АЖ<i class="frag">Б</i>О – Асоциация „Жени <i class="frag">б</i>ез остеопороза“</i></p></div></div></div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Библиографско цитиране в края на текст" id="bski861">Библиографско цитиране в края на текст</h1><h2 data-lvl="0" data-ref="130." id="130">130.</h2><p>Цитирането в края на текста чрез библиографски списък се извършва по следния начин:</p><h2 data-lvl="0" data-ref="130.1." id="130.1">130.1.</h2><p>При цитиране на литература в библиографски списък са в сила правилата за библиографско описание.</p><h2 data-lvl="0" data-ref="130.2." id="130.2">130.2.</h2><p>Към всяко библиографско описание в списъка се прави препратка от основния текст, която точно посочва съответните описания в библиографския списък.</p><p>[За оформяне на препратки вж. т. <a href="#130.4">130.4</a>.]</p><h2 data-lvl="0" data-ref="130.3." id="130.3">130.3.</h2><p>Библиографският списък се разполага в края на основния текст и се подрежда азбучно, хронологично или по номера.</p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3486.html" class=""><label>Азбучно подреждане</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3496.html" class=""><label>Хронологично подреждане</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3502.html" class=""><label>Подреждане по номера</label></a></span></h3></div></div>
+</body>
+</html>

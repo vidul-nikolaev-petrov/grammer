@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Мото" id="bski1219">Мото</h1><h2 data-lvl="0" data-ref="121." id="121">121.</h2><p>Мотото се оформя по следния начин:</p><h2 data-lvl="0" data-ref="121.1." id="121.1">121.1.</h2><p>Мотото се разполага в дясната част на страницата, на самостоятелен ред, след заглавието и преди началото на основния текст.</p><h2 data-lvl="0" data-ref="121.2." id="121.2">121.2.</h2><p>Мотото се оформя по общите пунктуационни правила.</p><h2 data-lvl="0" data-ref="121.2.1." id="121.2.1">121.2.1.</h2><p>Мотото не се огражда в кавички.
+</p><div class="samp"><p align="center" class="sampindented">КАРАДЖАТА</p><p align="right"><i class="ex">И търсят духа на Караджата!</i><br><span>Хр. Ботев</span></p><p align="center" class="sampindented">Бунтът бе помазан. В горските усои<br>паднаха убити всичките герои.<br>…</p></div><h2 data-lvl="0" data-ref="121.3." id="121.3">121.3.</h2><p>Източникът (авторът) на мотото, ако е посочен, се оформя по следния начин:</p><h2 data-lvl="0" data-ref="121.4." id="121.4">121.4.</h2><p>Източникът се пише на самостоятелен ред под мотото.</p><h2 data-lvl="0" data-ref="121.5." id="121.5">121.5.</h2><p>Източникът започва с главна буква.</p><h2 data-lvl="0" data-ref="121.6." id="121.6">121.6.</h2><p>След източника не се поставя точка.
+</p><div class="samp"><p align="center">НАЧАЛОТО НА ЕДНА ДИПЛОМАТИЧЕСКА КАРИЕРА</p><p align="right"><i class="ex">И най-дългият път започва с една малка крачка.</i><br>Китайска поговорка</p>
+</div></div></div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Морфологична употреба на главни и малки букви" id="bski348">Морфологична употреба на главни и малки букви</h1></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="821.html" class=""><label>Главни букви</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="840.html" class=""><label>Едносъставни собствени имена</label></a></span></p><p><span class="XTUiN"><a href="898.html" class=""><label>Съставни собствени имена</label></a></span></p><p><span class="XTUiN"><a href="943.html" class=""><label>Главни букви при прилагателни имена</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="964.html" class=""><label>Малки букви</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="967.html" class=""><label>Календарни периоди</label></a></span></p><p><span class="XTUiN"><a href="971.html" class=""><label>Малка буква при <i class="frag">изток</i>, <i class="frag">запад</i>, <i class="frag">север</i>, <i class="frag">юг</i> и под.</label></a></span></p><p><span class="XTUiN"><a href="982.html" class=""><label>Малка буква при <i class="frag">източен</i>, <i class="frag">западен</i>, <i class="frag">северен</i>, <i class="frag">южен</i> и под.</label></a></span></p><p><span class="XTUiN"><a href="988.html" class=""><label>Жителски названия</label></a></span></p><p><span class="XTUiN"><a href="992.html" class=""><label>Названия на раси, племена, етноси и под.</label></a></span></p><p><span class="XTUiN"><a href="996.html" class=""><label>Названия на парични единици</label></a></span></p><p><span class="XTUiN"><a href="1000.html" class=""><label>Названия на стилове в изкуството</label></a></span></p><p><span class="XTUiN"><a href="1004.html" class=""><label>Музикални термини</label></a></span></p><p><span class="XTUiN"><a href="1008.html" class=""><label>Названия на геологически епохи и ери</label></a></span></p><p><span class="XTUiN"><a href="1012.html" class=""><label>Названия на исторически периоди</label></a></span></p><p><span class="XTUiN"><a href="1017.html" class=""><label>Имена на философски и религиозни движения и под.</label></a></span></p><p><span class="XTUiN"><a href="1021.html" class=""><label>Имена на езици</label></a></span></p><p><span class="XTUiN"><a href="1025.html" class=""><label>Прилагателни от собствени имена</label></a></span></p><p><span class="XTUiN"><a href="1031.html" class=""><label>Малки букви при членни форми и служебни думи</label></a></span></p><p><span class="XTUiN"><a href="1036.html" class=""><label>Специалности и професионални направления</label></a></span></p><p><span class="XTUiN"><a href="1046.html" class=""><label>Образователни и научни степени и под.</label></a></span></p><p><span class="XTUiN"><a href="1050.html" class=""><label>Съществителни нарицателни от собствени имена</label></a></span></p><p><span class="XTUiN"><a href="1090.html" class=""><label>Съществителни нарицателни в съставни собствени имена</label></a></span></p><p><span class="XTUiN"><a href="1096.html" class=""><label>Притежателни прилагателни в състава на термини</label></a></span></p><p><span class="XTUiN"><a href="1100.html" class=""><label>Прилагателни за качествена характеристика от собствени имена</label></a></span></p><p><span class="XTUiN"><a href="1105.html" class=""><label>Фразеологизми с прилагателни от собствени имена</label></a></span></p><p><span class="XTUiN"><a href="1109.html" class=""><label>Съществителни нарицателни от абревиатури</label></a></span></p></div></div></div>
+</body>
+</html>

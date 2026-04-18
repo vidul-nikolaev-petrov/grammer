@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Тире вместо съюз в сложното изречение" id="bski1114">Тире вместо съюз в сложното изречение</h1><h2 data-lvl="0" data-ref="102.11." id="102.11">102.11.</h2><p>Тире се пише между две прости изречения в сложното в причинно-следствена връзка, когато е пропуснат съюзът между тях.</p><div class="samp first-samp collapsed"><p><i class="ex">Прочетох само две страници от романа – за повече нямах сили.</i> (Срв.: <i class="ex">Прочетох само две страници от романа, тъй като за повече нямах сили</i>.)</p></div><div class="samp"><p><i class="ex">Щях да отида сама, но той пожела да ме придружи – в последно време непрекъснато иска да сме заедно.</i> (Срв.: <i class="ex">Щях да отида сама, но той пожела да ме придружи, понеже в последно време непрекъснато иска да сме заедно.</i>)</p></div><div class="samp"><p><i class="ex">Текстът се публикува без редакция – само така може да изпъкне същинският му смисъл</i>. (Срв.: <i class="ex">Текстът се публикува без редакция, защото само така може да изпъкне същинският му смисъл</i>.)</p></div><p>[За употреба на двоеточие вж. т. <a href="#98.4">98.4</a>.]</p><h2 data-lvl="0" data-ref="102.12." id="102.12">102.12.</h2><p>В сложното изречение употреба на тире се допуска между два съюза, които следват непосредствено един след друг и въвеждат различни прости изречения, ако първият съюз е неударен и едносричен.</p><div class="samp"><p><i class="ex">Смятах да мълча, но – понеже стана дума за това, ще ви отговоря.</i></p></div><h2 data-lvl="0" data-ref="102.13." id="102.13">102.13.</h2><p>Тире се пише за отделяне на присъединителни конструкции.</p><div class="samp first-samp collapsed"><p><i class="ex">Трябва да отговориш – и то веднага.</i></p></div><div class="samp"><p><i class="ex">Свиреше и рок – при това доста добре.</i></p></div><div class="samp"><p><i class="ex">Собствен бизнес – защо пък не?</i></p></div><div class="samp"><p><i class="ex">Необходимо беше да се действа – това беше безспорно.</i></p></div><div class="samp"><p><i class="ex">Обикновено е весел – освен когато има грижи.</i></p></div><p>[За употреба на запетая вж. т. <a href="#84">84</a>.]</p></div></div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Главна буква при думи, отнасящи се до Бог" id="bski701">Главна буква при думи, отнасящи се до Бог</h1><h2 data-lvl="0" data-ref="51." id="51">51.</h2><p>С главна буква се пишат съществителни, прилагателни имена и местоимения, които се отнасят до Бог с изключение на случая в т. <a href="#51.1">51.1</a>.</p><div class="samp first-samp collapsed"><p><i class="ex">Защото Ти си пазител на душите и телата ни.</i></p></div><div class="samp"><p><i class="ex">Отче наш, Който си на небесата,...</i></p></div><div class="samp"><p><i class="ex">Вдигнал набожно взор към небесата, той приемаше благословия от нашия Спасител.</i></p></div><div class="samp"><p><i class="ex">Христос е Син Божи и Богочовек.</i></p></div><div class="samp"><p><i class="ex">И царството Му не ще има край.</i></p></div><div class="samp"><p><i class="ex">В християнството Светият Дух е едно от лицата на Светата Троица.</i></p></div><h2 data-lvl="0" data-ref="51.1." id="51.1">51.1.</h2><p>Във фразеологични съчетания съществителните Бог и Господ се пишат с малка буква.</p><div class="samp first-samp collapsed"><p><i class="ex">Не дай боже да се върне!</i></p></div><div class="samp"><p><i class="ex">Пази боже сляпо да прогледа!</i></p></div><div class="samp"><p><i class="ex">Един господ знае кога ще свърши всичко това.</i></p></div><div class="samp"><p><i class="ex">Здрав съм, слава богу!</i></p></div><div class="samp"><p><i class="ex">Каква жена, боже мой!</i></p></div><div class="samp"><p><i class="ex">Помогнете ми, за бога!</i></p></div></div></div>
+</body>
+</html>

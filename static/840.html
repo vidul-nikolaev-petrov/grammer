@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Едносъставни собствени имена" id="bski201">Едносъставни собствени имена</h1><h2 data-lvl="0" data-ref="38." id="38">38.</h2><p>Едносъставните собствени имена се пишат с главна буква.</p><div class="samp first-samp collapsed"><p><i class="ex">Ана, Боян, Десислава; Ангелова, Попиванов; Апостола, Камата, Миткалото, Моканина, Слона, Кривия;</i></p></div><div class="samp"><p><i class="ex">Аполон, Буда, Исус, Тангра; Евридика, Орфей, Херкулес;</i></p></div><div class="samp"><p><i class="ex">Великден, Гергьовден, Заговезни, Коледа, Цветница;</i></p></div><div class="samp"><p><i class="ex">Белчо, Караман, Рогуша, Шаро;</i></p></div><div class="samp"><p><i class="ex">Алпи, Америка, България, Гибралтар, Дунав, Еверест, Европа,</i></p></div><div class="samp"><p><i class="ex">Хърватия, Черноморие;</i></p></div><div class="samp"><p><i class="ex">Венера, Вселена, Земя, Космос, Марс, Орион;</i></p></div><div class="samp"><p><i class="ex">Бургас, Пловдив, Русе, София;</i></p></div><div class="samp"><p><i class="ex">Президентство, Кнесет,</i> (профсъюз) <i class="ex">„Солидарност“, Сорбоната;</i></p></div><div class="samp"><p><i class="ex">Етъра, Кайлъка, Магурата, Перперикон;</i></p></div><div class="samp"><p><i class="ex">Античност, Възраждане, Просвещение, Ренесанс, Реформация, Средновековие;</i></p></div><div class="samp"><p><i class="ex">Библия, Евангелие, Коран, Псалтир, Талмуд;</i></p></div><div class="samp"><p><i class="ex">Освобождението, Съединението;</i>
+</p></div><div class="samp"><p>(награда) <i class="ex">„Аскеер“,</i> (награда) <i class="ex">„Пулицър“;</i> </p><p>(вестник) <i class="ex">„Капитал“,</i> (радио) <i class="ex">„Тангра“,</i> (телевизия) <i class="ex">„Европа“;</i> (роман) <i class="ex">„Тютюн“,</i> (опера) <i class="ex">„Аида“,</i> (филм) <i class="ex">„Вчера“;</i> </p><p>(марка коли) <i class="ex">„Опел“,</i> (телевизор) <i class="ex">„Панасоник“,</i> (лаптоп) <i class="ex">„Тошиба“,</i> (бойлер) <i class="ex">„Дипломат“;</i> </p><p>(порода) <i class="ex">„Легхорн“,</i> (порода) <i class="ex">„Пржевалски“,</i> (сорт) <i class="ex">„Ренета“,</i> (сорт) <i class="ex">„Болгар“,</i> (сорт) <i class="ex">„Басма“,</i> (кисело мляко) <i class="ex">„Елена“,</i> (кашкавал) <i class="ex">„Балкан“</i>, (бира) <i class="ex">„Загорка“</i>, (вино) <i class="ex">„Черга“</i></p></div>
+</div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="858.html" class=""><label>Лични, бащини, фамилни имена и под. в мн.ч.</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="865.html" class=""><label>Двойни собствени имена</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="872.html" class=""><label>Собствени имена с <i class="frag">Лъже-</i> и <i class="frag">Псевдо-</i></label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="878.html" class=""><label>Чужди собствени имена с апостроф</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="883.html" class=""><label><i class="frag">Изток</i>, <i class="frag">Запад</i>, <i class="frag">Север</i>, <i class="frag">Юг</i> като геополитически понятия</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="888.html" class=""><label>Имена на културно-исторически периоди</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="894.html" class=""><label>Имена на географски области и райони</label></a></span></h3></div></div>
+</body>
+</html>

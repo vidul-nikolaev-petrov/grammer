@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Главни букви" id="bski349">Главни букви</h1><p>Морфологичната употреба на главни и малки букви разграничава графично собствените имена от останалите думи вътре в изречението.</p><p>Към собствените имена спадат: </p><p>– лични, бащини и фамилни имена, прозвища (прякори) и псевдоними; имена на родове и династии; </p><p>– имена на богове, митологични и литературни персонажи;</p><p>– имена на празници; </p><p>– имена на животни;</p><p>– имена на географски и астрономически обекти;</p><p>– имена на институции, организации, търговски и административни обекти;</p><p>– имена на природни и културни обекти;</p><p>– някои културно-исторически периоди;</p><p>– имена на свещени текстове;</p><p>– значими исторически събития;</p><p>– имена на културни събития;</p><p>– имена на награди, ордени, медали;</p><p>– имена на медии, на произведения на изкуството;</p><p>– имена на административни документи;</p><p>– търговски марки;</p><p>– имена на сортове, породи, продукти и др.</p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="840.html" class=""><label>Едносъставни собствени имена</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="858.html" class=""><label>Лични, бащини, фамилни имена и под. в мн.ч.</label></a></span></p><p><span class="XTUiN"><a href="865.html" class=""><label>Двойни собствени имена</label></a></span></p><p><span class="XTUiN"><a href="872.html" class=""><label>Собствени имена с <i class="frag">Лъже-</i> и <i class="frag">Псевдо-</i></label></a></span></p><p><span class="XTUiN"><a href="878.html" class=""><label>Чужди собствени имена с апостроф</label></a></span></p><p><span class="XTUiN"><a href="883.html" class=""><label><i class="frag">Изток</i>, <i class="frag">Запад</i>, <i class="frag">Север</i>, <i class="frag">Юг</i> като геополитически понятия</label></a></span></p><p><span class="XTUiN"><a href="888.html" class=""><label>Имена на културно-исторически периоди</label></a></span></p><p><span class="XTUiN"><a href="894.html" class=""><label>Имена на географски области и райони</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="898.html" class=""><label>Съставни собствени имена</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="901.html" class=""><label>Имена с една главна буква</label></a></span></p><p><span class="XTUiN"><a href="906.html" class=""><label>Имена с повече от една главна буква</label></a></span></p><p><span class="XTUiN"><a href="921.html" class=""><label>Перифразирани или съкратени съставни имена</label></a></span></p><p><span class="XTUiN"><a href="929.html" class=""><label>Имена от чужди езици</label></a></span></p><p><span class="XTUiN"><a href="934.html" class=""><label>Главни букви при членни форми и служебни думи</label></a></span></p><p><span class="XTUiN"><a href="939.html" class=""><label>Имена на букви в съставни собствени имена</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="943.html" class=""><label>Главни букви при прилагателни имена</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="946.html" class=""><label>Притежателни прилагателни от имена на лица</label></a></span></p><p><span class="XTUiN"><a href="951.html" class=""><label>Сложни прилагателни от имена на лица</label></a></span></p><p><span class="XTUiN"><a href="955.html" class=""><label>Населени места с лично и/или фамилно име в състава</label></a></span></p><p><span class="XTUiN"><a href="959.html" class=""><label>Прилагателни на <i class="frag">-ски</i> от собствени имена</label></a></span></p></div></div></div>
+</body>
+</html>

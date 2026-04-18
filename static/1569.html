@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Разделно писане" id="bski188">Разделно писане</h1><p>В българския език всички думи се пишат отделно една от друга.</p><p>Разделно се пишат и съставните думи и синтактичните съчетания
+<i class="ex"><i class="frag">независимо</i></i> от смисловото отношение между думите, от които са образувани – <i class="ex"><i class="frag">равноправно</i></i> или <i class="ex"><i class="frag">неравноправно</i></i>, и от мястото на отделните думи една спрямо друга.
+</p><h2 data-lvl="0" data-ref="55." id="55">55.</h2><p>Към тях се отнасят следните случаи:</p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1574.html" class=""><label>Словосъчетания от две съществителни</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1578.html" class=""><label>Наименования с подчинени съставки от чужд произход</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1592.html" class=""><label>Съчетания от типа на завеждащ отделение и под.</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1596.html" class=""><label>Съставни собствени имена</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1619.html" class=""><label>Чужди буквени съкращения като собствени имена</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1623.html" class=""><label>Съчетания от наречие с прилагателно или причастие</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1627.html" class=""><label>Съставни числителни имена</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1635.html" class=""><label>Съставни съюзи</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1639.html" class=""><label>Изрази от типа на <i class="ex">от време на време</i> и под.</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1643.html" class=""><label>Особени случаи</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="1644.html" class=""><label>Писане на чужди думи по традиция</label></a></span></p><p><span class="XTUiN"><a href="1648.html" class=""><label>Словосъчетания с еднаква втора съставка</label></a></span></p><p><span class="XTUiN"><a href="1661.html" class=""><label>Писане на частиците <i class="ex">по</i> и <i class="ex">най</i></label></a></span></p></div></div></div>
+</body>
+</html>

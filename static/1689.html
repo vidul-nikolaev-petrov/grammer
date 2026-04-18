@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Слято писане на частица не" id="bski286">Слято писане на частица <i class="ex">не</i></h1><h2 data-lvl="0" data-ref="61." id="61">61.</h2><p>Частицата <b>не</b> за отрицание се пише слято със следващата дума:</p><h2 data-lvl="0" data-ref="61.1." id="61.1">61.1.</h2><p>Когато думата е съществително, прилагателно име или наречие и с отрицателната частица се образува нова дума с противоположно значение.</p><div class="samp first-samp collapsed"><p><i class="ex">неистина, ненамеса, неприятел, несвяст, нещастие;</i></p></div><div class="samp"><p><i class="ex">неверен, невнимателен, негласен, немирен, неръждаем;</i></p></div><div class="samp"><p><i class="ex">неведнъж, невинаги;</i></p></div><div class="samp"><p><i class="ex">невярно, негласно, ненапразно, неслучайно</i></p></div><h2 data-lvl="0" data-ref="61.1.1." id="61.1.1">61.1.1.</h2><p>В единични случаи при някои съществителни имена, когато с частицата <i class="frag">не</i> за отрицание се бележи различно значение, което се подчертава и чрез логическо ударение върху нея, тя се свързва с думата чрез дефис.</p><div class="samp"><p><i class="ex">не-арийци, не-благородник, не-човек</i>
+</p></div><h2 data-lvl="0" data-ref="61.2." id="61.2">61.2.</h2><p>Когато думата е сегашно деятелно, минало свършено деятелно или минало страдателно причастие и с отрицателната частица <b>не</b> се образува нова дума с противоположно значение.</p><div class="samp first-samp collapsed"><p><i class="ex">незнаещ, неможещ;</i></p></div><div class="samp"><p><i class="ex">неузрял, неуспял;</i></p></div><div class="samp"><p><i class="ex">невъзпитан, необут</i></p></div></div></div>
+</body>
+</html>

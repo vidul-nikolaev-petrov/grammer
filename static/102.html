@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Морфологичен принцип" id="bski461">Морфологичен принцип</h1><h2 data-lvl="0" data-ref="4.1." id="4.1">4.1.</h2><p>Основната част от правилата за писане на думите в българския език се основава върху морфологичния принцип. Според него еднаквите строежни елементи на думите – морфемите (корен, представка, наставка, окончание, определителен член), се пишат по един и същ начин независимо как се изговарят в книжовния език, за да се запази еднакъв графичният облик на съответната морфема и да се улесни четенето: <i class="ex">разкош</i> (изговор <i class="ex">ра<i class="frag">с</i>кош</i>), <i class="ex">хляб</i> (изговор <i class="ex">хля<i class="frag">п</i></i>), <i class="ex">сграда</i> (изговор <i class="ex"><i class="frag">з</i>града</i>), <i class="ex">сватба</i> (изговор <i class="ex">сва<i class="frag">д</i>ба</i>) и под.</p><p>Върху морфологичния принцип се основават и правилата за употреба на главна и малка буква при разграничаването на собствените от нарицателните имена.</p><p>Морфологичният принцип се прилага и в случаите на условно предаване на звука <span>[<i class="frag">ъ</i>]</span> под ударение чрез буквите <i class="frag">а</i> и <i class="frag">я</i> (в глаголни окончания за 1 л. ед.ч. и 3 л. мн.ч. сег.вр. и в членувани форми). Той действа и при използването на графемата <i class="frag">ѝ</i> за означаване на кратките форми на личното и притежателното местоимение за ж.р. с цел разграничаването им от съюза <i class="frag">и</i>.</p></div></div>
+</body>
+</html>

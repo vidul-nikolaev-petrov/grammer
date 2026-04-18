@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Съчетаване на пунктуационни и непунктуационни знаци в текст" id="bski950">Съчетаване на пунктуационни и непунктуационни знаци в текст</h1><h2 data-lvl="0" data-ref="135." id="135">135.</h2><p>Съчетаване на пунктуационни и непунктуационни знаци в края на изречението и текста.</p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3647.html" class=""><label>Кавички със знаци за край на изречение</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3676.html" class=""><label>Скоби със знаци за край на изречение</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3709.html" class=""><label>Индекс със знаци за край на изречение</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3723.html" class=""><label>Индекс с кавички в края на изречение</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3735.html" class=""><label>Индекс със затваряща скоба в края на изречение</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3745.html" class=""><label>Съчетаване на знаци за край на изречението</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="3748.html" class=""><label>Въпросителен и удивителен знак</label></a></span></p><p><span class="XTUiN"><a href="3759.html" class=""><label>Многоточие с други знаци</label></a></span></p></div></div></div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Пунктуация на цитиран текст" id="bski816">Пунктуация на цитиран текст</h1><h2 data-lvl="0" data-ref="127.3." id="127.3">127.3.</h2><p>Пунктуацията на цитирания текст се запазва с изключение на случаите в т. <a href="#127.3.2">127.3.2</a> и <a href="#127.3.4">127.3.4</a>.</p><h2 data-lvl="0" data-ref="127.3.1." id="127.3.1">127.3.1.</h2><p>В края на цитирано изречение, което не е включено в авторово изречение, се пише съответният знак за край на изречение преди затварящите кавички.</p><div class="samp"><p>„Най-сетне, когато искаме жертви от народа, трябва сами да сме готови да дадем такива.“ Това споделя в книгата си Иван Хаджийски.</p></div><h2 data-lvl="0" data-ref="127.3.2." id="127.3.2">127.3.2.</h2><p>В края на цитирано изречение не се пише точка, ако след него има пояснителен израз, отделен с тире или запетая, или продължава авторово изречение.</p><div class="samp first-samp collapsed"><p>„Най-същественото е невидимо за очите“ – пише Екзюпери.</p></div><div class="samp"><p>Вазов завършва V глава на повестта с думите: „Тъй свършваха тогава предтечите на зорницата на българското освобождение“ и така изразява огорчението си от нерадостната участ на героите.</p></div><h2 data-lvl="0" data-ref="127.3.3." id="127.3.3">127.3.3.</h2><p>В края на цитирано изречение се запазват многоточието, удивителният знак и въпросителният знак, ако след това изречение има пояснителен израз, отделен с тире или запетая, или продължава авторово изречение.</p><div class="samp"><p>„Да живей България!“ е възгласът, с който завършва пламенната реч на Странджата.</p></div><h2 data-lvl="0" data-ref="127.3.4." id="127.3.4">127.3.4.</h2><p>Когато цитирано изречение е включено в края на въвеждащото го авторово изречение и двете завършват с един и същ препинателен знак, се пише само един знак след затварящите кавички.</p><div class="samp first-samp collapsed"><p>Непрекъснато получаваме потвърждение на следната мисъл на О. Уайлд: „Обществото често прощава на престъпниците. Но не и на мечтателите“.</p></div><div class="samp"><p>Прочете ли „Иде ли“?</p></div><div class="samp"><p>Колко се възмутих обаче от неговото „Не те е срам“!</p></div><h2 data-lvl="0" data-ref="127.3.5." id="127.3.5">127.3.5.</h2><p>Когато цитирано изречение е включено в края на въвеждащото го авторово изречение и двете завършват с различни препинателни знаци, се пишат и двата знака съответно пред и след затварящите кавички.</p><div class="samp first-samp collapsed"><p>Как да не се впечатлиш от остроумието на Айнщайн, който казва: „Две неща са безгранични – Вселената и човешката глупост. За първото не съм толкова сигурен.“!</p></div><div class="samp"><p>Вазов завършва повестта с думите: „Бедни, бедни Македонски! Защо не умря при Гредетин?...“.</p></div></div></div>
+</body>
+</html>

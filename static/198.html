@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Групи -ръ-/-ър- и -лъ-/-ъл-" id="bski29">Групи <i class="frag">-ръ-/-ър</i>- и <i class="frag">-лъ-/-ъл-</i></h1><h2 data-lvl="0" data-ref="10." id="10">10.</h2><p>Групите <i class="frag">-ръ-/-ър</i>- и <i class="frag">-лъ-/-ъл-</i> се изговарят и пишат по следните правила:</p><h2 data-lvl="0" data-ref="10.1." id="10.1">10.1.</h2><p>В едносрични думи обикновено се изговаря и пише <i class="frag">-ръ-</i>, <i class="frag">-лъ-</i>.</p><p>Правилото е в сила и в случаите, когато едносричната дума е част от сложна дума.
+</p><div class="samp"><p><i class="ex">връх, глъч, гръд, гръм, злъч, кръв, пръв, трън, тлъст; гръмоотвод, островръх, тесногръд и др.</i></p><p>(Но: <i class="ex">бърз</i>, <i class="ex">вълк</i>, <i class="ex">дълг</i>, <i class="ex">жълт</i>, <i class="ex">смърт</i>, <i class="ex">сърп</i> и др.)
+</p></div><h2 data-lvl="0" data-ref="10.2." id="10.2">10.2.</h2><p>В многосрични думи се изговаря и пише <i class="frag">-ър-</i>, <i class="frag">-ъл-</i>, ако след съчетанието следва една съгласна.
+</p><div class="samp"><p><i class="ex">бъркам, върба, вържа, гълтам, гърбав, дългове, дърво, държа, издържам, изпълня, кървав, кърпя, мълчалив, мълча</i> и др.</p><p>(Но: <i class="ex">гръмотевица</i>, <i class="ex">длъжен</i>, <i class="ex">мръсотия</i>, <i class="ex">стръкове</i>, <i class="ex">слъзен</i>, <i class="ex">тръжен</i> и др.)
+</p></div>
+<h2 data-lvl="0" data-ref="10.3." id="10.3">10.3.</h2><p>В многосрични думи се изговаря и пише <i class="frag">-ръ-</i>, <i class="frag">-лъ-</i>, ако след съчетанието следват две и повече съгласни.
+</p><div class="samp"><p><i class="ex">връзка, глътна, гръбнак, гръмна, дръжка, длъжност, издръжлив, кръпка, млъкна, плътност, слънчев и др.</i></p><p>(Но: <i class="ex">мъртва</i>, <i class="ex">повърхност</i>, <i class="ex">сълзлив</i> и др.)
+</p></div><h2 data-lvl="0" data-ref="10.4." id="10.4">10.4.</h2><p>При глаголи с наставката <i class="frag">-ва-</i> групите <i class="frag">-ър-/-ъл-</i> и <i class="frag">-ръ-/-лъ-</i> обикновено се запазват във вида си от изходния глагол.
+</p><div class="samp"><p><i class="ex">довърша – довършвам, избързам – избързвам, излъжа – излъгвам, изтърся – изтърсвам, кръстя – кръщавам, накълцам – накълцвам, подвържа – подвързвам, разбъркам – разбърквам и др.</i></p><p>(Но: <i class="ex">вържа</i> – <i class="ex">връзвам</i>, <i class="ex">гълтам</i> – <i class="ex">глътвам</i>.)
+</p></div></div></div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Наречия от предлог и съществително" id="bski477">Наречия от предлог и съществително</h1><h2 data-lvl="0" data-ref="53.20." id="53.20">53.20.</h2><p>Наречия, образувани от предлог и съществително име, се пишат слято, когато:</p><h2 data-lvl="0" data-ref="53.20.1." id="53.20.1">53.20.1.</h2><p>Образуват една смислова цялост с ново значение.</p><div class="samp"><p><i class="ex">вследствие, всъщност, догодина, докрай, завчас, издъно, навреме, навръх, наглед, наздраве, наистина, накуп, налице, наместо, наполовина, например, наред, насила, насреща, насън, наум, начело, накръст, околовръст, отсреща, подред, подръка, поначало, предвид, следобед</i></p></div><h2 data-lvl="0" data-ref="53.20.1.1." id="53.20.1.1">53.20.1.1.</h2><p>Когато съчетанието от предлог и съществително име не образува смислова цялост с ново значение, двете думи се пишат разделно. Срв.:</p><div class="samp first-samp collapsed"><p><i class="ex">Той иде отсреща</i> (т.е. срещу нас) и <i class="ex">Той иде от среща</i> (т.е. след като се е срещнал с някого).</p></div><div class="samp"><p><i class="ex">Тогава само тази книга ми беше подръка</i> (т.е. само нея можех да използвам) и <i class="ex">Той водеше под ръка старата жена</i> (т.е. беше я хванал по определен начин).</p></div><h2 data-lvl="0" data-ref="53.20.2." id="53.20.2">53.20.2.</h2><p>Използваното съществително име е в стара падежна форма, която не се употребява самостоятелно.</p><div class="samp"><p><i class="ex">вкупом, вкъщи, встрани, довечера, навеки, наизуст, напосоки, настрани, наяве</i></p></div><h2 data-lvl="0" data-ref="53.20.3." id="53.20.3">53.20.3.</h2><p>Съчетанието е с ударение, преместено върху предлога.</p><div class="samp"><p><i class="ex">на̀двечер, прѐзглава, прùвечер, прùсърце, до̀земи, за̀лудо, о̀тръки, прùзори</i></p></div><h2 data-lvl="0" data-ref="53.20.4." id="53.20.4">53.20.4.</h2><p>Разделно се пишат съчетания от предлози и съществителни имена като:</p><div class="samp"><p><i class="ex">от време на време, от край до край.</i></p></div></div></div>
+</body>
+</html>

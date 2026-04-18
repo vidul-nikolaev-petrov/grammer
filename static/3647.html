@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Кавички със знаци за край на изречение" id="bski943">Кавички със знаци за край на изречение</h1><h2 data-lvl="0" data-ref="135.1." id="135.1">135.1.</h2><p>Съчетаване на кавички със знаци за край на изречение.</p><h2 data-lvl="0" data-ref="135.1.1." id="135.1.1">135.1.1.</h2><p>Кавичките са след знака за край на изречение, ако в кавички е оградено поне едно самостоятелно изречение.
+</p><div class="samp first-samp collapsed"><p>„Види се, съвместното мълчание им е било достатъчно.“ Така накратко Вера Мутафчиева обобщава впечатленията си от редовните срещи на баща си с Йордан Йовков.</p></div>
+<div class="samp"><p>„В руската култура (в сравнение с немската) извинението в много по-малка степен се счита за благороден жест и се възприема по-скоро като пълноценно признаване на собствената вина…“ Изказана преди близо десетилетие, тази хипотеза и днес предизвиква реакции и спорове в полето на междукултурните изследвания.</p></div><h2 data-lvl="0" data-ref="135.1.2." id="135.1.2">135.1.2.</h2><p>Кавичките са пред знака за край на изречение в следните случаи:</p><h2 data-lvl="0" data-ref="135.1.2.1." id="135.1.2.1">135.1.2.1.</h2><p>Когато изречението завършва с ограден в кавички израз или цитат, който е част от изречение.</p><div class="samp first-samp collapsed"><p>Дали зрителите ще харесат новата постановка на Народния театър „Иван Вазов“?</p></div><div class="samp"><p>Като анализира нормите на поведение в източните култури, Вежбицка посочва, че „да правят нещо заедно, за японците означава да се държат и мислят като един човек“.</p></div><h2 data-lvl="0" data-ref="135.1.2.2." id="135.1.2.2">135.1.2.2.</h2><p>Когато цитирано изречение е в края на въвеждащо авторово изречение и двете изречения са еднакви по цел на изказване.</p><div class="samp"><p>Интерес представлява следното обобщение на Спиридон Казанджиев: „Националното чувство е продукт на общността; у отделния индивид извън тази общност то не може да се яви“.</p></div><h2 data-lvl="0" data-ref="135.1.3." id="135.1.3">135.1.3.</h2><p>Когато цитирано изречение е в края на въвеждащо авторово изречение и двете изречения са различни по цел на изказване, всяко от изреченията завършва със съответния препинателен знак, а кавичките са между тях.</p><div class="samp"><p>В статия от началото на 2012 г. Димитри Иванов иронично пита: „Ако сте инвеститор, ще повярвате ли на рейтинговите агенции?“.</p></div><h2 data-lvl="0" data-ref="135.1.4." id="135.1.4">135.1.4.</h2><p>Когато ограденият в кавички текст е в края на въвеждащо изречение и завършва със съкратена дума, се пишат точка, кавички и знак за край на изречение.</p><div class="samp"><p>Съгласно общите условия на сайта могат да се публикуват „безплатни обяви за изгубени и намерени вещи, документи, животни и др.“.</p></div><h2 data-lvl="0" data-ref="135.1.5." id="135.1.5">135.1.5.</h2><p>Не се удвояват кавичките, когато цитат вътре в изречението завършва с друг ограден в кавички текст.</p><div class="samp"><p>В средите на икономическите анализатори продължават опасенията, че „Европа поема сериозен риск със стартирането на плана на дуета „Меркози“.</p></div><h2 data-lvl="0" data-ref="135.1.6." id="135.1.6">135.1.6.</h2><p>Когато изречението е цитат и завършва с ограден в кавички израз, се съчетават кавички, знак за край на изречение и кавички.</p><div class="samp"><p>„Без съмнение, един от най-добрите романи на изминалата година е „Физика на тъгата“!“</p></div></div></div>
+</body>
+</html>

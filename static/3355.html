@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Авторов текст, предхождащ цитат" id="bski804">Авторов текст, предхождащ цитат</h1><h2 data-lvl="0" data-ref="127.4." id="127.4">127.4.</h2><p>Авторовият текст, предхождащ цитата, се оформя по следния начин:</p><h2 data-lvl="0" data-ref="127.4.1." id="127.4.1">127.4.1.</h2><p>След авторовия текст се пише двоеточие, ако този текст съдържа израз, който въвежда цитата.</p><div class="samp first-samp collapsed"><p>Емблематичен за творчеството на поета е следният стих: „Душата ми е стон. Душата ми е зов“.</p></div><div class="samp"><p>Марк Твен пише: „Истината е най-скъпото нещо, което притежаваме. Нека я пестим!“.</p></div><p>[Вж. Двоеточие, т. <a href="#98.7">98.7</a>.]</p><h2 data-lvl="0" data-ref="127.4.2." id="127.4.2">127.4.2.</h2><p>Ако авторовият текст не съдържа израз, който въвежда цитата, двоеточие не се пише.</p><div class="samp first-samp collapsed"><p>Въстанието през септември 1923 г. с трагичния си завършек „праща поезията в изгнание“.</p></div><div class="samp"><p>Със своята пламенна възхвала на подвига на опълченците Вазов побеждава „на клеветата зъбът“.</p></div><div class="samp"><p>Според Л. Каравелов държавата след Освобождението трябва да се устрои съобразно с облика на българския народ, който „няма сред себе си аристократически величия“.</p></div><h2 data-lvl="0" data-ref="127.5." id="127.5">127.5.</h2><p>Ако цитатът завършва с пояснителния израз, този израз се пише с малка буква и се оформя по следния начин:</p><h2 data-lvl="0" data-ref="127.5.1." id="127.5.1">127.5.1.</h2><p>Ако пояснителният израз е след цитираното изречение, той се отделя с тире или запетая.</p><div class="samp"><p>„Тази монета е уникален фалшификат“, категоричен е специалистът. „Рисковано ли е да пристигнеш в Америка с два долара и един милион мечти?“ – пита художникът.</p></div><h2 data-lvl="0" data-ref="127.5.2." id="127.5.2">127.5.2.</h2><p>Ако пояснителният израз е вмъкнат между части на цитираното изречение, той се отделя с тирета или запетаи.</p><div class="samp"><p>„Най-важната форма на символно изразяване – пише Лесли Уайт – е членоразделната реч.“</p></div><p>или:</p><div class="samp"><p>„Най-важната форма на символно изразяване, пише Лесли Уайт, е членоразделната реч.“</p></div><h2 data-lvl="0" data-ref="127.5.2.1." id="127.5.2.1">127.5.2.1.</h2><p>Ако в цитат е вмъкнат пояснителен израз в позиция, където е необходима запетая, запетаята се прехвърля след пояснителния израз (преди тирето).</p><div class="samp"><p>„Времето е в нас и ние сме във времето – пише Левски до П. Хитов, – то нас обръща и ний него обръщаме.“</p></div><h2 data-lvl="0" data-ref="127.5.2.2." id="127.5.2.2">127.5.2.2.</h2><p>Допуска се да не се пише запетаята, уговорена в т. <a href="#127.5.2.1">127.5.2.1</a>.</p><div class="samp"><p>„Времето е в нас и ние сме във времето – пише Левски до П. Хитов – то нас обръща и ний него обръщаме.“</p></div><h2 data-lvl="0" data-ref="127.5.3." id="127.5.3">127.5.3.</h2><p>Ако с пояснителния израз завършва първото от две или повече цитирани изречения, той се отделя с тире или запетая и завършва с точка. Следващото цитирано изречение се въвежда с тире.</p><div class="samp"><p>„Дойдох напълно безпристрастен и с намерение да бъда справедлив – пише Макгахан. – Боя се, че престанах да бъда безпристрастен и положително вече не съм хладнокръвен.“</p></div><p>или:</p><div class="samp"><p>„Дойдох напълно безпристрастен и с намерение да бъда справедлив, пише Макгахан. – Боя се, че престанах да бъда безпристрастен и положително вече не съм хладнокръвен.“</p></div></div></div>
+</body>
+</html>

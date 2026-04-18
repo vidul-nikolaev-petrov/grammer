@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Употреба на ед.ч. и мн.ч. при учтивата форма" id="bski321">Употреба на ед.ч. и мн.ч. при учтивата форма</h1><h2 data-lvl="0" data-ref="24.1." id="24.1">24.1.</h2><p>Употреба на форми за ед.ч. и мн.ч. в състава на учтивата форма.</p><h2 data-lvl="0" data-ref="24.1.1." id="24.1.1">24.1.1.</h2><p>Глаголите и глаголните форми на <i class="frag">-л</i> в състава на учтивата форма се употребяват в мн.ч.</p><div class="samp first-samp collapsed"><p><i class="ex">Г-н Христов, Вие идвате тъкмо навреме.</i></p></div><div class="samp"><p><i class="ex">Г-жо Петрова, Вие сте одобрили проекта.</i></p></div><div class="samp"><p><i class="ex">Г-не, бяхте ли уведомили всички участници?</i></p></div><div class="samp"><p><i class="ex">Добър ден и добре сте ни дошли, госпожо.</i></p></div><h2 data-lvl="0" data-ref="24.1.2." id="24.1.2">24.1.2.</h2><p>Глаголните форми на <i class="frag">-н</i> и <i class="frag">-т</i> и прилагателните и числителните редни имена в състава на учтивата форма се употребяват в ед.ч.</p><div class="samp first-samp collapsed"><p><i class="ex">Г-не, Вие сте одобрен за кредит.</i></p></div><div class="samp"><p><i class="ex">Г-жо, съгласна ли сте с изказаното току-що мнение?</i></p></div><div class="samp"><p><i class="ex">Г-жо, Вие сте много мила, благодаря Ви.</i></p></div><div class="samp"><p><i class="ex">Господине, Вие сте запознат с условията ни.</i></p></div><div class="samp"><p><i class="ex">Госпожо, Вие бяхте първата, която ни съобщи новината.</i></p></div></div></div>
+</body>
+</html>

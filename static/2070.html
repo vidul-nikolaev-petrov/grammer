@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="2" data-ref="Междуметия и частици" id="bski660">Междуметия и частици</h1><h2 data-lvl="0" data-ref="83." id="83">83.</h2><p>Със запетая се отделят междуметията, някои частици с емоционален характер и частиците <i class="frag">да</i> и <i class="frag">не</i>, когато се отнасят към цялото изречение, както и частиците <i class="frag">а</i> и <i class="frag">нали</i>, когато с тях завършва изречението.</p><div class="samp first-samp collapsed"><p><i class="ex">Ах, сладка е смъртта за отечеството!</i></p></div><div class="samp"><p><i class="ex">Иии, вярно!</i></p></div><div class="samp"><p><i class="ex">Ох, мамо, боли ме главата.</i></p></div><div class="samp"><p><i class="ex">О, бесило славно!</i></p></div><div class="samp"><p><i class="ex">Голямо слънце, брей!</i></p></div><div class="samp"><p><i class="ex">Ей, колко ме е яд!</i></p></div><div class="samp"><p><i class="ex">Е, сега какво ще правиш?</i></p></div><div class="samp"><p><i class="ex">Да, съгласен съм с вас.</i></p></div><div class="samp"><p><i class="ex">Не, не е така.</i></p></div><div class="samp"><p><i class="ex">На колко си години, а?</i></p></div><div class="samp"><p><i class="ex">Огнян Иванов е също член на Борда на директорите, нали?</i></p></div></div></div>
+</body>
+</html>

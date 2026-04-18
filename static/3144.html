@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #222;
+            max-width: 850px;
+            margin: 50px auto;
+            padding: 0 30px;
+            background-color: #fcfcfc;
+        }
+        /* Prettier Links */
+        a {
+            color: #3498db;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(52, 152, 219, 0.3);
+            transition: all 0.2s ease;
+        }
+        a:hover {
+            color: #2980b9;
+            border-bottom: 2px solid #2980b9;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        h1 { color: #1a2a3a; border-bottom: 3px solid #3498db; padding-bottom: 12px; font-size: 2.5em; }
+        h2 { color: #2980b9; margin-top: 1.8em; font-size: 2em; }
+        .samp {
+            background-color: #f4f4f4;
+            border-left: 5px solid #2980b9;
+            padding: 20px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            display: block;
+            margin: 25px 0;
+            white-space: pre-wrap;
+            border-radius: 6px;
+        }
+    </style>
+    <script>
+    document.addEventListener("click", async (e) => {
+        const link = e.target.closest("a");
+        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {
+            const targetId = link.getAttribute("href").replace(/^#\/?/, "");
+            
+            const localElement = document.getElementById(targetId);
+            if (localElement) {
+                e.preventDefault();
+                localElement.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                e.preventDefault();
+                try {
+                    const response = await fetch("refs.json");
+                    const refMap = await response.json();
+                    if (refMap[targetId]) {
+                        window.location.href = refMap[targetId] + "#" + targetId;
+                    }
+                } catch (err) {
+                    console.error("Navigation error");
+                }
+            }
+        }
+    });
+    </script>
+</head>
+<body>
+<div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Структурни части от текста" id="bski1172">Структурни части от текста</h1><h2 data-lvl="0" data-ref="122." id="122">122.</h2><p>Заглавието на структурна част (глава, част, раздел, дял и др.) се оформя по следния начин:</p><h2 data-lvl="0" data-ref="122.1." id="122.1">122.1.</h2><p>Ако се състои от две части – указваща поредния номер и съдържателна част – те се разполагат на един ред или на отделни редове. Ако са разположени на един ред, се отделят с точка.</p><div class="samp"><p>Глава V. Връзки между организациите</p></div><p>или:</p><div class="samp first-samp collapsed"><p>Глава V<br>Връзки между организациите</p></div><div class="samp"><p>І. Концепцията за Възраждането като отделна епоха в българската историография <br>ІІ. Проблемът за националното Възраждане в някои други историографии <br>ІІІ. Османският контекст на Възраждането: Танзиматът</p></div><h2 data-lvl="0" data-ref="122.2." id="122.2">122.2.</h2><p>Заглавието на структурна част се разполага на самостоятелен ред или в началото на абзац.</p><h2 data-lvl="0" data-ref="122.2.1." id="122.2.1">122.2.1.</h2><p>Ако е на самостоятелен ред, то се разполага в лявата част или в средата на реда и се оформя по правилата за заглавие.
+</p><div class="samp">
+    <p align="center">ВЪРШЕЦ <br>Събуждане под арка от чинари</p>
+    <p><strong>Местоположение</strong> <br>Град Вършец е разположен...</p>
+    <p><strong>Забележителности</strong> <br>Клисурският манастир датира от ХІІІ век...</p>
+  </div><p>или:</p><div class="samp">
+    <p align="center">ВЪРШЕЦ <br>Събуждане под арка от чинари</p>
+    <p><strong style="width: 100%; display: inline-block; text-align: center">Местоположение</strong> <br>Град Вършец е разположен...</p>
+    <p><strong style="width: 100%; display: inline-block; text-align: center">Забележителности</strong> <br>Клисурският манастир датира от ХІІІ век...</p>
+  </div><p>[За оформяне на заглавие вж. т. <a href="#119">119</a>.]</p><h2 data-lvl="0" data-ref="122.2.2." id="122.2.2">122.2.2.</h2><p>Ако е разположено в началото на абзац, то се разграничава шрифтово от основния текст, а в края му се поставя точка.
+</p><div class="samp">
+    <p align="center">ВЪРШЕЦ <br>Събуждане под арка от чинари</p>
+    <p><strong>Местоположение.</strong> Град Вършец е разположен...</p>
+    <p><strong>Забележителности.</strong> Клисурският манастир датира от ХІІІ век...</p>
+  </div><h2 data-lvl="0" data-ref="123." id="123">123.</h2><p>Част от текста (дума, словосъчетание, изречение), която носи смислов акцент, може да се открои по следния начин:</p><h2 data-lvl="0" data-ref="123.1." id="123.1">123.1.</h2><p>Пише се в средата на самостоятелен ред и се разграничава шрифтово от основния текст.</p><h2 data-lvl="0" data-ref="123.2." id="123.2">123.2.</h2><p>Оформя се според общите пунктуационни правила.</p><div class="samp"><p align="center">Разходите на чужди туристи за почивка в южната ни съседка<br><strong>са паднали до 2,78 млн. евро <br>за първото шестмесечие,</strong>   <br>като понижението спрямо същия период на 2009 г. е 23%.</p></div><h2 data-lvl="0" data-ref="124." id="124">124.</h2><p>Отделните абзаци в текста започват на нов ред.</p></div></div>
+</body>
+</html>
