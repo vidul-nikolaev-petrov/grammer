@@ -128,10 +128,13 @@
             .input-wrapper {
                 width: 100%;
                 margin-bottom: 8px;
+                position: relative;
+                display: flex;
+                align-items: center;
             }
             input {
                 width: 100%;
-                padding: 14px 20px;
+                padding: 14px 60px 14px 20px;
                 font-size: 16px;
                 border: 1px solid var(--input-border);
                 border-radius: 28px;
@@ -199,6 +202,44 @@
                 margin-top: auto;
                 padding-top: 100px;
             }
+            #result-count {
+                position: absolute;
+                right: 20px;
+                font-size: 14px;
+                font-weight: 500;
+                color: var(--text-muted);
+                pointer-events: none;
+                user-select: none;
+            }
+
+            @-webkit-keyframes slide-up {
+                from {
+                    -webkit-transform: translateY(5px);
+                    transform: translateY(5px);
+                    opacity: 0;
+                }
+                to {
+                    -webkit-transform: translateY(0);
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+
+            @keyframes slide-up {
+                from {
+                    transform: translateY(5px);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
+
+            .pulse-up {
+                -webkit-animation: slide-up 0.2s ease-out;
+                animation: slide-up 0.2s ease-out;
+            }
         </style>
     </head>
     <body>
@@ -221,6 +262,7 @@
                     autofocus
                     autocomplete="off"
                 />
+                <span id="result-count"></span>
                 <datalist id="suggestions"></datalist>
             </div>
             <div id="res" class="results">
@@ -282,9 +324,11 @@
             const list = document.getElementById("res");
             const datalist = document.getElementById("suggestions");
             const card = document.getElementById("main-card");
+            const counter = document.getElementById("result-count");
 
             input.addEventListener("input", (e) => {
                 const val = e.target.value.toLowerCase();
+
                 if (val.length > 0) {
                     card.classList.remove("is-empty");
                 } else {
@@ -294,10 +338,16 @@
                 if (val.length < 2) {
                     list.innerHTML = "";
                     datalist.innerHTML = "";
+                    counter.textContent = "";
                     return;
                 }
 
                 const matches = performSearch(val);
+                const matchCount = matches.length;
+                counter.textContent = matchCount;
+                counter.classList.remove("pulse-up");
+                void counter.offsetWidth;
+                counter.classList.add("pulse-up");
 
                 datalist.innerHTML = matches
                     .filter((i) => i.type === "headword")
