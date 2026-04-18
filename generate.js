@@ -8,17 +8,17 @@ let template = fs.readFileSync("./template.html", "utf8");
 
 const string = JSON.stringify;
 const dictionary = dataModule;
-const searchIndex = dataModule.map(i => (i.t || "").toLowerCase());
+// const searchIndex = dataModule.map(i => (i.t || "").toLowerCase());
 
 let finalHtml = template.replace(
     `const dictionary = ["placeholder"];`,
     `const dictionary = ${string(dictionary)};`,
 );
 
-finalHtml = finalHtml.replace(
-    `const searchIndex = ["placeholder"];`,
-    `const searchIndex = ${string(searchIndex)};`,
-);
+// finalHtml = finalHtml.replace(
+//     `const searchIndex = ["placeholder"];`,
+//     `const searchIndex = ${string(searchIndex)};`,
+// );
 
 fs.writeFileSync("./index.html", finalHtml);
 console.log(

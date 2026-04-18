@@ -317,7 +317,7 @@
 
         <script>
             const dictionary = ["placeholder"];
-            const searchIndex = ["placeholder"];
+            const searchIndex = dictionary.map(i => i.t.toLowerCase());
             const maxResults = 100;
             const minInputLength = 2;
             const BASE = "https://beron.mon.bg/rechnik";
