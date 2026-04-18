@@ -153,6 +153,7 @@
                 flex-grow: 1;
                 -webkit-overflow-scrolling: touch;
             }
+
             .item {
                 padding: 14px;
                 text-decoration: none;
@@ -164,6 +165,26 @@
             }
             .item:hover {
                 background: var(--item-hover);
+            }
+
+            .main-link {
+                text-decoration: none;
+                color: inherit;
+                display: block;
+            }
+            .main-link:hover .title {
+                color: #3498db;
+            }
+
+            .external-url {
+                text-decoration: none;
+                font-size: 0.7em;
+                color: #888;
+                display: block;
+                margin-top: 8px;
+            }
+            .external-url:hover {
+                color: #3498db;
             }
 
             .title {
@@ -317,10 +338,11 @@
 
         <script>
             const dictionary = ["placeholder"];
-            const searchIndex = dictionary.map(i => i.t.toLowerCase());
+            const searchIndex = dictionary.map((i) => i.t.toLowerCase());
             const maxResults = 100;
             const minInputLength = 2;
             const BASE = "https://beron.mon.bg/rechnik";
+            const BASE_LOCAL = "static";
             const input = document.getElementById("q");
             const list = document.getElementById("res");
             const datalist = document.getElementById("suggestions");
@@ -359,18 +381,23 @@
                 list.innerHTML = matches
                     .map((m) => {
                         const fileName = m.l.replace(/.*\/(\d+)\.html$/, "$1");
-                        const fullUrl = `${BASE}/${fileName}`;
+                        const outerUrl = `${BASE}/${fileName}`;
+                        const localUrl = `${BASE_LOCAL}/${fileName}.html`;
                         const isWord = m.type === "headword";
-                        return `<a href="${fullUrl}" target="_blank" class="item">
-                                    <span class="type-tag"
-                                        style="background: var(${isWord ? "--tag-word-bg" : "--tag-rule-bg"});
-                                        color: var(${isWord ? "--tag-word-text" : "--tag-rule-text"})">
-                                            ${isWord ? "Дума" : "Параграф"}
-                                    </span>
-                                    ${m.parent ? `<span class="parent">Към: ${m.parent}</span>` : ""}
-                                    <span class="title">${m.t}</span>
-                                    <span class="url">${fullUrl}</span>
-                                </a>`;
+                        return `<div class="item">
+                                    <a href="${localUrl}" target="_blank" class="main-link">
+                                        <span class="type-tag"
+                                            style="background: var(${isWord ? "--tag-word-bg" : "--tag-rule-bg"});
+                                            color: var(${isWord ? "--tag-word-text" : "--tag-rule-text"})">
+                                                ${isWord ? "Дума" : "Параграф"}
+                                        </span>
+                                        ${m.parent ? `<span class="parent">Към: ${m.parent}</span>` : ""}
+                                        <span class="title">${m.t}</span>
+                                    </a>
+                                    <a href="${outerUrl}" target="_blank" class="external-url">
+                                        ${outerUrl}
+                                    </a>
+                                </div>`;
                     })
                     .join("");
             });
