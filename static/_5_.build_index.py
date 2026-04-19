@@ -93,6 +93,12 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
         .single-link-container {{
             padding: 2px 20px 8px 20px;
         }}
+        summary + .single-link-container {{
+            margin-top: 8px;
+        }}
+        .single-link-container:last-child {{
+            margin-bottom: 2px;
+        }}
         .index-link {{
             background: white;
             padding: 8px 12px;
