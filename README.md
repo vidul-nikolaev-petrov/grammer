@@ -12,4 +12,4 @@
 <br>
 <br>
 
-![example](https://vidul-nikolaev-petrov.github.io/grammer/example.png?refresh=true)
+![example](https://vidul-nikolaev-petrov.github.io/grammar/example.png?refresh=true)
