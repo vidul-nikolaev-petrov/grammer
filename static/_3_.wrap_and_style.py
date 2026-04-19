@@ -71,6 +71,27 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 }}
             }}
         }});
+
+        window.addEventListener('load', () => {{
+            const links = document.querySelectorAll('a[href^="#"]');
+            const filesToPrefetch = new Set();
+
+            links.forEach(link => {{
+                const targetId = link.getAttribute('href').replace(/^#\/?/, "");
+                const targetFile = refMap[targetId];
+                
+                if (targetFile && targetFile !== window.location.pathname.split('/').pop()) {{
+                    filesToPrefetch.add(targetFile);
+                }}
+            }});
+
+            filesToPrefetch.forEach(file => {{
+                const linkTag = document.createElement('link');
+                linkTag.rel = 'prefetch';
+                linkTag.href = file;
+                document.head.appendChild(linkTag);
+            }});
+        }});
     </script>
 </head>
 <body>
