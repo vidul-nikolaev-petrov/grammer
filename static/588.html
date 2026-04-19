@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Транскрипция" id="bski550">Транскрипция</h1><p>Транскрипцията е предаване на звуковия състав на чужди имена със средствата на приемащия език.</p><h2 data-lvl="0" data-ref="25." id="25">25.</h2><p>При транскрибиране на собствени имена от чужди езици са в сила следните правила:</p><h2 data-lvl="0" data-ref="25.1." id="25.1">25.1.</h2><p>Звуковете в изходния език, които са еднакви или близки до българските звукове, се предават със съответстващите им български букви.</p><div class="samp"><p><i class="ex">Миколка – Міколка</i> (беларус.)<i class="ex">, Полтава – Полтава</i> (укр.)<i class="ex">, Абел – Abel</i> (унг.)<i class="ex">, Акдер – Akder</i> (тур.)<i class="ex">, Алоис – Alois</i> (чеш.)<i class="ex">, Балзак – Balzac</i> (фр.)<i class="ex">, Голсуърти – Galsworthy</i> (англ.)<i class="ex">, Жеромски –</i> Żeromski (пол.)<i class="ex">, Мистрал – Mistral</i> (фр.)<i class="ex">, Райтер – Reiter</i> (нем.)</p></div><h2 data-lvl="0" data-ref="25.2." id="25.2">25.2.</h2><p>Звуковете в изходния език, които нямат съответствия в български, се предават с букви и буквени съчетания, отбелязващи най-близките до тях звукове.</p><div class="samp"><p><i class="ex">Висоцки – Высоцкий</i> (рус.), <i class="ex">Йожени – Eugénie</i> (фр.), <i class="ex">Крим – Крым</i> (рус.), <i class="ex">Асник – Asnyk</i> (пол.), <i class="ex">Бонк – Bąk</i> (пол.), <i class="ex">Дартмът – Dartmouth</i> (англ.), <i class="ex">Екельоф – Ekelöf</i> (шв.), <i class="ex">Гьодел – Gödel</i> (нем.), <i class="ex">Сент Бьов – Sainte-Beuve</i> (фр.), <i class="ex">Пастьор – Pasteur</i> (фр.), <i class="ex">Тасос – Θάσος</i> /Thasos (гр.), <i class="ex">Тесалия – Θεσσαλία / Thessalia</i> (гр.)</p></div></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="598.html" class=""><label>Предаване на гласни в чужди собствени имена</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="649.html" class=""><label>Предаване на съгласни в чужди собствени имена</label></a></span></h3></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

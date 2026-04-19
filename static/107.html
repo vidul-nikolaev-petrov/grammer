@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Фонетичен принцип" id="bski193">Фонетичен принцип</h1><h2 data-lvl="0" data-ref="4.2." id="4.2">4.2.</h2><p>Според фонетичния принцип правописът на думите е в съответствие с книжовното им произношение. Върху него са основани правилата за променливо <i class="frag">я</i>, за групите <i class="frag">-ър-/-ръ-</i>, <i class="frag">-ъл-/-лъ-</i>, както и за опростяването на групи съгласни. Той е в сила при думи като: <i class="ex">сърце</i> (срв. <i class="ex">сърдечен</i>), <i class="ex">нишка</i>, <i class="ex">овошка</i> (срв. <i class="ex">нищя</i>, <i class="ex">овощен</i>), <i class="ex">гозба</i> (срв. <i class="ex">гостя</i>), <i class="ex">цъфтя</i> (срв. <i class="ex">цвят</i>) и някои други.</p><p>Върху фонетичния принцип са основани и част от правилата за пренасяне на части от думи на нов ред, за съкращаване на думи и изрази, както и единични пунктуационни правила.</p></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Апостроф [']" id="bski1144">Апостроф [']</h1><h2 data-lvl="0" data-ref="116." id="116">116.</h2><p>Апострофът се използва в следните случаи:</p><h2 data-lvl="0" data-ref="116.1." id="116.1">116.1.</h2><p>Апострофът се използва при предаване на изговор за означаване на изпусната буква или сричка.</p><div class="samp"><p><i class="ex">т'ва</i> (това), <i class="ex">наш'те</i> (нашите), <i class="ex">го'син</i> (господин)</p></div><h2 data-lvl="0" data-ref="116.2." id="116.2">116.2.</h2><p>Апострофът се използва при мерена реч предвид метриката.</p><div class="samp"><p><i class="ex">нек'</i> (вм. <i class="ex">нека</i>)</p></div><h2 data-lvl="0" data-ref="116.3." id="116.3">116.3.</h2><p>Апострофът се използва при съкратено изписване на години.</p><div class="samp first-samp collapsed"><p><i class="ex">България заслужи втора квота за Лондон '12.</i></p></div><div class="samp"><p><i class="ex">БНТ '99, Мондиал '06</i></p></div><h2 data-lvl="0" data-ref="116.4." id="116.4">116.4.</h2><p>Апострофът се използва при думи и собствени имена от чужди езици, които съдържат апостроф в съответния език.</p><div class="samp"><p><i class="ex">шарже д’афер, Д’Аламбер, О’Конър, Кот д’Ивоар</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Съкращаване на думи според контекста" id="bski263">Съкращаване на думи според контекста</h1><h2 data-lvl="0" data-ref="75." id="75">75.</h2><p>Съкращенията на някои думи са възможни само в определен контекст:</p><h2 data-lvl="0" data-ref="75.1." id="75.1">75.1.</h2><p>Личните и бащините имена се съкращават само ако са придружени от фамилно име.</p><div class="samp"><p><i class="ex">Й. Христов, Ст. Игнатова, П. Чавдаров</i></p></div><h2 data-lvl="0" data-ref="75.2." id="75.2">75.2.</h2><p>Думите <i class="ex">господин</i>, <i class="ex">госпожа</i>, <i class="ex">госпожица</i>, титлите, званията и длъжностите се съкращават само пред фамилно име или пред съчетание от лично име (съкратено или не) и фамилно име. Думите <i class="ex">господин</i> и <i class="ex">госпожа</i> се съкращават и пред названия на длъжности.</p><div class="samp first-samp collapsed"><p><i class="ex">г-н Драгомиров, г-жа Л. Цветанова, г-ца Дора Пенчева</i>;</p></div><div class="samp"><p><i class="ex">г-н/г-жо Директор</i>;</p></div><div class="samp"><p><i class="ex">арх. Петър Милчев, инж. Ст. Панайотов, проф. Ковачев, гл. ас. Николова, д-р Иван Йорданов</i></p></div><h2 data-lvl="0" data-ref="75.3." id="75.3">75.3.</h2><p>Съществителните имена <i class="ex">град</i>, <i class="ex">село</i>, <i class="ex">остров</i>, <i class="ex">полуостров</i>, <i class="ex">езеро</i>, <i class="ex">планина</i>, <i class="ex">връх</i> се съкращават само пред съответното собствено име.</p><div class="samp"><p><i class="ex">гр. Русе, с. Угърчин, о. Света Елена, п-в Камчатка, в. Мусала</i></p></div><h2 data-lvl="0" data-ref="75.4." id="75.4">75.4.</h2><p>Думите <i class="ex">час</i>, <i class="ex">година</i>, <i class="ex">век</i>, <i class="ex">страница</i>, <i class="ex">лев</i>, <i class="ex">хиляда</i>, <i class="ex">милион</i>, <i class="ex">милиард</i> и мерните единици се съкращават само ако са придружени от изписано с цифри числително име.</p><div class="samp first-samp collapsed"><p><i class="ex">18 ч., 1878 год., XVIII в., с. 328, 50 лв.</i></p></div><div class="samp"><p><i class="ex">200 хил., 50 млрд., 2 млн.</i></p></div><div class="samp"><p><i class="ex">500 m</i> и <i class="ex">500 м, 10 l</i> и <i class="ex">10 л, 5 km</i> и <i class="ex">5 км, 25 l/min</i> и <i class="ex">25 л/мин, 220 V</i> и <i class="ex">220 В</i></p></div><h2 data-lvl="0" data-ref="75.5." id="75.5">75.5.</h2><p>Думата <i class="ex">месец</i> се съкращава само ако е придружена от името на месеца.</p><div class="samp"><p><i class="ex">м. януари, м. ноември</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

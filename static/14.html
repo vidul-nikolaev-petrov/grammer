@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="6" data-ref="Българска графична система" id="bski451">Българска графична система</h1></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="15.html" class=""><label>Българска азбука</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="21.html" class=""><label>Особености при употребата на някои букви</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="22.html" class=""><label>Буква а</label></a></span></p><p><span class="XTUiN"><a href="31.html" class=""><label>Буква я</label></a></span></p><p><span class="XTUiN"><a href="51.html" class=""><label>Буква ю</label></a></span></p><p><span class="XTUiN"><a href="62.html" class=""><label>Буква щ</label></a></span></p><p><span class="XTUiN"><a href="66.html" class=""><label>Буква ь (ер малък)</label></a></span></p><p><span class="XTUiN"><a href="72.html" class=""><label>Буква ъ</label></a></span></p><p><span class="XTUiN"><a href="75.html" class=""><label>Буквосъчетание дж</label></a></span></p><p><span class="XTUiN"><a href="84.html" class=""><label>Буквосъчетание дз</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="93.html" class=""><label>Пунктуационни знаци</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="96.html" class=""><label>Непунктуационни знаци</label></a></span></h3></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

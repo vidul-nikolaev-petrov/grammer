@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,11 +109,28 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Членуване с -ът и -а" id="bski97">Членуване с <i class="frag">-ът</i> и <i class="frag">-а</i></h1><h2 data-lvl="0" data-ref="17.3." id="17.3">17.3.</h2><p>С членните форми за м.р. ед.ч. <i class="frag">-ът</i> за пълен член и <i class="frag">-а</i> за кратък член се членуват следните
 думи:</p><h2 data-lvl="0" data-ref="17.3.1." id="17.3.1">17.3.1.</h2><p>С членните форми за м.р. ед.ч. <i class="frag">-ът</i> за пълен член и <i class="frag">-а</i> за кратък член се членуват всички съществителни нарицателни имена и част от собствените имена от м.р. ед.ч., които завършват на съгласна, с изключение на съществителните имена, посочени в т. <a href="#17.4">17.4</a>.</p><div class="samp"><p><i class="ex">договор – договорът, договора; сбор – сборът, сбора; стол – столът, стола; етаж – етажът, етажа; стажант – стажантът, стажанта; президент – президентът, президента;</i> <i class="ex">Искър – Искърът, Искъра, Лувър – Лувърът, Лувъра</i></p></div><h2 data-lvl="0" data-ref="17.3.2." id="17.3.2">17.3.2.</h2><p>С членните форми за м.р. ед.ч. <i class="frag">-ът</i> за пълен член и <i class="frag">-а</i> за кратък член се членуват съществителните имена на <i class="frag">-тел</i>, за които завършекът <i class="frag">-тел</i> не е наставка.</p><div class="samp"><p><i class="ex">епител – епителът, епитела; картел – картелът, картела; пастел – пастелът, пастела; хотел – хотелът, хотела</i></p></div><h2 data-lvl="0" data-ref="17.3.3." id="17.3.3">17.3.3.</h2><p>С членните форми за м.р. ед.ч. <i class="frag">-ът</i> за пълен член и <i class="frag">-а</i> за кратък член се членуват съществителните имена на <i class="frag">-ар</i> и <i class="frag">-яр</i>, за които завършеците <i class="frag">-ар</i> и <i class="frag">-яр</i> не са наставки.</p><div class="samp"><p><i class="ex">екземпляр – екземплярът, екземпляра; звяр – звярът, звяра; календар – календарът, календара; капиляр – капилярът, капиляра; коментар – коментарът, коментара; минзухар – минзухарът, минзухара; олтар – олтарът, олтара; пазар – пазарът, пазара; светофар – светофарът, светофара; формуляр – формулярът, формуляра; хонорар – хонорарът, хонорара</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

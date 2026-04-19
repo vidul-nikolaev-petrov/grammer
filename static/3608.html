@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -84,6 +108,22 @@
                 linkTag.rel = 'prefetch';
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
+            });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
         });
     </script>
@@ -112,5 +152,6 @@
 </p><div class="samp"><p>За коя от следните сфери е предназначен Текст 1: <br>А) лична <br>Б) обществена <br>В) образователна <br>Г) професионална</p></div><p>[Вж. Двоеточие, т. <a href="#98.2.2">98.2.2</a>.]</p><h2 data-lvl="0" data-ref="134.4.3." id="134.4.3">134.4.3.</h2><p>Въвеждащият текст (основата на задачата) завършва с точка или с въпросителен знак, когато той е граматически и смислово завършено изречение и не съдържа израз, конкретизиран в отговорите към задачата.</p><div class="samp"><p>В кое изречение е допусната правописна грешка? <br>А) Танцът носи много страст, в него са вложени силно желание за живот, експресивност, гордост. <br>Б) Годината на Заека поставя край на черната серия и носи справедливост, любов и доверие. <br>В) Ако извънземните ни посетят днес, резултатът би бил като при пристигането на Колумб в Америка. <br>Г) Човечеството е изпратило в Космоса дискове със записи на звуци и картини от Земята.</p></div><h2 data-lvl="0" data-ref="134.5." id="134.5">134.5.</h2><p>Правописно и пунктуационно оформяне на отговорите в тестови задачи с множествен избор.</p><h2 data-lvl="0" data-ref="134.5.1." id="134.5.1">134.5.1.</h2><p>Отговорите започват с малка буква, когато представляват част от изречение, която граматически и смислово завършва основата на задачата. Те завършват без препинателен знак.
 </p><div class="samp"><p>Разказите за Орфей, Зевс, Прометей и Троянската война са: <br>А) словесни митове <br>Б) вълшебни приказки <br>В) басни</p></div><h2 data-lvl="0" data-ref="134.5.2." id="134.5.2">134.5.2.</h2><p>Отговорите на тестовите задачи започват с малка буква и завършват без препинателен знак, когато се състоят от една дума или словосъчетание, макар че основата на задачата завършва със знак за край на изречение.</p><div class="samp"><p>Кой от изброените цветове НЕ е основен? <br>А) червеният <br>Б) оранжевият <br>В) зеленият <br>Г) синият</p></div><h2 data-lvl="0" data-ref="134.5.3." id="134.5.3">134.5.3.</h2><p>Отговорите на тестовите задачи започват с главна буква и завършват с точка, ако представляват завършено самостоятелно изречение, независимо дали основата на задачата завършва със знак за край на изречение, или с двоеточие..
 </p><div class="samp first-samp collapsed"><p>Посочете ГРЕШНОТО твърдение. <br>А) Височината на звука зависи от честотата му. <br>Б) Височината на звука зависи от амплитудата му. <br>В) Силата на звука зависи от честотата му. <br>Г) Силата на звука зависи от амплитудата му.</p></div><div class="samp"><p>Основната цел на Текст 1 е: <br>А) Да предпази гостите на аквапарк от възможни инциденти. <br>Б) Да се предотвратят злополуките на територията на аквапарк. <br>В) Да предупреди за опасностите при посещение на атракциони. <br>Г) Да предупреди посетителите на аквапарка да спазват приличие.</p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

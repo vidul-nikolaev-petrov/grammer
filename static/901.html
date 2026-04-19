@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,6 +109,22 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
@@ -93,5 +133,6 @@
 </p><div class="samp"><p><i class="ex">Апостола на свободата, Голямата ябълка</i> (прозвище на Ню Йорк)<i class="ex">, Самотен листец</i> (псевдоним на Н. Г. Данчев)<i class="ex">, Стар делия</i> (псевдоним на В. Павурджиев)<i class="ex">;</i></p><p><i class="ex">Бъдни вечер, Нова година, Ден на народните будители;</i></p><p><i class="ex">Атлантически океан, Бяло море, Големия(т) каньон, Гринуички меридиан, Горна баня, Малка мечка, Две могили, Попови ливади, Петрова нива, Слънчева система, Съединени американски щати, Черна гора;</i></p><p><i class="ex">Българска академия на науките, Български червен кръст, Демократическа партия, Народно събрание, Нов български университет;</i></p><p><i class="ex">Айфелова кула, Бранденбургска врата;</i></p><p><i class="ex">Априлско въстание, Балканска война, Великото преселение на народите, Виенска конвенция, Втора световна война, Великата френска революция;</i> </p><p>(орден) <i class="ex">„Стара планина“,</i> (награда) <i class="ex">„Златен век“</i>; </p><p><i class="ex">„Вестник за жената“;</i></p><p><i class="ex">Закон за българското гражданство, Лисабонски договор, Шенгенско споразумение;</i> (сорт) <i class="ex">„Златна превъзходна“,</i> (порода) <i class="ex">„Каракачанска овчарка“,</i> (бисквити) <i class="ex">„Житен дар“;</i></p><p>(специалност) <i class="ex">„Българска филология“,</i> (отдел) <i class="ex">„Връзки с обществеността“</i>
 </p></div>
 </div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

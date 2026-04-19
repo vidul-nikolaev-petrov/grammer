@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Кавички при собствени имена" id="bski1137">Кавички при собствени имена</h1><h2 data-lvl="0" data-ref="104.3." id="104.3">104.3.</h2><p>Кавички се употребяват при собствени имена в следните случаи:</p><h2 data-lvl="0" data-ref="104.3.1." id="104.3.1">104.3.1.</h2><p>Кавички се употребяват при приложения в рамките на съставни собствени имена.</p><div class="samp"><p><i class="ex">Държавна агенция „Архиви“, Национална библиотека „Св. св. Кирил и Методий“, Софийски университет „Св. Климент Охридски“, СОУ „Любен Каравелов“, Държавен фонд „Земеделие“, Национален дарителски фонд „13 века България“</i></p></div><h2 data-lvl="0" data-ref="104.3.2." id="104.3.2">104.3.2.</h2><p>Кавички се употребяват при собствени имена, които са приложения в рамките на словосъчетания.</p><div class="samp"><p><i class="ex">храм-паметник „Александър Невски“, църква „Свети Седмочисленици“, мина „Челопеч“, район „Средец“, жилищен комплекс „Люлин“, квартал „Княжево”, булевард „Прага“, улица „Бистрица“, хотел „Перун“, хижа „Белите брези“, къмпинг „Силистар“, язовир „Голям Беглик“, телевизор „Сони“, спортни обувки „Булдозер“, шоколад „Своге“, сапун „Бочко“, картофи сорт „Пикасо“, куче порода „Лабрадор“, орден „Стара планина“, специалност „Ландшафтна архитектура“, отдел „Човешки ресурси“, катедра „Общо езикознание“, вестник „Стършел“, списание „Паралели“, повест „Чичовци“, филм „Вчера“, телевизия „Диема“, радио „Романтика“, фестивал „Аполония“</i></p></div><h2 data-lvl="0" data-ref="104.3.3." id="104.3.3">104.3.3.</h2><p>Ако първата част от словосъчетанието липсва, кавичките се запазват.</p><div class="samp first-samp collapsed"><p><i class="ex">Обичам да се разхождам в градинката пред „Свети Седмочисленици“.</i></p></div><div class="samp"><p><i class="ex">Живея на „Бистрица“ повече от двайсет години.</i></p></div><div class="samp"><p><i class="ex">Наскоро препрочетох „Балада за Георг Хених“.</i></p></div><div class="samp"><p><i class="ex">„Мера според мера“ е един от любимите ми филми.</i></p></div><h2 data-lvl="0" data-ref="104.3.4." id="104.3.4">104.3.4.</h2><p>Когато собствено име, което изисква ограждане в кавички, е представено чрез своя част и/или е променено граматически, кавичките се запазват.</p><div class="samp first-samp collapsed"><p><i class="ex">Паисий Хилендарски завършва „Историята“ си през 1762 г.</i></p></div><div class="samp"><p><i class="ex">В „Речника по нова българска литература“ са представени малко познати на широката публика автори.</i></p></div><h2 data-lvl="0" data-ref="104.4." id="104.4">104.4.</h2><p>Кавички се употребяват при собствени имена, които са групови съкращения.</p><div class="samp"><p><i class="ex">фирма „Булмес“, верига магазини „Технополис“, издателство „Софтпрес“, „Главболгарстрой“ АД, „Булгаргаз“ ЕАД</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

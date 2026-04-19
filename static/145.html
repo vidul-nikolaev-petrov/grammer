@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Особени случаи" id="bski219">Особени случаи</h1><h2 data-lvl="0" data-ref="7." id="7">7.</h2><p>Дори когато са налице посочените по-горе (в т. <a href="#5">5</a> и <a href="#6">6</a>) условия, правилото за променливото <i class="frag">я</i> не е в сила в следните случаи, установени по традиция:</p><h2 data-lvl="0" data-ref="7.1." id="7.1">7.1.</h2><p>Пред окончания <i class="frag">-хме</i>, <i class="frag">-хте</i> във формите за 1 и 2 л. мн.ч. на мин. св. и мин. несв. вр. на глаголи с ударение върху променливото <i class="frag">я</i> то не преминава в <i class="frag">е</i>, въпреки че е пред сричка с гласна <i class="frag">е</i>.</p><div class="samp"><p><i class="ex">бях – бя̀хме, бя̀хте; видях – видя̀хме, видя̀хте; живя̀х – живя̀хме, живя̀хте; търпя̀х – търпя̀хме, търпя̀хте</i></p></div><h2 data-lvl="0" data-ref="7.2." id="7.2">7.2.</h2><p>В членуваните форми на някои съществителни имена с наставка <i class="frag">-ост</i>, образувани от минали причастия, <i class="frag">я</i> не преминава в <i class="frag">е</i>, въпреки че е в сричка извън ударение.</p><div class="samp"><p><i class="ex">закостеня̀лост – закостенялостта̀; изнемощя̀лост – изнемощялостта̀; недодя̀ланост – недодялаността̀; припря̀ност – припряността̀</i></p></div><h2 data-lvl="0" data-ref="7.3." id="7.3">7.3.</h2><p>В корените на производни глаголи, образувани с наставка <i class="frag">-н-</i>, <i class="frag">я</i> преминава в <i class="frag">е</i>, въпреки че е под ударение и пред сричка с гласна <span>[<i class="frag">а</i>]</span>.</p><div class="samp"><p><i class="ex">кля̀кам – клѐкна; ля̀гам – лѐгна; мя̀там – мѐтна; пося̀гам – посѐгна; смя̀там – смѐтна</i></p></div><h2 data-lvl="0" data-ref="7.4." id="7.4">7.4.</h2><p>Във формите за ж.р. и ср.р. на някои производни прилагателни имена с наставка <i class="frag">-ен</i> <i class="frag">я</i> преминава в <i class="frag">е</i>, въпреки че е под ударение и пред сричка с гласни <span>[<i class="frag">а</i>]</span> или <span>[<i class="frag">о</i>]</span>.</p><div class="samp"><p><i class="ex">гняв – гнѐвна, гнѐвно</i> (от <i class="ex">гнѐвен</i>); <i class="ex">ля̀то – дълголѐтна, дълголѐтно</i> (от <i class="ex">дълголѐтен</i>); <i class="ex">мя̀рка – мѐрна, мѐрно</i> (от <i class="ex">мѐрен</i>); <i class="ex">цвят – цвѐтна, цвѐтно</i> (от <i class="ex">цвѐтен</i>)</p></div><h2 data-lvl="0" data-ref="7.5." id="7.5">7.5.</h2><p>При отделни производни думи се е установила форма с <i class="frag">е</i>, а не с <i class="frag">я</i> под ударение и пред сричка с гласна <span>[<i class="frag">a</i>]</span> или <span>[<i class="frag">o</i>]</span>.</p><div class="samp"><p><i class="ex">бял – избѐлвам; дял – дѐло, отдѐл; мя̀сто – мѐстност; звяр – звѐрство; свят – свѐтска; мятам – намѐтка; тря̀бва – потрѐбност</i></p></div><h2 data-lvl="0" data-ref="7.6." id="7.6">7.6.</h2><p>В някои географски имена се е установила форма с <i class="frag">е</i>, а не с <i class="frag">я</i> под ударение и пред сричка с гласна <span>[<i class="frag">a</i>]</span> или <span>[<i class="frag">o</i>]</span>.</p><div class="samp"><p><i class="ex">Бѐло поле, Брѐгово, Желѐзна</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

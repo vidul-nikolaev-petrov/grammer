@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Пренасяне на й, което е между две гласни" id="bski254">Пренасяне на <i class="frag">й</i>, което е между две гласни</h1><h2 data-lvl="0" data-ref="65.5." id="65.5">65.5.</h2><p>Когато се намира между букви за две гласни, <i class="frag">й</i> се пренася с втората гласна.</p><div class="samp"><p><i class="ex">ра-йон, ма-йор, ма-йонеза, Пе-йов</i></p></div><h2 data-lvl="0" data-ref="65.6." id="65.6">65.6.</h2><p>Едносрични думи не се делят и части от тях не се пренасят на нов ред.</p><div class="samp"><p><i class="ex">дол, зъб, връх, клон, пръст, сфинкс; зад, над, пред</i></p></div><h2 data-lvl="0" data-ref="66." id="66">66.</h2><p>Ограничения на принципа на скандиране има в следните случаи:</p><h2 data-lvl="0" data-ref="66.1." id="66.1">66.1.</h2><p>Буквата за една гласна не се оставя сама нито на горния, нито на долния ред.</p><div class="samp"><p><i class="ex">ау-диенция</i> (не: <i class="ex">а-удиенция</i>), <i class="ex">Афри-ка</i> (не: <i class="ex">А-фрика</i>), <i class="ex">одо-брение</i> (не: <i class="ex">о-добрение</i>), <i class="ex">уп-равник</i> (не: <i class="ex">у-правник</i>), <i class="ex">ира-ционален</i> (не: <i class="ex">и-рационален</i>), <i class="ex">анор-мален</i> (не: <i class="ex">а-нормален</i>); <i class="ex">вли-яе</i> (не: <i class="ex">влия-е</i>), <i class="ex">предприя-тие</i> (не: <i class="ex">предприяти-е</i>), <i class="ex">па-рии</i> (не: <i class="ex">пари-и</i>)</p></div><h2 data-lvl="0" data-ref="66.2." id="66.2">66.2.</h2><p>Буквата за една съгласна не се оставя сама нито на горния, нито на долния ред.</p><div class="samp"><p><i class="ex">стро-ител/строи-тел</i> (не: <i class="ex">с-троител</i>), <i class="ex">ра-дост</i> (не: <i class="ex">радос-т</i>)</p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

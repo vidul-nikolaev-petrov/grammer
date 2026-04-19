@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Морфологичен принцип" id="bski461">Морфологичен принцип</h1><h2 data-lvl="0" data-ref="4.1." id="4.1">4.1.</h2><p>Основната част от правилата за писане на думите в българския език се основава върху морфологичния принцип. Според него еднаквите строежни елементи на думите – морфемите (корен, представка, наставка, окончание, определителен член), се пишат по един и същ начин независимо как се изговарят в книжовния език, за да се запази еднакъв графичният облик на съответната морфема и да се улесни четенето: <i class="ex">разкош</i> (изговор <i class="ex">ра<i class="frag">с</i>кош</i>), <i class="ex">хляб</i> (изговор <i class="ex">хля<i class="frag">п</i></i>), <i class="ex">сграда</i> (изговор <i class="ex"><i class="frag">з</i>града</i>), <i class="ex">сватба</i> (изговор <i class="ex">сва<i class="frag">д</i>ба</i>) и под.</p><p>Върху морфологичния принцип се основават и правилата за употреба на главна и малка буква при разграничаването на собствените от нарицателните имена.</p><p>Морфологичният принцип се прилага и в случаите на условно предаване на звука <span>[<i class="frag">ъ</i>]</span> под ударение чрез буквите <i class="frag">а</i> и <i class="frag">я</i> (в глаголни окончания за 1 л. ед.ч. и 3 л. мн.ч. сег.вр. и в членувани форми). Той действа и при използването на графемата <i class="frag">ѝ</i> за означаване на кратките форми на личното и притежателното местоимение за ж.р. с цел разграничаването им от съюза <i class="frag">и</i>.</p></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

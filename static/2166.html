@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="1" data-ref="Прости изречения с въпросителна дума" id="bski747">Прости изречения с въпросителна дума</h1><h2 data-lvl="0" data-ref="89." id="89">89.</h2><p>За прости изречения, свързани с въпросителна дума в рамките на сложното изречение, са в сила следните правила:</p><h2 data-lvl="0" data-ref="89.1." id="89.1">89.1.</h2><p>Не се отделят със запетая две прости изречения, ако второто изречение е въведено с въпросителна дума и пояснява смисъла на предходното изречение.</p><div class="samp first-samp collapsed"><p><i class="ex">Никой не казва колко още ще продължи кризата.</i></p></div><div class="samp"><p><i class="ex">Не е ясно кой е идвал.</i></p></div><div class="samp"><p><i class="ex">Посочете къде се подават жалби.</i></p></div><div class="samp"><p><i class="ex">Помисли как ще живееш оттук нататък.</i></p></div><div class="samp"><p><i class="ex">Питайте каква е цената.</i></p></div><div class="samp"><p><i class="ex">Чудя се кой ли ще е следващият…</i></p></div><div class="samp"><p><i class="ex">Дълго се колебахме кого да изберем.</i></p></div><div class="samp"><p><i class="ex">Не знаем дали вървим в правилната посока.</i></p></div><div class="samp"><p><i class="ex">Разбрахте ли кога тръгваме?</i></p></div><div class="samp"><p><i class="ex">Важен е въпросът как България ще се позиционира в общата селскостопанска политика на ЕС.</i></p></div><h2 data-lvl="0" data-ref="89.2." id="89.2">89.2.</h2><p>Когато просто изречение, въведено с въпросителна дума, е разположено между частите на друго просто изречение, със запетая се отделя краят му.</p><div class="samp first-samp collapsed"><p><i class="ex">Любопитството кой е в стаята с Ирина, не ми даваше покой.</i></p></div><div class="samp"><p><i class="ex">Въпросът кога ще започне пенсионната реформа, е от съществено значение за действията на синдикатите.</i></p></div><h2 data-lvl="0" data-ref="89.3." id="89.3">89.3.</h2><p>При поредица от прости изречения, въведени с въпросителни думи и разположени след пояснявано от тях просто изречение, няма запетая само пред първото въведено с въпросителна дума изречение.</p><div class="samp"><p><i class="ex">Много късно осъзнахме къде са грешките ни, как да ги коригираме, колко висока е цената им.</i></p></div><h2 data-lvl="0" data-ref="89.4." id="89.4">89.4.</h2><p>Когато между две прости изречения, свързани с въпросителна дума, е разположено друго просто изречение, пред въведеното с въпросителна дума изречение се поставя запетая.</p><div class="samp first-samp collapsed"><p><i class="ex">Чудех се, докато вървях, кой ли е бил този странен непознат.</i></p></div><div class="samp"><p><i class="ex">Антония се питаше, ако Мишо ù звънне, дали да го покани на среща.</i></p></div><h2 data-lvl="0" data-ref="89.5." id="89.5">89.5.</h2><p>Когато първото от две прости изречения, свързани с въпросителна дума, завършва с обособена част, пред въведеното с въпросителна дума изречение се поставя запетая.</p><div class="samp"><p><i class="ex">Попитах мъжа, седящ до мене, кога е започнала презентацията.</i></p></div><h2 data-lvl="0" data-ref="89.6." id="89.6">89.6.</h2><p>Когато първото от две прости изречения, свързани с въпросителна дума, завършва с вметнат израз, който се отделя със запетаи, пред въведеното с въпросителна дума изречение се поставя запетая.</p><div class="samp"><p><i class="ex">Не съм разбрал, значи, къде са се приютили влюбените гълъбчета.</i></p></div><h2 data-lvl="0" data-ref="89.7." id="89.7">89.7.</h2><p>Когато първото от две прости изречения, свързани с въпросителна дума, завършва с обръщение, пред въведеното с въпросителна дума изречение се поставя запетая.</p><div class="samp"><p><i class="ex">Разбра ли сега, Янче, как се става депутат?</i></p></div><h2 data-lvl="0" data-ref="89.8." id="89.8">89.8.</h2><p>Пише се запетая между две прости изречения, ако второто изречение съдържа въпросителна дума и смисълът му се пояснява от предходното изречение.</p><div class="samp first-samp collapsed"><p><i class="ex">Ако не съм аз, кой ще ти помогне?</i></p></div><div class="samp"><p><i class="ex">Когато Марин се върне, Нина ще бъде ли вкъщи?</i></p></div><div class="samp"><p><i class="ex">Които винаги роптаят, защо сега мълчат?</i></p></div><h2 data-lvl="0" data-ref="89.9." id="89.9">89.9.</h2><p>Когато въведеното с въпросителна дума изречение се намира пред поясняваното от него изречение, двете изречения се отделят със запетая.</p><div class="samp first-samp collapsed"><p><i class="ex">Кой ще е следващият, аз не мога да гадая.</i></p></div><div class="samp"><p><i class="ex">Кога ще настъпи очакваното оживление в икономиката, експертите не казват.</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Кога не се пишат кавички" id="bski1084">Кога не се пишат кавички</h1><h2 data-lvl="0" data-ref="105.4." id="105.4">105.4.</h2><p>Кавички не се употребяват в случаите, описани в т. <a href="#104.1">104.1</a>, <a href="#104.2">104.2</a>, <a href="#104.3">104.3</a> и <a href="#104.4">104.4</a>, когато думата, изразът или текстът в кавички се изписва в курсив или друг шрифтов стил.</p><h2 data-lvl="0" data-ref="105.5." id="105.5">105.5.</h2><p>Кавички не се употребяват при инициалните кирилски и некирилски съкращения.</p><div class="samp"><p><i class="ex">Главна дирекция ГРАО, телевизия БТВ, холдинг БДЖ, автомобил FIAT, бензиностанция OMV</i></p></div><p>[Вж. Лексикални съкращения, т. <a href="#76">76</a> и <a href="#77.3">77.3</a>.]</p><h2 data-lvl="0" data-ref="105.6." id="105.6">105.6.</h2><p>Кавички не се употребяват при собствени имена, изписани с некирилска графика или съдържащи цифри.</p><div class="samp"><p><i class="ex">шоколад Milka, масло President, раница Eastpak, камион Volvo, бира Velkopopovický Kozel, застрахователна компания Allianz, фирма Canon Group, група µ, Клуб 703, международен път Е79</i></p></div><h2 data-lvl="0" data-ref="105.7." id="105.7">105.7.</h2><p>Кавички не се употребяват при библиографско описание на заглавия на книги, сборници, дисертации, автореферати, статии и рецензии.</p><p>[Вж. Оформяне на библиографско цитиране, т. <a href="#128">128</a>.]</p><h2 data-lvl="0" data-ref="106." id="106">106.</h2><p>По традиция без кавички се пишат следните изрази:</p><h2 data-lvl="0" data-ref="106.1." id="106.1">106.1.</h2><p>Без кавички се пишат имената на общини и области.</p><div class="samp"><p><i class="ex">община Ябланица, област Благоевград</i></p></div><h2 data-lvl="0" data-ref="106.2." id="106.2">106.2.</h2><p>Без кавички се пишат имената на предимно небългарски културни обекти, когато са употребени без категоризираща дума (предшестващо съществително нарицателно).</p><div class="samp"><p><i class="ex">Мулен Руж, Ермитажът, Ковънт Гардън, Ла Скала, Сорбоната, Лувърът</i></p></div><h2 data-lvl="0" data-ref="106.3." id="106.3">106.3.</h2><p>Без кавички се пишат лексикализираните названия на търговски марки.</p><div class="samp first-samp collapsed"><p><i class="ex">Продадох изгодно стария си форд.</i></p></div><div class="samp"><p><i class="ex">Подай ми дистанционното на сонито, ако обичаш.</i></p></div><div class="samp"><p><i class="ex">Заедно с обяда той си поръча и чаша мерло.</i></p></div><div class="samp"><p><i class="ex">През 1971 г. англичанинът Джон Вейн описва в студия цялостното действие на аспирина върху организма.</i></p></div><div class="samp"><p><i class="ex">Най-напред ще отида до ксерокса, а след това ще довърша работата си.</i></p></div><p>[За съчетаване на кавички с други пунктуационни и непунктуационни знаци вж. т. <a href="#135">135</a>.]</p></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

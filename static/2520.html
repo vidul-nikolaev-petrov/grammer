@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Пунктуационна употреба на тирето" id="bski1075">Пунктуационна употреба на тирето</h1><p>Като пунктуационен знак тирето се употребява в следните случаи:</p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2522.html" class=""><label>Тире за означаване на пропуснати изрази</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2538.html" class=""><label>Тире при обособени части</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2565.html" class=""><label>Тире при вметнати изрази</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2579.html" class=""><label>Тире при обобщаващи изрази</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2599.html" class=""><label>Тире пред <i class="ex">да</i>-изречение</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2604.html" class=""><label>Тире пред изречение с въпросителна дума</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2614.html" class=""><label>Тире вместо съюз в сложното изречение</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2632.html" class=""><label>Тире при цитиране</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2647.html" class=""><label>Тире при пряка реч</label></a></span></h3></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

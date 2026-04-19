@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Правила за съкращаване" id="bski395">Правила за съкращаване</h1><h2 data-lvl="0" data-ref="69." id="69">69.</h2><p>Съкращаването чрез запазване на началните букви от думата става по два начина:</p><h2 data-lvl="0" data-ref="69.1." id="69.1">69.1.</h2><p>Запазва се само първата буква от думата.</p><div class="samp"><p><i class="ex">ч. – час; с. – село; м.р. – мъжки род; о. – остров, отец; х. – хижа, хотел; Е. – Елисавета, А. – Антон, Ж. – Живко, Р. – Радослав</i></p></div><h2 data-lvl="0" data-ref="69.2." id="69.2">69.2.</h2><p>Запазват се няколко букви от началото на думата, като последната от тях винаги е съгласна.</p><div class="samp first-samp collapsed"><p><i class="ex">зв. – звателен</i> (падеж)<i class="ex">; ср. – среден</i> (род)<i class="ex">; мн. – много; бл. – блок; пл. – планина, площад; чл. – член; вх. – вход;</i></p></div><div class="samp"><p><i class="ex">Стр. – Страшимир, Кр. – Красимир, Вл. – Владимир, Дим. – Димитър, Ив. – Иван;</i></p></div><div class="samp"><p><i class="ex">напр. – например, заб. – забележка, ап. – апартамент, изх. – изходящ;</i></p></div><div class="samp"><p><i class="ex">ал. – алинея, кор. – кореспондент, ет. – етаж; обикн. – обикновено;</i></p></div><div class="samp"><p><i class="ex">деят. – деятелен</i> (залог)<i class="ex">; зоол. – зоологически; геол. – геоложки, геологически</i></p></div><h2 data-lvl="0" data-ref="69.3." id="69.3">69.3.</h2><p>Не се допуска графично съкращаване, ако от думата след съкратената част остава само една буква или една сричка.</p><h2 data-lvl="0" data-ref="70." id="70">70.</h2><p>При съкращаването чрез съгласни се запазват всички или повечето букви за съгласни.</p><div class="samp"><p><i class="ex">млн. – милион, млрд. – милиард, лв. – лев, вж. – виж, нсв. – несвършен</i> (вид на глагола)<i class="ex">, срв. – сравни, нпр. – непреходен</i> (глагол)<i class="ex">, сз. – съюз</i> (термин)</p></div><h2 data-lvl="0" data-ref="71." id="71">71.</h2><p>В отделни случаи при съкращаване се запазват букви от началото и от края на думата.</p><div class="samp first-samp collapsed"><p><i class="ex">д-р – доктор, п-в – полуостров, з-д – завод;</i></p></div><div class="samp"><p><i class="ex">у-ще – училище, с-ма – система, в-ние – въстание;</i></p></div><div class="samp"><p><i class="ex">пр-во – правителство, пр-ще – пристанище;</i></p></div><div class="samp"><p><i class="ex">в/у – върху, п/в – против</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Писане на кратък член" id="bski303">Писане на кратък член</h1><h2 data-lvl="0" data-ref="17.6.2." id="17.6.2">17.6.2.</h2><p>Кратка членна форма се пише в следните случаи:</p><h2 data-lvl="0" data-ref="17.6.2.1." id="17.6.2.1">17.6.2.1.</h2><p>Кратка членна форма се пише, когато членуваната дума не е подлог в изречението. Това означава, че в изречението е невъзможна замяната на членуваната форма с <i class="frag">той</i>.</p><div class="samp first-samp collapsed"><p><i class="ex">Оставете <u>човека</u> на мира! (Оставете <i class="frag">го</i> на мира!)</i></p></div><div class="samp"><p><i class="ex">Всичко това тук е оставено от <u>непознатия</u>. (Всичко това тук е оставено от <i class="frag">него</i>.)</i></p></div><div class="samp"><p><i class="ex"><u>Директора</u> днес го няма. (<i class="frag">Него</i> днес го няма.)</i></p></div><div class="samp"><p><i class="ex">Във <u>филма</u> липсва напрегната фабула. (В <i class="frag">него</i> липсва напрегната фабула.)</i></p></div><div class="samp"><p><i class="ex">Оставете всичко на <u>шкафа</u>.(Оставете всичко на <i class="frag">него</i>.)</i></p></div><div class="samp"><p><i class="ex">Ето <u>човека</u>. (Ето <i class="frag">го</i>.)</i></p></div><h2 data-lvl="0" data-ref="17.6.2.2." id="17.6.2.2">17.6.2.2.</h2><p>Кратка членна форма се пише, когато членуваната дума не е съгласувано определение или приложение към подлога в изречението. Това означава, че в изречението е невъзможна замяната на цялото словосъчетание, в което участва членуваната дума, с <i class="frag">той</i>.</p><div class="samp first-samp collapsed"><p><i class="ex">Мостът е дело на <u>Колю Фичето – самобитния архитектурен</u></i> <i class="ex"><u>български гений</u>. (Мостът е дело на <i class="frag">него</i>.)</i></p></div><div class="samp"><p><i class="ex">Оттук се открива прекрасна гледка към <u>малкия дворец</u>. (Оттук се открива прекрасна гледка към <i class="frag">него</i>.)</i></p></div><div class="samp"><p><i class="ex">Видях <u>г-н Петров, учителя на дъщеря ни</u>. (Видях <i class="frag">го</i>.)</i></p></div><div class="samp"><p><i class="ex"><u>Миналия четвъртък</u> заседанието се отложи. (<i class="frag">Тогава</i> заседанието се отложи.)</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

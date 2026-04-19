@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Скоби [( )]" id="bski994">Скоби [( )]</h1><p>Скобите (кръгли скоби) са двоен знак, който се използва за отделяне на обособени части или вметнати думи, изрази и присъединителни конструкции в рамките на изречението и текста, както и за графично оформяне на текст. Те са по-силен знак за отделяне от запетаята и тирето.</p><p>Най-често употребявани са кръглите скоби ( ). Останалите видове скоби – квадратни скоби [ ], ъглести скоби < > и наклонени скоби / / – имат употреба предимно в специализирани текстове.</p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2447.html" class=""><label>Скоби с пунктуационна функция</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2491.html" class=""><label>Скоби с непунктуационна функция</label></a></span></h3></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,11 +109,28 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Пренасяне на буквосъчетанието -ьо" id="bski330">Пренасяне на буквосъчетанието <i class="frag">-ьо</i></h1><h2 data-lvl="0" data-ref="66.4." id="66.4">66.4.</h2><p>Буквосъчетанието <i class="frag">ьо</i> винаги се пренася с буквата за предходната съгласна.</p><div class="samp"><p><i class="ex">Бо-тьо</i> (не: <i class="ex">Бот-ьо</i>), <i class="ex">га-ньовщина</i> (не: <i class="ex">ган-ьовщина</i>), <i class="ex">суф-льор</i> (не: <i class="ex">суфл-ьор</i>)</p></div><h2 data-lvl="0" data-ref="67." id="67">67.</h2><p>Инициалните съкращения не се пренасят.</p><div class="samp"><p><i class="ex">БАН, ГАТТ, МОМН, ОПЕК,</i> <i class="ex">БНБ, ВМРО, ЕООД, МВФ, НДК, СДВР,</i> <i class="ex">МОСВ, ЦСКА,</i> <i class="ex">НАТФИЗ, РИОКОЗ, САПАРД, УНИЦЕФ, ФИФА, ЮНЕСКО</i></p></div><h2 data-lvl="0" data-ref="68." id="68">68.</h2><p>Препинателните знаци не се пишат в началото на реда с изключение на кавичките, скобите и тирето.</p><div class="samp"><p><i class="ex">Един гледа сватба, друг</i><br><i class="ex">– брадва.</i>
 </p></div><br><div class="samp"><p><i class="ex">Дойдоха орли</i><br><i class="ex">– черни, големи.</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Множествено число на съществителни от м.р., означаващи и лица, и нелица" id="bski374">Множествено число на съществителни от м.р., означаващи и лица, и нелица</h1><h2 data-lvl="0" data-ref="19.2.5." id="19.2.5">19.2.5.</h2><p>Съществителните от м.р. на съгласна, които функционират със значения както на предмет, така и на лице, имат бройна форма само в значението за предмет, например <i class="ex">тип</i> (лице и предмет), <i class="ex">редактор</i> (лице и компютърна програма), <i class="ex">референт</i> (лице и предмет), <i class="ex">репродуктор</i> (лице и уред), <i class="ex">репрезентант</i> (лице и предмет), <i class="ex">саундмейкър</i> (лице и предмет), <i class="ex">офицер</i> (лице и шахматна фигура), <i class="ex">поп</i> (лице и карта за игра)<i class="ex">.</i></p><div class="samp first-samp collapsed"><p><i class="ex">Строят се няколко типа жилища.</i> (Думата <i class="ex">тип</i> е в предметно значение.)</p></div><div class="samp"><p><i class="ex">Разговарях с двама типове на улицата.</i> (Думата <i class="ex">тип</i> е в значение на лице.) </p></div><div class="samp"><p><i class="ex">Няколко члена от този закон се нуждаят от поправка</i> (Думата <i class="ex">член</i> е в предметно значение.)</p></div><div class="samp"><p><i class="ex">Колко членове на борда на директорите присъстват?</i> (Думата <i class="ex">член</i> е в значение на лице).</p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

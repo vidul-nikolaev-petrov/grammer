@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,6 +109,22 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
@@ -92,5 +132,6 @@
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Оформяне на библиографско цитиране" id="bski870">Оформяне на библиографско цитиране</h1><p>Библиографското цитиране се състои от библиографско описание, съдържащо сведения за цитирания документ, и препратки, които свързват основния текст с библиографското описание. Източниците се цитират и се описват според посочените в стандарта за библиографско цитиране правила (БДС ISO 690:2011. Информация и документация. Ръководство за библиографско цитиране и цитиране на информационни ресурси). Библиографското цитиране може да се извършва по три начина: в самия текст, под линия и в края на текста чрез самостоятелен библиографски списък.</p><p>Избраният от автора начин на библиографско цитиране се прилага последователно в целия текст.</p><h2 data-lvl="0" data-ref="128." id="128">  128.</h2><p>Библиографското цитиране в текста се оформя по следния начин:</p><h2 data-lvl="0" data-ref="128.1." id="128.1">128.1.</h2><p>В текста може да се даде пълно библиографско описание на документа.</p><div class="samp">По същия въпрос вж. Конев, Илия. Българското възраждане и Просвещението. Т. 2. Въпроси на българската филологическа култура. София: Унив. изд. Св. Климент Охридски, 1991, с. 358. </div><h2 data-lvl="0" data-ref="128.2." id="128.2">128.2.</h2><p>Цитираният документ се посочва в скоби, частично в скоби или без скоби.</p><h2 data-lvl="0" data-ref="128.2.1." id="128.2.1">128.2.1.</h2><p>При цитиране в скоби се спазват стандартизираните правила за библиографско описание.</p><div class="samp">В Родопите, Странджа и при българите от Мала Азия „баба“ се назовава и майката на съпругата (вж. Георгиева, Иваничка. Родствени връзки и роднински названия. – В: Българска народна култура. Историко-географски очерк. София: Наука и изкуство, 1981, с. 230 – 231).</div><h2 data-lvl="0" data-ref="128.2.2." id="128.2.2">128.2.2.</h2><p>При частично цитиране в скоби само библиографските сведения, включени в скобите, се оформят по стандартизираните правила за библиографско описание.</p><div class="samp"><p>Както показва в своята интересна студия френският българист Р. Бернар (вж. Някои бележки върху аориста на <i class="frag">-ох</i> и върху глаголната система на съвременния български книжовен език. – В: Бернар, Роже. Българистични изследвания. София: Наука и изкуство, 1982, с. 123 – 172), този тип глаголи са изолирани в системата на българското спрежение.</p></div><h2 data-lvl="0" data-ref="128.2.3." id="128.2.3">128.2.3.</h2><p>Библиографско цитиране в текста може да се извършва, без да се спазват стандартизираните правила за библиографско описание.
 </p><div class="samp">Този въпрос В. Паскалева разглежда и в статията си „Средна Европа и културно-националното развитие на българите през Възраждането“, публикувана в сп. „Исторически преглед“ от 1981 г., кн. 3 – 4.
 </div><h2 data-lvl="0" data-ref="128.3." id="128.3">128.3.</h2><p>При повторно или многократно цитиране на една и съща публикация се допуска заглавието ѝ да се съкрати, като се използва предварително уточнена абревиатура.</p><div class="samp first-samp collapsed"><p>Граматика на съвременния български книжовен език (по-нататък ГСБКЕ)</p></div><div class="samp"><p>Закон за данъците върху доходите на физическите лица (ЗДДФЛ)</p></div><div class="samp"><p>ГИБИ (Гръцки извори за българската история)</p></div><h2 data-lvl="0" data-ref="128.4." id="128.4">128.4.</h2><p>Правилата за цитиране в текста важат и тогава, когато той е поместен в бележка под линия.</p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3443.html" class=""><label>Библиографско цитиране под линия</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3476.html" class=""><label>Библиографско цитиране в края на текст</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="3486.html" class=""><label>Азбучно подреждане</label></a></span></p><p><span class="XTUiN"><a href="3496.html" class=""><label>Хронологично подреждане</label></a></span></p><p><span class="XTUiN"><a href="3502.html" class=""><label>Подреждане по номера</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3506.html" class=""><label>Препратки към библиографски списък</label></a></span></h3></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,6 +109,22 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
@@ -93,5 +133,6 @@
 </p><div class="samp"><p align="center" class="sampindented">КАРАДЖАТА</p><p align="right"><i class="ex">И търсят духа на Караджата!</i><br><span>Хр. Ботев</span></p><p align="center" class="sampindented">Бунтът бе помазан. В горските усои<br>паднаха убити всичките герои.<br>…</p></div><h2 data-lvl="0" data-ref="121.3." id="121.3">121.3.</h2><p>Източникът (авторът) на мотото, ако е посочен, се оформя по следния начин:</p><h2 data-lvl="0" data-ref="121.4." id="121.4">121.4.</h2><p>Източникът се пише на самостоятелен ред под мотото.</p><h2 data-lvl="0" data-ref="121.5." id="121.5">121.5.</h2><p>Източникът започва с главна буква.</p><h2 data-lvl="0" data-ref="121.6." id="121.6">121.6.</h2><p>След източника не се поставя точка.
 </p><div class="samp"><p align="center">НАЧАЛОТО НА ЕДНА ДИПЛОМАТИЧЕСКА КАРИЕРА</p><p align="right"><i class="ex">И най-дългият път започва с една малка крачка.</i><br>Китайска поговорка</p>
 </div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

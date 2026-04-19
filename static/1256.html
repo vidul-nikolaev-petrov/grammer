@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="1" data-ref="Със съставки от чужд произход" id="bski485">Със съставки от чужд произход</h1><h2 data-lvl="0" data-ref="53.4.1." id="53.4.1">53.4.1.</h2><p>Сложни съществителни имена, чиито съставки (първата или и двете) са от чужд произход и не се употребяват като самостоятелни думи в езика, се пишат слято.</p><div class="samp"><p><i class="ex">айскафе, бекстейдж, бодибилдинг, боксофис, джакпот, джемсешън, джубокс, копирайт, тийнпоколение, уебстраница, кросоувър, лайфстайл, маунтинбайк, мейнстрийм, ноутбук, плейбек, праймтайм, саундтрак, сноуборд, стендбай, стийпълчейз, таймаут, трейдюнион, феърплей, хотдог, шорттрек, шоурум</i></p></div><h2 data-lvl="0" data-ref="53.4.1.1." id="53.4.1.1">53.4.1.1.</h2><p>Когато съставките на такива сложни съществителни имена се употребяват и като самостоятелни думи, се допуска те да се пишат разделно.</p><div class="samp"><p><i class="ex">бизнесадминистрация</i> и <i class="ex">бизнес администрация, бънджискокове</i> и <i class="ex">бънджи скокове, гейпарад</i> и <i class="ex">гей парад, джазконцерт</i> и <i class="ex">джаз концерт, еврозона</i> и <i class="ex">евро зона, кафемашина</i> и <i class="ex">кафе машина, офисоборудване</i> и <i class="ex">офис оборудване, ретроизпълнение</i> и <i class="ex">ретро изпълнение, скисъстезание</i> и <i class="ex">ски състезание, стереоуредба</i> и <i class="ex">стерео уредба, тенистурнир</i> и <i class="ex">тенис турнир</i></p></div><p>[Вж. Разделно писане, т. <a href="#55.2">55.2</a>.]</p></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

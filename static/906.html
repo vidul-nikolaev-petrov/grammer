@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="2" data-ref="Имена с повече от една главна буква" id="bski359">Имена с повече от една главна буква</h1><h2 data-lvl="0" data-ref="39.2." id="39.2">39.2.</h2><p>Когато съставното собствено име съдържа и друго собствено име, то също се пише с главна буква.</p><div class="samp first-samp collapsed"><p><i class="ex">Пипи Дългото чорапче, Петър Моканина, Голяма Богородица, Баба Меца, Кумчо Вълчо, Трифон Зарезан,</i> (остров) <i class="ex">Света Елена, Санкт Петербург, Сен Тропе, Северна Европа, Република България, Стара Загора, Горна Оряховица, „Зелени Балкани“</i> (име на неформална организация)<i class="ex">, Устав на Организацията на обединените нации, Древна Гърция, Древен Рим, Крали Марко, Старият Пловдив, Пловдивски университет „Паисий Хилендарски“, Средно общообразователно училище „Проф. Марин Дринов“;</i></p></div><div class="samp"><p><i class="ex">Виринея Вихра</i> (псевдоним на Вера Иванова)<i class="ex">, Елин Пелин</i> (псевдоним на Димитър Иванов)<i class="ex">, Сирак Скитник</i> (псевдоним на П. Христов)<i class="ex">, Радой Ралин</i> (псевдоним на Димитър Стоянов)<i class="ex">, Ран Босилек</i> (псевдоним на Г. Негенцов)<i class="ex">, Чичо Стоян</i> (псевдоним на Ст. Попов)</p></div><h2 data-lvl="0" data-ref="39.2.1." id="39.2.1">39.2.1.</h2><p>С главна буква се пишат съществителни нарицателни имена, утвърдили се като част от съставно собствено име на лице, митологичен или литературен персонаж.</p><div class="samp"><p><i class="ex">Баба Марта, Баба Тонка, Баба Яга, Бай Ганьо, Бачо Киро, Братя Миладинови, Дон Кихот, Даскал Манол, Дева Мария, Дядо Коледа, Дядо Вазов, Кума Лиса, Кумчо Вълчо, Мечо Пух, Отец Паисий, Патриарх Евтимий, Презвитер Козма, Хаджи Димитър, Райна Княгиня, Настрадин Ходжа, Ежко Бежко, Зайо Байо, Косе Босе, Охльо Бохльо</i></p></div><h2 data-lvl="0" data-ref="39.2.2." id="39.2.2">39.2.2.</h2><p>С главна буква се пишат прилагателни и числителни имена, установили се като съставна част от собствени имена на лица.</p><div class="samp"><p><i class="ex">Ана Австрийска, Евтимий Търновски, Иван Грозни, Крум Страшни, Матей Преображенски, Паисий Хилендарски, Пипин Къси, Филип Хубави, Хитър Петър, Борис Първи</i> (и <i class="ex">Борис I</i>)<i class="ex">, Александър Втори</i> (и <i class="ex">Александър II</i>)<i class="ex">, Хенри Осми</i> (и <i class="ex">Хенри VIII</i>)</p></div><h2 data-lvl="0" data-ref="39.2.3." id="39.2.3">39.2.3.</h2><p>С главна буква се пишат прилагателните <i class="ex">източен</i>, <i class="ex">западен</i>, <i class="ex">северен</i>, <i class="ex">южен</i> и производните от тях, когато са първа част на съставни собствени имена.</p><div class="samp"><p><i class="ex">Северна България, Южна Франция, Западна Стара планина, Източна Европа, Югоизточна Азия, Северозападна Африка</i></p></div><p>[Срв. Малки букви, т. <a href="#41.3">41.3</a>.]</p></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

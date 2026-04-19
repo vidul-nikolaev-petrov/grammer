@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Тире при обобщаващи изрази" id="bski1011">Тире при обобщаващи изрази</h1><h2 data-lvl="0" data-ref="102.5." id="102.5">102.5.</h2><p>Тире се пише за отделяне на изброяване след обобщаващи думи или изрази.</p><div class="samp first-samp collapsed"><p><i class="ex">Фондацията поддържа интернет страница за лично творчество – поезия, есета, разкази, картини, музика, фотография, преводи, колажи.</i></p></div><div class="samp"><p><i class="ex">Методът има и някои предимства – запазват се в максимална степен физикохимичните свойства на материала, отпада необходимостта от специално съхранение, крайният продукт е удобен за смесване с други компоненти.</i></p></div><p>[За употреба на двоеточие вж. т. <a href="#98.2.1">98.2.1</a>.]</p><h2 data-lvl="0" data-ref="102.5.1." id="102.5.1">102.5.1.</h2><p>Когато изброяването е разположено между останалите части на изречението и началото му е отделено с тире, краят му може да се отдели с тире или със запетая.</p><div class="samp first-samp collapsed"><p><i class="ex">Допреди няколко десетилетия се разискваше въпросът кой от трите вида – орангутанът, горилата или шимпанзето – е предшественик на човека.</i></p></div><div class="samp"><p><i class="ex">Само ако са изпълнени следните условия – потребителят да заяви в писмен вид желанието си за отказ от договора, да посочи банкова сметка за възстановяване на платената от него сума и да заплати транспортните разходи по връщане на стоката – може да се упражни правото съгласно чл. 55 от ЗЗП.</i></p></div><div class="samp"><p><i class="ex">При неврози се препоръчват и останалите пчелни продукти с хранително-лечебни свойства – пчелното млечице и пчелният прашец, заради тяхното общоукрепващо действие и влиянието им върху нервната система.</i></p></div><h2 data-lvl="0" data-ref="102.6." id="102.6">102.6.</h2><p>Тире се пише за отделяне на обобщения и заключения от предхождащи, конкретизиращи ги еднородни части или изречения.</p><div class="samp first-samp collapsed"><p><i class="ex">Пътуване, хотели, репетиции, представления – това е животът на артиста.</i></p></div><div class="samp"><p><i class="ex">Слънцето се поусмихна, повя южен вятър – природата започна да се събужда.</i></p></div><h2 data-lvl="0" data-ref="102.7." id="102.7">102.7.</h2><p>Тире се пише за отделяне на част от изречение или на просто изречение в състава на сложното, обобщени с показателно местоимение или с частицата <i class="ex">ето</i>.</p><div class="samp first-samp collapsed"><p><i class="ex">Любовта – това е всичко, от което се нуждаем.</i></p></div><div class="samp"><p><i class="ex">Да бъдеш човек – това означава да бъдеш отговорен.</i></p></div><div class="samp"><p><i class="ex">Какво е бъдещето на планетата – ето въпроса, за който трябва да се мисли.</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

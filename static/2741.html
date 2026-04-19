@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,11 +109,28 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Кавички, обусловени от контекста" id="bski1095">Кавички, обусловени от контекста</h1><h2 data-lvl="0" data-ref="104.5." id="104.5">104.5.</h2><p>Кавички се употребяват при необичайна за контекста употреба на думи и изрази.</p><div class="samp first-samp collapsed"><p><i class="ex">Обаждания и есемеси с „шеги“ получават абонати на мобилни оператори.</i></p></div><div class="samp"><p><i class="ex">Движейки се в този ускорен темп, повествованието в същото време на места хлътва в своеобразни „повествователни ями“ и „тресавища“...</i></p></div><h2 data-lvl="0" data-ref="105." id="105">105.</h2><p>Кавички не се употребяват в следните случаи:</p><h2 data-lvl="0" data-ref="105.1." id="105.1">105.1.</h2><p>Кавички не се употребяват при собствени имена на географски обекти.</p><div class="samp"><p><i class="ex">град Варна, село Ковачевица, местност Предела, махала Палилула, планина Родопи, връх Мусала, река Велека, езеро Сребърна, остров Света Анастасия</i></p></div><h2 data-lvl="0" data-ref="105.2." id="105.2">105.2.</h2><p>Кавички не се употребяват при заглавия на книги, беседи, лекции, речи, дисертации, конкурси, концерти, филми, оперни и театрални представления, шоу спектакли и др. поради специфично графично оформяне.</p><div class="samp" style="text-align:center"><p>ХЪШОВЕ</p><p>по Иван Вазов</p><p>Спектакъл на Александър Морфов
 </p></div><h2 data-lvl="0" data-ref="105.3." id="105.3">105.3.</h2><p>Кавички не се употребяват при цитиране на стихове, оформени като отделен абзац.</p><div class="samp first-samp collapsed"><p><i class="ex">В друго стихотворение обаче се казва, че нощите са не само време за неусетно гаснене:</i></p></div><div class="samp"><p><i class="ex">И стиховете, дето пишем,</i></p></div><div class="samp"><p><i class="ex">когато краднем от съня си...</i></p></div><p>[Вж. Оформяне на текст с цитат, т. <a href="#127.6.1">127.6.1</a>.]</p></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

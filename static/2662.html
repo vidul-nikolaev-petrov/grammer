@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Непунктуационна употреба на тирето" id="bski1024">Непунктуационна употреба на тирето</h1><h2 data-lvl="0" data-ref="103." id="103">103.</h2><p>Като знак с непунктуационна функция тирето се използва в следните случаи:</p><h2 data-lvl="0" data-ref="103.1." id="103.1">103.1.</h2><p>Тире се използва за графично отделяне на репликите на различните участници в диалог.</p><div class="samp first-samp collapsed"><p><i class="ex">– В Америка ходили ли сте?</i><br><i class="ex">– Не, не съм ходил.</i></p></div><div class="samp"><p><i class="ex">– Кои са Вашите любими композитори?</i><br><i class="ex">– Всички български композитори. Убеден съм, че всеки автор, когато пише творбата си, оставя късче от сърцето си.</i></p></div><p>[Вж. Оформяне на текст с пряка реч, т. <a href="#131.1">131.1</a>.]</p><h2 data-lvl="0" data-ref="103.2." id="103.2">103.2.</h2><p>Тире се използва за означаване на рубрики, когато са разположени на нов ред и не са номерирани.</p><div class="samp"><p><i class="ex">Анотации се поместват:</i><br><i class="ex">– в каталозите на издателствата;</i><br><i class="ex">– в рубрики за нови книги на вестници и списания;</i><br><i class="ex">– към отпечатана книга.</i></p></div><p>[Вж. Оформяне на рубрики, т. <a href="#125.1">125.1</a>.]</p><h2 data-lvl="0" data-ref="103.3." id="103.3">103.3.</h2><p>Тире се използва за означаване на отношения между понятия, обекти и др. (когато е пропуснат съюзът между тях).</p><div class="samp first-samp collapsed"><p><i class="ex">взаимодействие личност – култура</i></p></div><div class="samp"><p><i class="ex">хипотезата Кант – Лаплас</i></p></div><div class="samp"><p><i class="ex">закон на Бойл – Мариот</i></p></div><div class="samp"><p><i class="ex">опозиция родно – чуждо</i></p></div><div class="samp"><p><i class="ex">противопоставянето любов – омраза</i></p></div><div class="samp"><p><i class="ex">футболната среща България – Полша</i></p></div><h2 data-lvl="0" data-ref="103.4." id="103.4">103.4.</h2><p>Тире се използва за означаване на период от време, интервал или отношение между обекти в пространството, когато е налице пропускане на съюз или предлог.</p><div class="samp first-samp collapsed"><p><i class="ex">VI – V в. пр.н.е.</i></p></div><div class="samp"><p><i class="ex">70 – 80-те години на ХХ в.</i></p></div><div class="samp"><p><i class="ex">Иван Вазов (1850 – 1921)</i></p></div><div class="samp"><p><i class="ex">3.03. – 3.06.2010 г.</i></p></div><div class="samp"><p><i class="ex">т. 20 – 21</i></p></div><div class="samp"><p><i class="ex">ул. „Свобода“ № 16 – 18</i></p></div><div class="samp"><p><i class="ex">дължина 2,5 – 3 м</i></p></div><div class="samp"><p><i class="ex">жп линия Русе – Варна</i></p></div><div class="samp"><p><i class="ex">пътят Асеновград – Смолян</i></p></div><div class="samp"><p><i class="ex">фериботът Видин – Калафат</i></p></div><h2 data-lvl="0" data-ref="103.5." id="103.5">103.5.</h2><p>Тире се използва за означаване на приблизителност.</p><div class="samp first-samp collapsed"><p><i class="ex">Останаха само 15 – 20 минути.</i></p></div><div class="samp"><p><i class="ex">Донесох ти 10 – 12 страници.</i></p></div><div class="samp"><p><i class="ex">Ще ти се обадя в сряда – четвъртък.</i></p></div><p>[За полуслято писане на сложни числителни имена, означаващи приблизителност, вж. т. <a href="#54.10">54.10</a>.]</p></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

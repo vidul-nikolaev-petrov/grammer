@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Авторов текст, предхождащ цитат" id="bski804">Авторов текст, предхождащ цитат</h1><h2 data-lvl="0" data-ref="127.4." id="127.4">127.4.</h2><p>Авторовият текст, предхождащ цитата, се оформя по следния начин:</p><h2 data-lvl="0" data-ref="127.4.1." id="127.4.1">127.4.1.</h2><p>След авторовия текст се пише двоеточие, ако този текст съдържа израз, който въвежда цитата.</p><div class="samp first-samp collapsed"><p>Емблематичен за творчеството на поета е следният стих: „Душата ми е стон. Душата ми е зов“.</p></div><div class="samp"><p>Марк Твен пише: „Истината е най-скъпото нещо, което притежаваме. Нека я пестим!“.</p></div><p>[Вж. Двоеточие, т. <a href="#98.7">98.7</a>.]</p><h2 data-lvl="0" data-ref="127.4.2." id="127.4.2">127.4.2.</h2><p>Ако авторовият текст не съдържа израз, който въвежда цитата, двоеточие не се пише.</p><div class="samp first-samp collapsed"><p>Въстанието през септември 1923 г. с трагичния си завършек „праща поезията в изгнание“.</p></div><div class="samp"><p>Със своята пламенна възхвала на подвига на опълченците Вазов побеждава „на клеветата зъбът“.</p></div><div class="samp"><p>Според Л. Каравелов държавата след Освобождението трябва да се устрои съобразно с облика на българския народ, който „няма сред себе си аристократически величия“.</p></div><h2 data-lvl="0" data-ref="127.5." id="127.5">127.5.</h2><p>Ако цитатът завършва с пояснителния израз, този израз се пише с малка буква и се оформя по следния начин:</p><h2 data-lvl="0" data-ref="127.5.1." id="127.5.1">127.5.1.</h2><p>Ако пояснителният израз е след цитираното изречение, той се отделя с тире или запетая.</p><div class="samp"><p>„Тази монета е уникален фалшификат“, категоричен е специалистът. „Рисковано ли е да пристигнеш в Америка с два долара и един милион мечти?“ – пита художникът.</p></div><h2 data-lvl="0" data-ref="127.5.2." id="127.5.2">127.5.2.</h2><p>Ако пояснителният израз е вмъкнат между части на цитираното изречение, той се отделя с тирета или запетаи.</p><div class="samp"><p>„Най-важната форма на символно изразяване – пише Лесли Уайт – е членоразделната реч.“</p></div><p>или:</p><div class="samp"><p>„Най-важната форма на символно изразяване, пише Лесли Уайт, е членоразделната реч.“</p></div><h2 data-lvl="0" data-ref="127.5.2.1." id="127.5.2.1">127.5.2.1.</h2><p>Ако в цитат е вмъкнат пояснителен израз в позиция, където е необходима запетая, запетаята се прехвърля след пояснителния израз (преди тирето).</p><div class="samp"><p>„Времето е в нас и ние сме във времето – пише Левски до П. Хитов, – то нас обръща и ний него обръщаме.“</p></div><h2 data-lvl="0" data-ref="127.5.2.2." id="127.5.2.2">127.5.2.2.</h2><p>Допуска се да не се пише запетаята, уговорена в т. <a href="#127.5.2.1">127.5.2.1</a>.</p><div class="samp"><p>„Времето е в нас и ние сме във времето – пише Левски до П. Хитов – то нас обръща и ний него обръщаме.“</p></div><h2 data-lvl="0" data-ref="127.5.3." id="127.5.3">127.5.3.</h2><p>Ако с пояснителния израз завършва първото от две или повече цитирани изречения, той се отделя с тире или запетая и завършва с точка. Следващото цитирано изречение се въвежда с тире.</p><div class="samp"><p>„Дойдох напълно безпристрастен и с намерение да бъда справедлив – пише Макгахан. – Боя се, че престанах да бъда безпристрастен и положително вече не съм хладнокръвен.“</p></div><p>или:</p><div class="samp"><p>„Дойдох напълно безпристрастен и с намерение да бъда справедлив, пише Макгахан. – Боя се, че престанах да бъда безпристрастен и положително вече не съм хладнокръвен.“</p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

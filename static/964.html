@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Малки букви" id="bski166">Малки букви</h1><h2 data-lvl="0" data-ref="41." id="41">41.</h2><p>С малка буква се пишат думите, които не са собствени имена.</p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="967.html" class=""><label>Календарни периоди</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="971.html" class=""><label>Малка буква при <i class="frag">изток</i>, <i class="frag">запад</i>, <i class="frag">север</i>, <i class="frag">юг</i> и под.</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="982.html" class=""><label>Малка буква при <i class="frag">източен</i>, <i class="frag">западен</i>, <i class="frag">северен</i>, <i class="frag">южен</i> и под.</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="988.html" class=""><label>Жителски названия</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="992.html" class=""><label>Названия на раси, племена, етноси и под.</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="996.html" class=""><label>Названия на парични единици</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1000.html" class=""><label>Названия на стилове в изкуството</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1004.html" class=""><label>Музикални термини</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1008.html" class=""><label>Названия на геологически епохи и ери</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1012.html" class=""><label>Названия на исторически периоди</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1017.html" class=""><label>Имена на философски и религиозни движения и под.</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1021.html" class=""><label>Имена на езици</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1025.html" class=""><label>Прилагателни от собствени имена</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1031.html" class=""><label>Малки букви при членни форми и служебни думи</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1036.html" class=""><label>Специалности и професионални направления</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1046.html" class=""><label>Образователни и научни степени и под.</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1050.html" class=""><label>Съществителни нарицателни от собствени имена</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="1053.html" class=""><label>Имена за качествена характеристика</label></a></span></p><p><span class="XTUiN"><a href="1060.html" class=""><label>Названия на мерни единици</label></a></span></p><p><span class="XTUiN"><a href="1064.html" class=""><label>Преносна употреба на <i class="frag">вселена</i>, <i class="frag">земя</i>, <i class="frag">луна</i> и <i class="frag">под</i>.</label></a></span></p><p><span class="XTUiN"><a href="1070.html" class=""><label>Имена на марки, породи, сортове и под.</label></a></span></p><p><span class="XTUiN"><a href="1079.html" class=""><label>Maлка буква при думите <i class="frag">възраждане</i>, <i class="frag">ренесанс</i> и под.</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1090.html" class=""><label>Съществителни нарицателни в съставни собствени имена</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1096.html" class=""><label>Притежателни прилагателни в състава на термини</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1100.html" class=""><label>Прилагателни за качествена характеристика от собствени имена</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1105.html" class=""><label>Фразеологизми с прилагателни от собствени имена</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1109.html" class=""><label>Съществителни нарицателни от абревиатури</label></a></span></h3></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

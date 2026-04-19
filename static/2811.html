@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Непунктуационна употреба на точката" id="bski1121">Непунктуационна употреба на точката</h1><h2 data-lvl="0" data-ref="109." id="109">109.</h2><p>Като знак с непунктуационна функция точката се използва в следните случаи:</p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2814.html" class=""><label>Точка при съкращаване на думи</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2823.html" class=""><label>Точка в десетични дроби</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2830.html" class=""><label>Точка след арабска цифра</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2834.html" class=""><label>Точка за означаване на дати</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2846.html" class=""><label>Точка при рубрики</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2853.html" class=""><label>Кога не се пише точка</label></a></span></h3></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

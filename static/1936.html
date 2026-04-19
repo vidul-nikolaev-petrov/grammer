@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="6" data-ref="Пунктуация" id="bski416">Пунктуация</h1><p>Пунктуацията е съвкупност от препинателни знаци и правилата за тяхната употреба. Функцията на пунктуацията е да осигури еднозначно възприемане на писмения текст в съответствие с намеренията на неговия автор. Основният принцип в българската пунктуация е синтактичният. Малка част от пунктуационните правила се обуславят от смислови и интонационни особености на изречението.</p><p>Препинателните знаци служат за отделяне на синтактични и смислови цялости в изречението и в текста. Различават се два вида препинателни знаци: знаци за край на изречението и знаци вътре в изречението. Знаците за край на изречението са: точка, въпросителен знак, удивителен знак и многоточие. Удивителният и въпросителният знак, както и многоточието могат да се използват и вътре в изречението.</p><p>Знаците вътре в изречението са: запетая, точка и запетая, двоеточие, тире, скоби и кавички. Скобите и кавичките са двойни знаци и служат за ограждане както на думи и изрази в изречението, така и на цели изречения и текстове.</p><p>Някои препинателни знаци имат непунктуационни функции и специална употреба при графичното оформяне на текста.</p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1941.html" class=""><label>Запетая [,]</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="1942.html" class=""><label>Пунктуационна употреба на запетаята</label></a></span></p><p><span class="XTUiN"><a href="2279.html" class=""><label>Непунктуационна употреба на запетаята</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2300.html" class=""><label>Точка и запетая [;]</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="2304.html" class=""><label>Точка и запетая в простото изречение</label></a></span></p><p><span class="XTUiN"><a href="2309.html" class=""><label>Точка и запетая в сложното изречение</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2332.html" class=""><label>Двоеточие [:]</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="2334.html" class=""><label>Пунктуационна употреба на двоеточието</label></a></span></p><p><span class="XTUiN"><a href="2424.html" class=""><label>Непунктуационна употреба на двоеточието</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2444.html" class=""><label>Скоби [( )]</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="2447.html" class=""><label>Скоби с пунктуационна функция</label></a></span></p><p><span class="XTUiN"><a href="2491.html" class=""><label>Скоби с непунктуационна функция</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2518.html" class=""><label>Тире [–]</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="2520.html" class=""><label>Пунктуационна употреба на тирето</label></a></span></p><p><span class="XTUiN"><a href="2662.html" class=""><label>Непунктуационна употреба на тирето</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2705.html" class=""><label>Кавички [„ “]</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="2709.html" class=""><label>Кавички при цитиране</label></a></span></p><p><span class="XTUiN"><a href="2714.html" class=""><label>Кавички при пряка реч</label></a></span></p><p><span class="XTUiN"><a href="2719.html" class=""><label>Кавички при собствени имена</label></a></span></p><p><span class="XTUiN"><a href="2741.html" class=""><label>Кавички, обусловени от контекста</label></a></span></p><p><span class="XTUiN"><a href="2760.html" class=""><label>Кога не се пишат кавички</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2789.html" class=""><label>Точка [.]</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="2790.html" class=""><label>Пунктуационна употреба на точката</label></a></span></p><p><span class="XTUiN"><a href="2811.html" class=""><label>Непунктуационна употреба на точката</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2881.html" class=""><label>Въпросителен знак [?]</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2901.html" class=""><label>Удивителен знак [!]</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2936.html" class=""><label>Многоточие [...]</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="2951.html" class=""><label>Непунктуационни знаци</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="2954.html" class=""><label>Дефис (малко тире) [-]</label></a></span></p><p><span class="XTUiN"><a href="3007.html" class=""><label>Знак за ударение [`]</label></a></span></p><p><span class="XTUiN"><a href="3027.html" class=""><label>Апостроф [']</label></a></span></p><p><span class="XTUiN"><a href="3043.html" class=""><label>Наклонена черта [/]</label></a></span></p><p><span class="XTUiN"><a href="3063.html" class=""><label>Индекс и звездичка [*]</label></a></span></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

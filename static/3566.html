@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Оформяне на текст с полупряка реч" id="bski1004">Оформяне на текст с полупряка реч</h1><p>Полупряка реч е вътрешната реч или мислите на герой от художествен текст, които авторът представя с присъщите за този герой изразни средства, но не ги предава като пряка реч.</p><h2 data-lvl="0" data-ref="132." id="132">132.</h2><p>Текст с полупряка реч се оформя по следния начин:</p><h2 data-lvl="0" data-ref="132.1." id="132.1">132.1.</h2><p>Полупряката реч се пише на същия ред, на който се пише и авторската реч, но се оформя без кавички и без тире.</p><div class="samp"><p>Излиза и отива у Стоенкини. Още от вратнята сърцето ѝ затреперва. На, сега ще ѝ каже Стоянка, че приела много здраве от Стоенча, че за Коледа си иде.</p></div><h2 data-lvl="0" data-ref="132.2." id="132.2">132.2.</h2><p>Ако полупряката реч е самостоятелно изречение, то започва с главна буква и завършва с препинателен знак, както при пряка реч.</p><div class="samp first-samp collapsed"><p>Гледаше мрачно и втренчено пред себе си. Сълзите ѝ се попиваха от горчива мъка, от безропотно примирение. Да, ясно беше. Той не искаше да загуби свободата си, да ограничи възможностите си с едно провинциално момиче, което не можеше да му осигури нито пари, нито връзки с недостъпния свят.</p></div><div class="samp"><p>В душата ѝ кипяха недоумение и гняв. Нима войната не бе разбила и нейния живот? Нима не бе загубила тия отминали години безвъзвратно? Нима не ги губеше и сега?</p></div><div class="samp"><p>Мария се наведе напред и хвърли поглед върху циферблата на скоростта. Стрелката показваше сто километра в час. Каросерията трепереше от напрежение, въздухът свистеше, а дърветата и храстите отлитаха назад като пометени от вихрушка. Е, папа го прекаляваше!...</p></div><h2 data-lvl="0" data-ref="132.3." id="132.3">132.3.</h2><p>Ако полупряката реч е включена в авторовото изречение, преди нея се пише двоеточие, тя започва с малка буква и завършва с препинателен знак, както при пряка реч.</p><div class="samp"><p>Шибил я гледаше учуден: какъв ще е тоя дявол?</p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

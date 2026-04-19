@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Многоточие [...]" id="bski1102">Многоточие [...]</h1><h2 data-lvl="0" data-ref="113." id="113">113.</h2><p>Знакът <i class="ex">многоточие</i> се употребява в следните случаи:</p><h2 data-lvl="0" data-ref="113.1." id="113.1">113.1.</h2><p>Знакът <i class="ex">многоточие</i> се употребява за означаване на пауза при прекъсната или недоизказана мисъл вътре или в края на изречението.</p><div class="samp first-samp collapsed"><p><i class="ex">Значи, ще се превърнем в отшелници, в аскети... в лицемери, които не виждат красотата на новия свят!</i></p></div><div class="samp"><p><i class="ex">Звънтят, ехтят камбани...</i></p></div><div class="samp"><p><i class="ex">Каква си... бяла, бяла... каква си хубава...</i></p></div><div class="samp"><p><i class="ex">Не може вече, сърце слабее, кураж се губи...</i></p></div><div class="samp"><p><i class="ex">На мене да остане, не вярвам, ама жени нали са...</i></p></div><div class="samp"><p><i class="ex">В неделя със...</i></p></div><h2 data-lvl="0" data-ref="113.2." id="113.2">113.2.</h2><p>Знакът <i class="ex">многоточие</i> се употребява за означаване на пропусната част от цитат.</p><div class="samp"><p><i class="ex">Авторът казва очевидното: „... програмата не притежава собствен ум [...], ако оставиш всичко на   нея, със същия успех можеш да хвърляш зарчета“.</i></p></div><p>[За употреба на многоточие при заглавие и подзаглавие вж. т. <a href="#119.5">119.5</a> и <a href="#120.1">120.1</a>; за употреба на  многоточие при цитиране вж. т. <a href="#127.3">127.3</a>; за съчетаване на многоточие с други пунктуационни и непунктуационни знаци вж. т. <a href="#135">135</a> и <a href="#136">136</a>.]</p></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

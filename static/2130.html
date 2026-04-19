@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="1" data-ref="Прости изречения със съюз да" id="bski732">Прости изречения със съюз да</h1><h2 data-lvl="0" data-ref="88." id="88">88.</h2><p>За прости изречения, свързани със съюз <i class="ex">да</i> в рамките на сложното изречение, са в сила следните правила:</p><h2 data-lvl="0" data-ref="88.1." id="88.1">88.1.</h2><p>Не се отделят със запетая две прости изречения, ако второто изречение е въведено със съюза <i class="ex">да</i>.</p><div class="samp first-samp collapsed"><p><i class="ex">Не е лесно да признаеш вината си.</i></p></div><div class="samp"><p><i class="ex">Милен не им позволи да влязат.</i></p></div><div class="samp"><p><i class="ex">Флиртът на Зара беше просто ексцентрично и невинно хрумване да се разсее един уморен човек.</i></p></div><div class="samp"><p><i class="ex">Инструкторите подкрепят идеята да се разреши на 16-годишните карането на кола с родител.</i></p></div><h2 data-lvl="0" data-ref="88.2." id="88.2">88.2.</h2><p>Когато <i class="ex">да</i>-изречение е разположено между частите на друго просто изречение, краят на <i class="ex">да</i>-изречението се отделя със запетая.</p><div class="samp"><p><i class="ex">Необходимостта да се осигурят надеждни средства за обмен на информация, изисква разработване на нови продукти.</i></p></div><h2 data-lvl="0" data-ref="88.3." id="88.3">88.3.</h2><p>Не се отделят със запетая непосредствено следващи едно след друго <i class="ex">да</i>-изречения, когато всяко следващо пояснява предходното.</p><div class="samp"><p><i class="ex">Мария дойде да моли началника да назначи мъжа ѝ да пази склада.</i></p></div><h2 data-lvl="0" data-ref="88.4." id="88.4">88.4.</h2><p>При поредица от <i class="ex">да</i>-изречения, поясняващи едно и също просто изречение и разположени след него, няма запетая само пред първото <i class="ex">да</i>-изречение.</p><div class="samp first-samp collapsed"><p><i class="ex">После се наложи дни наред да ходя, да моля, да настоявам.</i></p></div><div class="samp"><p><i class="ex">Сега Моника мечтае един ден отново да стъпи на крака, да бяга, да танцува.</i></p></div><h2 data-lvl="0" data-ref="88.5." id="88.5">88.5.</h2><p>Когато между две прости изречения, свързани със съюза <i class="ex">да</i>, е разположено друго просто изречение, пред <i class="ex">да</i>-изречението се поставя запетая.</p><div class="samp first-samp collapsed"><p><i class="ex">Казах на всички, които срещнах, да дойдат на събранието.</i></p></div><div class="samp"><p><i class="ex">Ирина предложи на експерта, ако иска, да я придружи на острова.</i></p></div><h2 data-lvl="0" data-ref="88.6." id="88.6">88.6.</h2><p>Когато първото от две прости изречения, свързани със съюза <i class="ex">да</i>, завършва с обособена част, пред <i class="ex">да</i>-изречението се поставя запетая.</p><div class="samp"><p><i class="ex">Чух един познат, присъствал на срещата вчера, да разказва странни неща.</i></p></div><h2 data-lvl="0" data-ref="88.7." id="88.7">88.7.</h2><p>Когато първото от две прости изречения, свързани с <i class="ex">да</i>, завършва с вметнат израз, който се отделя със запетаи, пред <i class="ex">да</i>-изречението се поставя запетая.</p><div class="samp"><p><i class="ex">Ангел не приел, естествено, да върши черната работа.</i></p></div><h2 data-lvl="0" data-ref="88.8." id="88.8">88.8.</h2><p>Когато първото от две прости изречения, свързани с <i class="ex">да</i>, завършва с обръщение, пред <i class="ex">да</i>-изречението се пише запетая.</p><div class="samp"><p><i class="ex">Елена те моли, Яворе, да ѝ помогнеш.</i></p></div><h2 data-lvl="0" data-ref="88.9." id="88.9">88.9.</h2><p>Когато <i class="ex">да</i>-изречение се намира пред пояснявано от него изречение, двете изречения се отделят със запетая.</p><div class="samp first-samp collapsed"><p><i class="ex">Да те обичам, аз копнея.</i></p></div><div class="samp"><p><i class="ex">Да сте много щастливи, ви желаем!</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

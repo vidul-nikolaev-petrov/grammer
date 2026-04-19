@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Окончание -и за множествено число" id="bski112">Окончание <i class="frag">-и</i> за множествено число</h1><h2 data-lvl="0" data-ref="19.1." id="19.1">19.1.</h2><p>Многосричните съществителни от м. и ж. р. образуват множествено число с окончание <i class="frag">-и</i>.</p><h2 data-lvl="0" data-ref="19.1.1." id="19.1.1">19.1.1.</h2><p>Съществителните имена със завършеци <i class="frag">-ий</i> и <i class="frag">-ия</i> образуват множествено число със завършек <i class="frag">-ии</i>.</p><div class="samp"><p><i class="ex">гений – гении, стадий – стадии, съдия – съдии, чорбаджия – чорбаджии, гимназия – гимназии, лилия – лилии, фамилия – фамилии</i></p></div><h2 data-lvl="0" data-ref="19.1.2." id="19.1.2">19.1.2.</h2><p>При образуване на мн.ч. от съществителни на -<i class="frag">ър, -ъл, -изъм, -азъм</i> вметнатият <span>[<i class="frag">ъ</i>]</span> изпада.</p><div class="samp"><p><i class="ex">театър</i> – <i class="ex">театри</i>, <i class="ex">компютър</i> – <i class="ex">компютри, чехъл</i> – <i class="ex">чехли, афоризъм</i> – <i class="ex">афоризми, плеоназъм – плеоназми</i></p></div><p>[Вж. Вмятане и изпадане на гласни и съгласни, т. <a href="#8.3">8.3</a> и <a href="#8.4">8.4</a>.]</p></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

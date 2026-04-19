@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Сложни прилагателни на -ски за качествена характеристика" id="bski705">Сложни прилагателни на <i class="frag">-ски</i> за качествена характеристика</h1><h2 data-lvl="0" data-ref="53.15." id="53.15">53.15.</h2><p>Сложни прилагателни имена на <i class="frag">-ски</i> за качествена характеристика, образувани от съчетания от лично и фамилно име или от лично име, придружено от <i class="ex">бай</i>, <i class="ex">бачо</i> и др., се пишат слято.</p><div class="samp first-samp collapsed"><p><i class="ex">иванвазовски</i> (патриотизъм)<i class="ex">,</i> <i class="ex">йорданрадичковски</i> (подход)<i class="ex">,</i> <i class="ex">радойралиновски</i> (сарказъм);</p></div><div class="samp"><p><i class="ex">байганьовски</i> (инат)<i class="ex">,</i> <i class="ex">бачокировски</i> (подвиг)<i class="ex">,</i> <i class="ex">кралимарковска</i> (сила)<i class="ex">,</i> <i class="ex">отецпаисиевски</i> (плам)</p></div><h2 data-lvl="0" data-ref="53.15.1." id="53.15.1">53.15.1.</h2><p>Сложни притежателни прилагателни имена, образувани от съчетания от лично и фамилно име, се пишат полуслято (и с главна буква за всяка съставка).</p><div class="samp"><p><i class="ex">Димитър-Димова</i> (творба)<i class="ex">,</i> <i class="ex">Емилиян-Станев</i> (разказ)<i class="ex">,</i> <i class="ex">Златю-Бояджиев</i> (маниер)<i class="ex">,</i> <i class="ex">Иван-Фунев</i> (портрет)<i class="ex">,</i> <i class="ex">Димитър-Осининов</i> (превод)<i class="ex">,</i> <i class="ex">Стоян-Михайловски</i> (химн)<i class="ex">,</i> <i class="ex">Цанко-Церковски</i> (роман)</p></div><p>[Вж. Полуслято писане, т. <a href="#54.3">54.3</a>.]</p><h2 data-lvl="0" data-ref="53.15.2." id="53.15.2">53.15.2.</h2><p>Сложни прилагателни имена, образувани от съчетания от притежателно прилагателно от лично име и приложение пред него, се пишат полуслято (като личното име запазва главната буква).</p><div class="samp"><p><i class="ex">професор-Петрова</i> (хипотеза)<i class="ex">,</i> <i class="ex">министър-Иванов</i> (проект)<i class="ex">,</i> <i class="ex">дядо-Стефанов</i> (имот)<i class="ex">,</i> <i class="ex">чичо-Георгиева</i> (снаха)</p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

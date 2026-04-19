@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Скоби със знаци за край на изречение" id="bski955">Скоби със знаци за край на изречение</h1><h2 data-lvl="0" data-ref="135.2." id="135.2">135.2.</h2><p>Съчетаване на скоби със знаци за край на изречение.</p><h2 data-lvl="0" data-ref="135.2.1." id="135.2.1">135.2.1.</h2><p>Затварящата скоба е след знак за край на изречение, ако в скоби е оградено поне едно самостоятелно изречение.</p><div class="samp first-samp collapsed"><p>„Не познаваме хората, пък и да ги познаваме, такава работа изведнъж не става!“ (След като утвърдиха по този начин престижа си, те на свой ред откриха картите и дадоха съгласието си.) Привечер Каракачанката си отиде, отнасяйки на бъдещите сватове много здраве и най-приятни новини.</p></div><div class="samp"><p>Още от ранно детство беше слушала за чудесата, случващи се в манастира. (Не е ли многозначително, че няколко пъти беше предприемала пътувания до далечния манастир все в тревожни периоди от живото си?)</p></div><div class="samp"><p>За съжаление в онова време стриптийзът не бе още на мода и той загуби цели два часа, докато се справи с безбройните фусти на майка ми... (Боже – чух го да възклицава след четиридесет години – колко са облекчени съвременните мъже!)</p></div><h2 data-lvl="0" data-ref="135.2.2." id="135.2.2">135.2.2.</h2><p>Затварящата скоба е пред знак за край на изречение, когато заграденият в скоби израз е част от друго изречение.</p><div class="samp first-samp collapsed"><p>Но с времето започнах да си мисля, че този самоук, примитивен йезуит е искал може би да ни даде отрано уроци за живота (както се и хвалеше пред хората).</p></div><div class="samp"><p>Донесе ли ми новата си книга (тази, която излезе преди няколко дни)?</p></div><h2 data-lvl="0" data-ref="135.2.3." id="135.2.3">135.2.3.</h2><p>Затварящата скоба е пред знак за край на изречение, когато заграденият в скоби израз представлява библиографски данни или данни за автор и произведение.</p><div class="samp first-samp collapsed"><p>Интересно е, че през същия период, от Освобождението до деветдесетте години на XIX век, се наблюдава спад в издаването на буквари и пособия за начално обучение (Гладкова, Ликоманова 2002: 327).</p></div><div class="samp"><p>Легна вечер – очи не затварям от мисъл за нея (Д. Талев).</p></div><h2 data-lvl="0" data-ref="135.2.4." id="135.2.4">135.2.4.</h2><p>Съчетаване на знак за край на изречение, затваряща скоба и друг знак за край на изречение има в следните случаи:</p><h2 data-lvl="0" data-ref="135.2.4.1." id="135.2.4.1">135.2.4.1.</h2><p>Когато в скобите има цяло изречение, включено в края на друго изречение, и двете са различни по цел на изказване.</p><div class="samp"><p>Нарича се Киприан (Какво име, като извезано в тежка сърмена шевица!).</p></div><h2 data-lvl="0" data-ref="135.2.4.2." id="135.2.4.2">135.2.4.2.</h2><p>Когато ограденият в скоби текст завършва със съкратена дума.</p><div class="samp"><p>В редица случаи и префигираните глаголи могат да се употребяват в общофактическото значение (срв. излизам, довеждам, преписвам и др.).</p></div><h2 data-lvl="0" data-ref="135.2.5." id="135.2.5">135.2.5.</h2><p>Не се удвоява затваряща скоба, когато заграденият в скоби израз завършва с друг израз в скоби.</p><div class="samp"><p>Дойде заповед от директора (преустановява се пушенето (точно и ясно).</p></div><h2 data-lvl="0" data-ref="135.2.6." id="135.2.6">135.2.6.</h2><p>Затваряща скоба, знак за край на изречение и затваряща скоба се съчетават, когато изразът в скоби е включен в края на изречение, оградено в скоби.</p><div class="samp"><p>(Имаше бостани и голо поле срещу нашата къща (чак до края на улицата).)</p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

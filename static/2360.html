@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Двоеточие при изброяване" id="bski767">Двоеточие при изброяване</h1><h2 data-lvl="0" data-ref="98.2." id="98.2">98.2.</h2><p>Двоеточие се пише при изброяване в следните случаи:</p><h2 data-lvl="0" data-ref="98.2.1." id="98.2.1">98.2.1.</h2><p>При изброяване след обобщаващи думи или изрази.</p><div class="samp first-samp collapsed"><p><i class="ex">Банката предлага следните допълнителни услуги: издаване на банкови чекове, продажба и осребряване на всички видове пътнически чекове, инкасиране на поименни чекове.</i></p></div><div class="samp"><p><i class="ex">Той искаше да си отговори на няколко въпроса: кой ще е в състояние да извърши такъв мащабен проект, какви средства ще бъдат необходими, в какъв срок сградата ще може да бъде завършена.</i></p></div><p>[За употреба на тире вж. т. <a href="#102.5">102.5</a>.]</p><h2 data-lvl="0" data-ref="98.2.1.1." id="98.2.1.1">98.2.1.1.</h2><p>Допуска се да се пише двоеточие и когато изброяването не е въведено с обобщаваща дума или израз.</p><div class="samp first-samp collapsed"><p><i class="ex">Всяка филмирана таблетка съдържа лактоза, микрокристална целулоза, царевично нишесте, талк, титаниев диоксид.</i> (И: <i class="ex">Всяка филмирана таблетка съдържа: лактоза, микрокристална целулоза, царевично нишесте, талк, титаниев диоксид</i>.)</p></div><div class="samp"><p><i class="ex">Магазинът е специализиран в продажбата на масла, смазки, антифриз, добавки за двигатели и др.</i> (И: <i class="ex">Магазинът е специализиран в продажбата на: масла, смазки, антифриз, добавки за двигатели и др.</i>)</p></div><div class="samp"><p><i class="ex">Отвън, дето водата се бие в яките каменни стълбове, той издялал от камък лъв, орел, жена, цветя и плодове.</i> (И: <i class="ex">Отвън, дето водата се бие в яките каменни стълбове, той издялал от камък: лъв, орел, жена, цветя и плодове</i>.)</p></div><h2 data-lvl="0" data-ref="98.2.2." id="98.2.2">98.2.2.</h2><p>Двоеточие се пише при изброяване в рубрики (със или без обобщаваща дума или израз).</p><div class="samp first-samp collapsed"><p><i class="ex">Наред с общообразователните дисциплини се изучават и следните специални технически дисциплини:</i></p></div><div class="samp"><p><i class="ex">– техническа механика</i></p></div><div class="samp"><p><i class="ex">– електрически машини и апарати</i></p></div><div class="samp"><p><i class="ex">– технически средства за автоматизация</i></p></div><div class="samp"><p><i class="ex">– теория на автоматичното регулиране</i></p></div><div class="samp"><p><i class="ex">– автоматизация и управление на производството.</i></p></div><div class="samp"><p><i class="ex">Всяка филмирана таблетка съдържа: а) лактоза, б) микрокристална целулоза, в) царевично нишесте, г) талк, д) титаниев диоксид.</i></p></div><p>[Вж. Оформяне на рубрики, т. <a href="#125.3">125.3</a>.]</p></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

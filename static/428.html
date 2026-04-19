@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Звателни форми на господин, госпожа, госпожица" id="bski100">Звателни форми на <i class="frag">господин</i>, <i class="frag">госпожа</i>, <i class="frag">госпожица</i></h1><h2 data-lvl="0" data-ref="18.5." id="18.5">18.5.</h2><p>Звателните форми на съществителните имена <i class="ex">господин</i>, <i class="ex">госпожа</i> и <i class="ex">госпожица</i> са <i class="ex">господине</i>, <i class="ex">госпожо</i>, <i class="ex">госпожице</i>.</p><div class="samp first-samp collapsed"><p><i class="ex">Господине, моля Ви!</i></p></div><div class="samp"><p><i class="ex">Госпожице, заповядайте!</i></p></div><div class="samp"><p><i class="ex">Госпожо, приемете моите поздрави!</i></p></div><h2 data-lvl="0" data-ref="18.5.1." id="18.5.1">18.5.1.</h2><p>Съществителното име <i class="ex">господин</i> при обръщение, когато е придружено от названия за длъжности, титли, звания или от собствени имена, се употребява с основната си, а не със звателната си форма.</p><div class="samp first-samp collapsed"><p><i class="ex">Господин Президент, имате думата.</i></p></div><div class="samp"><p><i class="ex">Господин Стефанов, Вие прочетохте ли заповедта?</i></p></div><div class="samp"><p><i class="ex">Господин Директор, нека обсъждането продължи на следващото заседание.</i></p></div><h2 data-lvl="0" data-ref="18.5.2." id="18.5.2">18.5.2.</h2><p>Съществителното име <i class="ex">госпожа</i> при обръщение се употребява винаги със звателната си форма независимо дали е употребено самостоятелно, или е придружено от название за длъжност, титла, звание или от собствено име.</p><div class="samp first-samp collapsed"><p><i class="ex">Госпожо, знаете ли къде се намира Градската художествена галерия?</i></p></div><div class="samp"><p><i class="ex">Госпожо Министър, какви средства се предвиждат за инвалидите през следващата година?</i></p></div><div class="samp"><p><i class="ex">Г-жо Андреева, търсих Ви вчера.</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

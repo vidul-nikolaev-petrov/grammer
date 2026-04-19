@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Две и повече съгласни между две гласни" id="bski314">Две и повече съгласни между две гласни</h1><h2 data-lvl="0" data-ref="65.2." id="65.2">65.2.</h2><p>Буквите за две и повече съгласни между две гласни се пренасят така, че поне една съгласна да остане с първата или с втората гласна.</p><div class="samp"><p><i class="ex">ав-тор, гръм-на, иг-рая, пъл-зя, таб-ло, трав-ма, топ-че; град-ски/градс-ки, джун-гла/джунг-ла, Мез-дра/Мезд-ра, под-скажа/подс-кажа, пред-стои/предс-тои, яс-треб/яст-реб; ръковод-ство/ ръководс-тво/ръководс-тво/ръководст-во, тран-скрибирам/транс-крибирам/транск-рибирам; студен-тство/студент-ство/студентс-тво/студентст-во</i></p></div><h2 data-lvl="0" data-ref="65.2.1." id="65.2.1">65.2.1.</h2><p>Буквите за две еднакви съгласни се разделят на горния и долния ред.</p><div class="samp"><p><i class="ex">кон-ник, непремен-но, плен-ник, под-дръжка</i> (не: <i class="ex">подд-ръжка</i>); <i class="ex">пот-та, радост-та</i> (не: <i class="ex">радос-тта</i>)</p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

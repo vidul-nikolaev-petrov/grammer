@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="2" data-ref="Вметнати думи и изрази" id="bski614">Вметнати думи и изрази</h1><h2 data-lvl="0" data-ref="81." id="81">81.</h2><p>Вметнати думи и изрази.</p><p>Вметнатите думи и изрази се делят на две групи според своето пунктуационно оформяне:</p><h2 data-lvl="0" data-ref="81.1." id="81.1">81.1.</h2><p>Със запетаи се отделят вметнатите думи и изрази, които в други случаи могат да функционират като части на изречението. Такива са: <i class="frag">от една страна, от друга страна, първо, второ, трето, обратно, напротив, изглежда, да речем, да кажем, значи, разбира се, между</i> <i class="frag">другото, естествено, за съжаление, честно казано, казано по друг начин</i> и др.</p><div class="samp first-samp collapsed"><p><i class="ex">Ти, изглежда, си прав.</i> (Срв.: <i class="ex">Тя изглежда чудесно в новата си рокля</i>.)</p></div><div class="samp"><p><i class="ex">Той, разбира се, не постъпи правилно</i>. (Срв.: <i class="ex">Разбира се добре с колегите си</i>.)</p></div><div class="samp"><p><i class="ex">Ти, значи, приемаш предложението ми.</i> (Срв.: <i class="ex">Твоето предложение значи много за мен</i>.)</p></div><div class="samp"><p><i class="ex">Учените, обратно, не приемат тази хипотеза</i>. (Срв.: <i class="ex">Ключът</i></p></div><div class="samp"><p><i class="ex">се завърта обратно на часовниковата стрелка</i>.)</p></div><div class="samp"><p><i class="ex">Приятелите ти, да кажем, ще те подкрепят</i>. (Срв.: <i class="ex">Нека да кажем истината на майка ти</i>.)</p></div><div class="samp"><p><i class="ex">Мария, естествено, е руса</i>. (Срв.: <i class="ex">Мария е естествено руса</i>.)</p></div><p>[За употреба на тире вж. т. <a href="#102.4">102.4</a>; за употреба на скоби вж. т. <a href="#100.1">100.1</a>.]</p><h2 data-lvl="0" data-ref="81.1.1." id="81.1.1">81.1.1.</h2><p>Не се отделят със запетая неударен едносричен съюз и разположен непосредствено след него вметнат израз, който изисква отделяне със запетаи.</p><div class="samp first-samp collapsed"><p><i class="ex">Аз, от една страна, приемам аргументите ти, <u>но от друга</u></i> <i class="ex"><u>страна</u>, не изцяло.</i></p></div><div class="samp"><p><i class="ex">Тази книга е, първо, доста информативна, второ, увлекателно написана <u>и трето</u>, много добре преведена.</i></p></div><h2 data-lvl="0" data-ref="81.2." id="81.2">81.2.</h2><p>Не се отделят със запетая думи и изрази, които се използват само като вметнати в изречението. Такива са: <i class="frag">всъщност, впрочем,</i> <i class="frag">може би, наистина, според мене, обаче, например, действително,</i> <i class="frag">по всяка вероятност, навярно, следователно, като че ли, сякаш,</i> <i class="frag">в края на краищата</i> и др.</p><div class="samp first-samp collapsed"><p><i class="ex">Какво правеше наистина в горичката всеки ден?</i></p></div><div class="samp"><p><i class="ex">Както впрочем е било винаги през мрачните и убийствени за теб двайсет години от нашия съвместен живот.</i></p></div><div class="samp"><p><i class="ex">Учениците от трети клас например доста добре се справиха със задачите.</i></p></div><div class="samp"><p><i class="ex">Нищо подобно обаче не заплашва творбата на писателката.</i></p></div><div class="samp"><p><i class="ex">Всъщност твоето мнение ми повлия най-много.</i></p></div><div class="samp"><p><i class="ex">Директорът вероятно греши в преценката си за работата ти.</i></p></div><div class="samp"><p><i class="ex">Ние действително се постарахме.</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

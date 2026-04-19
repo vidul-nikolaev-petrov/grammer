@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="1" data-ref="Прости изречения с еднократно употребени съюзи и и или" id="bski753">Прости изречения с еднократно употребени съюзи <i class="ex">и</i> и <i class="ex">или</i></h1><h2 data-lvl="0" data-ref="91." id="91">91.</h2><p>За прости изречения, свързани с еднократно употребени съюзи <i class="frag">и</i> и <i class="frag">или</i> в рамките на сложното изречение, са в сила следните правила:</p><h2 data-lvl="0" data-ref="91.1." id="91.1">91.1.</h2><p>Не се отделят със запетая две прости изречения, ако са непосредствено свързани със съюзите <i class="frag">и</i> и <i class="frag">или</i> и ако всяко от простите изречения е независимо и може да се употребява самостоятелно.</p><div class="samp first-samp collapsed"><p><i class="ex">Лазурът на небето потъмня и в сухата обилна светлина се промъкна нещо болезнено и неспокойно.</i></p></div><div class="samp"><p><i class="ex">Очевидно не разбираше смисъла на разговора или искаше да го промени.</i></p></div><h2 data-lvl="0" data-ref="91.2." id="91.2">91.2.</h2><p>Пише се запетая между две прости изречения, ако началото на второто изречение започва с <i class="frag">и</i> и първото просто изречение пояснява второто.</p><div class="samp first-samp collapsed"><p><i class="ex">Докато се усетя, и ме обраха.</i></p></div><div class="samp"><p><i class="ex">Ако бъдеш обвинен незаслужено, и ти ще негодуваш.</i></p></div><h2 data-lvl="0" data-ref="91.3." id="91.3">91.3.</h2><p>Когато между две прости изречения, свързани със съюзите <i class="frag">и</i> или <i class="frag">или</i>, е разположено друго просто изречение, което пояснява първото изречение, пред <i class="frag">и</i>, <i class="frag">или</i> се поставя запетая.</p><div class="samp first-samp collapsed"><p><i class="ex">Но тя знаеше, че той пак щеше да дойде, и това я изпълваше с радостна тревога.</i></p></div><div class="samp"><p><i class="ex">Ася се изправила до момчето, което стояло до нея, и погледнала предизвикателно.</i></p></div><h2 data-lvl="0" data-ref="91.4." id="91.4">91.4.</h2><p>Когато първото от две прости изречения, свързани със съюзите <i class="frag">и</i>, <i class="frag">или</i>, завършва с обособена част, пред <i class="frag">и</i>, <i class="frag">или</i> се пише запетая.</p><div class="samp first-samp collapsed"><p><i class="ex">Жената не слушаше, унесена в мислите си, и затова пропусна важното съобщение.</i></p></div><div class="samp"><p><i class="ex">Цяла вечер Ангел говореше, отметнал артистично глава назад, или се смееше на вицовете на приятелите си.</i></p></div><h2 data-lvl="0" data-ref="91.5." id="91.5">91.5.</h2><p>Когато първото от две прости изречения, свързани със съюзите <i class="frag">и</i>, <i class="frag">или</i>, завършва с вметнат израз, който се отделя със запетая, пред <i class="frag">и</i>, <i class="frag">или</i> се пише запетая.</p><div class="samp"><p><i class="ex">Ние закъсняхме, разбира се, и изпуснахме началото на пиесата.</i></p></div><h2 data-lvl="0" data-ref="91.6." id="91.6">91.6.</h2><p>Когато първото от две прости изречения, свързани със съюзите <i class="frag">и</i>, <i class="frag">или</i>, завършва с обръщение, пред <i class="frag">и</i>, <i class="frag">или</i> се пише запетая.</p><div class="samp first-samp collapsed"><p><i class="ex">Отивай, Мария, и не се бой!</i></p></div><div class="samp"><p><i class="ex">Обадете ми се, деца, или ми пуснете имейл.</i></p></div><h2 data-lvl="0" data-ref="92." id="92">92.</h2><p>Не се отделят със запетая две прости изречения, ако второто е въведено с относително местоимение и пояснява сказуемото от първото просто изречение.</p><div class="samp first-samp collapsed"><p><i class="ex">И стана каквото стана!</i></p></div><div class="samp"><p><i class="ex">Посочете който искате човек тук!</i></p></div><div class="samp"><p><i class="ex">Взех каквото ми попадна пред очите в първия миг.</i></p></div><div class="samp"><p><i class="ex">Ще се срещам с когото си искам.</i></p></div><div class="samp"><p><i class="ex">Не яжте каквото Ви падне.</i></p></div><div class="samp"><p><i class="ex">Учи колкото можеш.</i></p></div><div class="samp"><p><i class="ex">Дадох на Иван каквото искаше.</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Двоеточие в сложното изречение" id="bski799">Двоеточие в сложното изречение</h1><h2 data-lvl="0" data-ref="98.3." id="98.3">98.3.</h2><p>Двоеточие се пише между две прости изречения в състава на сложното, когато първото от тях има обобщаващ характер, а второто го конкретизира.</p><div class="samp first-samp collapsed"><p><i class="ex">Накрая оставаше да реши само едно нещо: как да се прибере възможно най-бързо.</i></p></div><div class="samp"><p><i class="ex">Всички тези катаклизми водят до следния важен извод: да преразгледаме отношението си към природата.</i></p></div><div class="samp"><p><i class="ex">Нещата тръгнаха съвсем наопаки: вместо мир започна война.</i></p></div><div class="samp"><p><i class="ex">Изкуството познава и не може да не познава правила: те обаче са гъвкави и променливи, винаги готови да отстъпят място на други, които по-добре ще изразяват неговата природа.</i></p></div><div class="samp"><p><i class="ex">Паскал не само напълно съзнателно използва оръжието на смеха, но и сам го обосновава теоретически: само насмешка заслужават предметите, които сами възбуждат смях.</i></p></div><p>[За употреба на тире вж. т. <a href="#102.10">102.10</a>.]</p><h2 data-lvl="0" data-ref="98.4." id="98.4">98.4.</h2><p>Двоеточие се пише между две прости изречения в сложното в причинно-следствена връзка, когато е пропуснат съюзът между тях.</p><div class="samp first-samp collapsed"><p><i class="ex">Познавам го добре: той е мой стар приятел</i>. (Срв.: <i class="ex">Познавам го добре, тъй като той е мой стар приятел.</i>)</p></div><div class="samp"><p><i class="ex">От читалището дойдоха хора: търсеха съдействие</i>. (Срв.: <i class="ex">От читалището дойдоха хора, понеже търсеха съдействие</i>.)</p></div><div class="samp"><p><i class="ex">Децата трябва да спортуват: спортът създава навици и дисциплинира</i>. (Срв.: <i class="ex">Децата трябва да спортуват, защото спортът създава навици и дисциплинира</i>.)</p></div><p>[За употреба на тире вж. т. <a href="#102.11">102.11</a>.]</p></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

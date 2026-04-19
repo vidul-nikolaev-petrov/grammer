@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="2" data-ref="Употреба на бройната форма" id="bski508">Употреба на бройната форма</h1><h2 data-lvl="0" data-ref="19.2.3." id="19.2.3">19.2.3.</h2><p>Бройната форма се употребява след числителни бройни имена, числителни за приблизителност и след думите за количество <i class="ex">колко</i>, <i class="ex">колкото</i>, <i class="ex">толкова</i>, <i class="ex">няколко(то)</i>.</p><div class="samp"><p><i class="ex">10 билета, 2 параграфа, 3 – 4 броя, два заека, пет коня, няколко закона, няколкото тома, колко лева, десетина стола, толкова и толкова броя</i></p></div><h2 data-lvl="0" data-ref="19.2.3.1." id="19.2.3.1">19.2.3.1.</h2><p>Използва се обикновената форма за множествено число, когато с думите <i class="ex">колко</i> и <i class="ex">толкова</i> не се изразява количество.</p><div class="samp first-samp collapsed"><p><i class="ex">Я виж колко автомобили са се наредили пред нас!</i></p></div><div class="samp"><p><i class="ex">Толкова подаръци получих за рождения си ден!</i></p></div><h2 data-lvl="0" data-ref="19.2.3.2." id="19.2.3.2">19.2.3.2.</h2><p>Ако между числителното име (или думата за количество) и съществителното име, което може да има бройна форма, стои съгласувано определение, бройната форма се запазва.</p><div class="samp first-samp collapsed"><p><i class="ex">Доставени са два нови мощни самолета от компанията „Еърбъс“.</i></p></div><div class="samp"><p><i class="ex">Природният феномен Белоградчишки скали се нареди между десетте най-известни обекта в класацията „Новите седем природни чудеса на света“.</i></p></div><h2 data-lvl="0" data-ref="19.2.3.3." id="19.2.3.3">19.2.3.3.</h2><p>Ако между числителното име (или думата за количество) и съществителното име, което може да има бройна форма, стои предлог или глагол, се използва обикновената форма за мн.ч.</p><div class="samp first-samp collapsed"><p><i class="ex">Подготвят се още три от документите за сътрудничество.</i> (Срв.: <i class="ex">Подписани са още три документа за сътрудничество.</i>)</p></div><div class="samp"><p><i class="ex">Пет от компютрите трябва да се бракуват.</i> (Срв.: <i class="ex">Пет компютъра трябва да се бракуват.</i>)</p></div><div class="samp"><p><i class="ex">Няколко са отговорите на този въпрос.</i> (Срв.: <i class="ex">Няколко отговора има този въпрос.</i>)</p></div><div class="samp"><p><i class="ex">Осем се оказаха проектите, одобрени от комисията.</i> (Срв.: <i class="ex">Има осем проекта, спечелили конкурса.</i>)</p></div><h2 data-lvl="0" data-ref="19.2.3.4." id="19.2.3.4">19.2.3.4.</h2><p>Ако между числителното име (или думата за количество) и съществителното име, което може да има бройна форма, стоят изразите <i class="ex">и/или повече</i>, <i class="ex">и/или по-малко</i>, се използва обикновената форма за мн.ч.</p><div class="samp first-samp collapsed"><p><i class="ex">Предимство имат кандидати, които владеят два и повече езици.</i></p></div><div class="samp"><p><i class="ex">Съобщението може да съдържа сто или по-малко знаци.</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

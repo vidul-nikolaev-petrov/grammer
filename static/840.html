@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,6 +109,22 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
@@ -92,5 +132,6 @@
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Едносъставни собствени имена" id="bski201">Едносъставни собствени имена</h1><h2 data-lvl="0" data-ref="38." id="38">38.</h2><p>Едносъставните собствени имена се пишат с главна буква.</p><div class="samp first-samp collapsed"><p><i class="ex">Ана, Боян, Десислава; Ангелова, Попиванов; Апостола, Камата, Миткалото, Моканина, Слона, Кривия;</i></p></div><div class="samp"><p><i class="ex">Аполон, Буда, Исус, Тангра; Евридика, Орфей, Херкулес;</i></p></div><div class="samp"><p><i class="ex">Великден, Гергьовден, Заговезни, Коледа, Цветница;</i></p></div><div class="samp"><p><i class="ex">Белчо, Караман, Рогуша, Шаро;</i></p></div><div class="samp"><p><i class="ex">Алпи, Америка, България, Гибралтар, Дунав, Еверест, Европа,</i></p></div><div class="samp"><p><i class="ex">Хърватия, Черноморие;</i></p></div><div class="samp"><p><i class="ex">Венера, Вселена, Земя, Космос, Марс, Орион;</i></p></div><div class="samp"><p><i class="ex">Бургас, Пловдив, Русе, София;</i></p></div><div class="samp"><p><i class="ex">Президентство, Кнесет,</i> (профсъюз) <i class="ex">„Солидарност“, Сорбоната;</i></p></div><div class="samp"><p><i class="ex">Етъра, Кайлъка, Магурата, Перперикон;</i></p></div><div class="samp"><p><i class="ex">Античност, Възраждане, Просвещение, Ренесанс, Реформация, Средновековие;</i></p></div><div class="samp"><p><i class="ex">Библия, Евангелие, Коран, Псалтир, Талмуд;</i></p></div><div class="samp"><p><i class="ex">Освобождението, Съединението;</i>
 </p></div><div class="samp"><p>(награда) <i class="ex">„Аскеер“,</i> (награда) <i class="ex">„Пулицър“;</i> </p><p>(вестник) <i class="ex">„Капитал“,</i> (радио) <i class="ex">„Тангра“,</i> (телевизия) <i class="ex">„Европа“;</i> (роман) <i class="ex">„Тютюн“,</i> (опера) <i class="ex">„Аида“,</i> (филм) <i class="ex">„Вчера“;</i> </p><p>(марка коли) <i class="ex">„Опел“,</i> (телевизор) <i class="ex">„Панасоник“,</i> (лаптоп) <i class="ex">„Тошиба“,</i> (бойлер) <i class="ex">„Дипломат“;</i> </p><p>(порода) <i class="ex">„Легхорн“,</i> (порода) <i class="ex">„Пржевалски“,</i> (сорт) <i class="ex">„Ренета“,</i> (сорт) <i class="ex">„Болгар“,</i> (сорт) <i class="ex">„Басма“,</i> (кисело мляко) <i class="ex">„Елена“,</i> (кашкавал) <i class="ex">„Балкан“</i>, (бира) <i class="ex">„Загорка“</i>, (вино) <i class="ex">„Черга“</i></p></div>
 </div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="858.html" class=""><label>Лични, бащини, фамилни имена и под. в мн.ч.</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="865.html" class=""><label>Двойни собствени имена</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="872.html" class=""><label>Собствени имена с <i class="frag">Лъже-</i> и <i class="frag">Псевдо-</i></label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="878.html" class=""><label>Чужди собствени имена с апостроф</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="883.html" class=""><label><i class="frag">Изток</i>, <i class="frag">Запад</i>, <i class="frag">Север</i>, <i class="frag">Юг</i> като геополитически понятия</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="888.html" class=""><label>Имена на културно-исторически периоди</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="894.html" class=""><label>Имена на географски области и райони</label></a></span></h3></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

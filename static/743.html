@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,10 +109,27 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
 <body>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Главна буква, апостроф и др. в чужди собствени имена" id="bski565">Главна буква, апостроф и др. в чужди собствени имена</h1><h2 data-lvl="0" data-ref="32." id="32">32.</h2><p>При предаването на собствени имена от чужди езици на български са в сила следните основни правила:</p><h2 data-lvl="0" data-ref="32.1." id="32.1">32.1.</h2><p>Главните букви се предават според оригиналната форма на името с изключение на преведените и частично преведените собствени имена, както и на случаите, посочени в т. <a href="#32.3">32.3</a> и <a href="#32.4">32.4</a>.</p><div class="samp"><p><i class="ex">Булон сюр Мер – Boulogne-sur-Mer, Жана д'Арк – Jeanne d'Arc,</i> <i class="ex">Лаго ди Комо – Lago di Como, О'Лиъри – O'Leary, Рио Бланко – Rio Blanco, Санта Пела – Santa Pela, Фернан Нунес – Fernán Núñez</i></p></div><h2 data-lvl="0" data-ref="32.2." id="32.2">32.2.</h2><p>Главните букви при преведените и частично преведените собствени имена се употребяват според правилата в българския език.</p><div class="samp"><p><i class="ex">Каспъров връх – Kasprowy Wierch, Йонийско море – Mar Ionio, река Мисисипи – Mississipi River, Шетландски острови – Shetland Islands, Месински проток – Strato di Messina, Суецки канал – Qanā al-Suways, Уестминстърско абатство – Westminster Abbey</i></p></div><h2 data-lvl="0" data-ref="32.3." id="32.3">32.3.</h2><p>С главна буква се пишат членни форми и служебни думи, когато стават първа част от чуждото собствено име.</p><div class="samp"><p><i class="ex">Бин Ладен</i> (но: <i class="ex">Осама бин Ладен</i>), <i class="ex">Ван Гог</i> (но: <i class="ex">Винсент ван Гог</i>), <i class="ex">Дьо Гол</i> (но: <i class="ex">Шарл дьо Гол</i>), <i class="ex">Фон Майенбург</i> (но: <i class="ex">Мариус фон Майенбург</i>)</p></div><h2 data-lvl="0" data-ref="32.4." id="32.4">32.4.</h2><p>С една главна буква се пишат чуждите собствени имена, които започват с <i class="ex">Мак</i>.</p><div class="samp"><p><i class="ex">Макдугъл, Маклийн, Макнамара</i></p></div><h2 data-lvl="0" data-ref="32.5." id="32.5">32.5.</h2><p>Апострофът в чуждите собствени имена се предава в българската им форма с изключение на случая, регламентиран в т. <a href="#32.5.1">32.5.1</a>.</p><div class="samp"><p><i class="ex">Д'Анунцио – D'Annunzio, О'Нийл – O'Neill</i></p></div><h2 data-lvl="0" data-ref="32.5.1." id="32.5.1">32.5.1.</h2><p>Апострофът, бележещ притежание в английски собствени имена, не се отбелязва.</p><div class="samp"><p><i class="ex">Питърс Ривър – Peter's River, Сотбис – Sotheby's, Кристис – Christie's</i></p></div><h2 data-lvl="0" data-ref="32.6." id="32.6">32.6.</h2><p>Собствените имена от чужди езици се пишат слято, полуслято или разделно според оригиналната си форма с изключение на случаите в т. <a href="#32.6.1">32.6.1</a>.</p><div class="samp"><p><i class="ex">Ню Йорк – New York, Нюпорт – Newport, Жан-Жак – Jean-Jacques, Римски-Корсаков – Римский-Корсаков</i></p></div><h2 data-lvl="0" data-ref="32.6.1." id="32.6.1">32.6.1.</h2><p>Собствени имена, които съдържат служебни думи, се пишат разделно.</p><div class="samp"><p><i class="ex">Екс ан Прованс – Aix-en-Provence, Булон сюр Мер – Bulogne-sur-Mer, Херк де Ста – Herk-de-Stad, Ростов на Дон – Ростов-на-Дону</i></p></div><h2 data-lvl="0" data-ref="32.6.2." id="32.6.2">32.6.2.</h2><p>По традиция се пишат слято някои собствени имена.</p><div class="samp"><p><i class="ex">Великобритания – Great Britain, Ламанш – La Manche, Лафонтен – La Fontaine, Ларошфуко – La Rochfoucau</i></p></div><h2 data-lvl="0" data-ref="32.6.3." id="32.6.3">32.6.3.</h2><p>Допуска се полуслято писане в испански сложни собствени имена, които съдържат съюза <i class="frag">и</i>.</p><div class="samp"><p><i class="ex">Хосе Ортега и Гасет</i> и <i class="ex">Хосе Ортега-и-Гасет – José Ortega y Gasset</i></p></div><h2 data-lvl="0" data-ref="32.7." id="32.7">32.7.</h2><p>Ако чуждото собствено име е форма за мн.ч., то се предава на български с окончание <i class="frag">-и</i>.</p><div class="samp"><p><i class="ex">Анди – Andes, Бахами/Бахамски острови – Bahamas, Сейшели/Сейшелски острови – Seychelles</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

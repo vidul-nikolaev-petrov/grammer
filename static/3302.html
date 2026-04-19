@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,6 +109,22 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
@@ -93,5 +133,6 @@
 </div><h2 data-lvl="0" data-ref="127.1.2." id="127.1.2">127.1.2.</h2><p>Частите на цитат, разделен от пояснителен израз, не се ограждат в отделни кавички.</p><div class="samp"><p>„Свободното време позволява на мозъка да преработи получената информация – твърди авторът – докато постоянната стимулация възпрепятства процеса на познанието.“</p></div><h2 data-lvl="0" data-ref="127.1.3." id="127.1.3">127.1.3.</h2><p>Когато цитат или друг ограден в кавички текст е включен в края на друг цитат, кавичките не се удвояват.
 </p><div class="samp"><p>Целта на автора е била да накара еднородците си да се вгледат в своите недостатъци: „Аз питая в себе си вяра, че ще дойде един ден, когато ти, след като прочетеш тази книжка, ще се позамислиш, ще въздъхнеш и ще речеш: „Европейци сме ний, ама все не сме дотам“.</p><p>По-нататък авторът съветва: „По-добре да не си припомняме филма „Да продадеш игрите“. „По-добре да не си припомняме филма „Да продадеш игрите“, съветва по-нататък авторът.</p><p>(Но: „По-добре да не си припомняме филма „Да продадеш игрите“.“ Това съветва по-нататък авторът.)
 </p></div></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3319.html" class=""><label>Правописни особености на цитиран текст</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3330.html" class=""><label>Пунктуация на цитиран текст</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3355.html" class=""><label>Авторов текст, предхождащ цитат</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3390.html" class=""><label>Цитат от лирически текст</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="3401.html" class=""><label>Промени в цитиран текст</label></a></span></h3></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>

@@ -43,6 +43,28 @@
             white-space: pre-wrap;
             border-radius: 6px;
         }
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: none;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.1); 
+            color: #add8e6; 
+            border: 1px solid rgba(173, 216, 230, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            z-index: 9999;
+            backdrop-filter: blur(4px); 
+            -webkit-backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        #backToTop:hover {
+            background-color: rgba(173, 216, 230, 0.2);
+            color: #87ceeb; /* Slightly deeper skyblue on hover */
+        }
     </style>
     <script type="module">
         import { refMap } from './refs.js';
@@ -69,6 +91,8 @@
         window.addEventListener('load', () => {
             const links = document.querySelectorAll('a[href^="#"]');
             const filesToPrefetch = new Set();
+            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+            const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
@@ -85,6 +109,22 @@
                 linkTag.href = file;
                 document.head.appendChild(linkTag);
             });
+
+            if (isSafari) {
+                fetch(file);
+            }
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 300) {
+                    topBtn.style.display = "block";
+                } else {
+                    topBtn.style.display = "none";
+                }
+            }, { passive: true }); // "passive" helps Android scroll performance
+
+            topBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
         });
     </script>
 </head>
@@ -92,5 +132,6 @@
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Пълен и кратък член в собствени имена" id="bski307">Пълен и кратък член в собствени имена</h1><h2 data-lvl="0" data-ref="17.7." id="17.7">17.7.</h2><p>Членуване с пълен и кратък член на собствени имена.</p><h2 data-lvl="0" data-ref="17.7.1." id="17.7.1">17.7.1.</h2><p>Според общите правила за членуване с пълен или с кратък член се пишат част от собствените имена от м.р. ед.ч., чиято основна форма е нечленувана:</p><h2 data-lvl="0" data-ref="17.7.1.1." id="17.7.1.1">17.7.1.1.</h2><p>Едносъставни собствени имена от м.р. ед.ч. на географски, културни и исторически обекти (<i class="ex">Дунав</i>, <i class="ex">Искър</i>, <i class="ex">Балкан</i>, <i class="ex">Акропол</i>, <i class="ex">Колизеум</i>, <i class="ex">Ватикан</i>, <i class="ex">Пратер</i>, <i class="ex">Ермитаж</i>, <i class="ex">Партенон</i>, <i class="ex">Цвингер</i>, <i class="ex">Лувър</i> и др.).</p><div class="samp first-samp collapsed"><p><i class="ex">Пред Лувъра се издига кристална пирамида.</i></p></div><div class="samp"><p><i class="ex">Цвингерът е един от големите европейски музеи.</i></p></div><div class="samp"><p><i class="ex">От Акропола се вижда цяла Атина.</i></p></div><div class="samp"><p><i class="ex">Ватиканът заема площ от едва 0,44 km² (440 декара).</i></p></div><h2 data-lvl="0" data-ref="17.7.1.2." id="17.7.1.2">17.7.1.2.</h2><p>Съставни собствени имена от м.р. ед.ч., чиято основна форма не е членувана (<i class="ex">Министерски съвет</i>, <i class="ex">Институт за български език</i>, <i class="ex">Сатиричен театър</i>, <i class="ex">Европейски съюз</i>, <i class="ex">Балкански полуостров</i>, <i class="ex">Млечен</i> <i class="ex">път</i>, <i class="ex">Лисабонски договор</i> и др.).</p><div class="samp first-samp collapsed"><p><i class="ex">На заседание в Министерския съвет бе обсъдена икономическата ситуация в страната.</i></p></div><div class="samp"><p><i class="ex">Лисабонският договор е подписан на 13 декември 2007 г.</i></p></div><div class="samp"><p><i class="ex">Денят на народните будители беше отбелязан с тържествено събрание в БАН и в Софийския университет.</i></p></div><h2 data-lvl="0" data-ref="17.7.2." id="17.7.2">17.7.2.</h2><p>С пълен член се пишат членуваните форми от м.р. ед.ч. в заглавия на книги, филми, статии и др., ако са употребени самостоятелно и не са след предлог.
 </p><div class="samp"><p><i class="ex">„Железни<i class="frag">ят</i> светилник“ „Властелин<i class="frag">ът</i> на пръстените“ „Пират<i class="frag">ът</i> Шарки“ „Спасител<i class="frag">ят</i> в ръжта“ „Кра<i class="frag">ят</i> на лятото“</i></p><p>(Срв.: <i class="ex">„На самотни<i class="frag">я</i> остров“</i>.)
 </p></div><h2 data-lvl="0" data-ref="17.7.3." id="17.7.3">17.7.3.</h2><p>С кратък член независимо от службата си в изречението се пишат прозвищата и прякорите от м.р. ед.ч.</p><div class="samp first-samp collapsed"><p><i class="ex">Апостола беше предаден и заловен край Къкрина.</i></p></div><div class="samp"><p><i class="ex">Владимир Димитров – Майстора нарисува българските мадони.</i></p></div><div class="samp"><p><i class="ex">Нено Сенегалеца е един от колоритните образи, създадени от Чудомир.</i></p></div><div class="samp"><p><i class="ex">Белия вожд гледаше замислено към Скалистите планини.</i></p></div><h2 data-lvl="0" data-ref="17.7.4." id="17.7.4">17.7.4.</h2><p>С кратък член независимо от службата си в изречението се пишат собствените имена на географски обекти от м.р. ед.ч., чиято основна форма е членувана (<i class="ex">Юндола</i>, <i class="ex">Кайлъка</i>, <i class="ex">Хисаря</i> и под.).</p><div class="samp first-samp collapsed"><p><i class="ex">Леденика е най-голямата българска пещера.</i></p></div><div class="samp"><p><i class="ex">В местността Превала се състоя традиционният фолклорен събор.</i></p></div><div class="samp"><p><i class="ex">Хисаря си остана един от най-предпочитаните курорти.</i></p></div></div></div>
+<button id="backToTop" title="Go to top">↑</button>
 </body>
 </html>
