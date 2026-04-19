@@ -169,13 +169,13 @@ def build():
                     if p2 not in prefix2_map: prefix2_map[p2] = []
                     prefix2_map[p2].append(item)
 
-                html_out += f'<details class="sub-group"><summary class="sub-summary"><span>{p1}...</span><div><span class="count">{len(items_p1)}</span><span class="toggle-icon"></span></div></summary>'
+                html_out += f'<details class="sub-group"><summary class="sub-summary"><span>{p1}</span><div><span class="count">{len(items_p1)}</span><span class="toggle-icon"></span></div></summary>'
                 
                 for p2 in sorted(prefix2_map.keys()):
                     items_p2 = prefix2_map[p2]
                     # Only create sub-subgroup if p2 is actually two words and has multiple items
                     if len(items_p2) > 1 and len(p2.split(' ')) > 1:
-                        html_out += f'<details class="sub-sub-group"><summary class="sub-sub-summary"><span>{p2}...</span><div><span class="count">{len(items_p2)}</span><span class="toggle-icon"></span></div></summary>'
+                        html_out += f'<details class="sub-sub-group"><summary class="sub-sub-summary"><span>{p2}</span><div><span class="count">{len(items_p2)}</span><span class="toggle-icon"></span></div></summary>'
                         html_out += '<div class="link-grid">'
                         for item in sorted(items_p2, key=lambda x: x['text']):
                             html_out += f'<a class="index-link" href="./{item["file"]}">{item["text"]}</a>'
