@@ -10,6 +10,12 @@ const OUTPUT_FILE = "./dictionaryData.js";
 const ERR_404 =
     "Страницата, която търсите, не съществува или не може да бъде открита.";
 const GENERIC_TITLE = "Официален правописен речник на българския език • БЕРОН";
+const FOOTER_IGNORE = [
+    "Службата „Езикови справки и консултации“ на Института за български език на БАН",
+    "дава компетентна информация по въпроси на българския книжовен език.",
+    "Може да зададете своя въпрос на: ezikovispravki@ibl.bas.bg",
+    "Службата се поддържа от Секцията за съвременен български език.",
+];
 
 build();
 
@@ -79,6 +85,12 @@ function build() {
                     $("p").each((_, el) => {
                         const hasDataRef = $(el).attr("data-ref");
                         const pText = $(el).text().trim();
+
+                        const isIgnored = FOOTER_IGNORE.some((str) =>
+                            pText.includes(str),
+                        );
+
+                        if (isIgnored) return;
 
                         if (
                             !hasDataRef &&
