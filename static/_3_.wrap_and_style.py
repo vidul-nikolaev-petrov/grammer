@@ -67,7 +67,8 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             right: 12px;
             top: 50%;
             transform: translateY(-50%);
-            color: #2980b9;
+            color: #777;
+            opacity: 0.25;
             font-weight: bold;
             font-size: 1.4em;
             line-height: 1;
