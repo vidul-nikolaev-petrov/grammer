@@ -86,8 +86,9 @@ INDEX_TEMPLATE = """<!DOCTYPE html>
         .link-grid {{
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 8px;
+            gap: 12px;
             padding: 12px;
+            margin: 4px 0;
         }}
         .single-link-container {{
             padding: 2px 20px 8px 20px;
