@@ -6,7 +6,7 @@
     <link
         rel="icon"
         type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect x='20' y='10' width='60' height='80' rx='5' fill='%232980b9'/%3E%3Cpath d='M30 10v80M20 25h60M20 40h60' stroke='white' stroke-width='2'/%3E%3Ctext x='42' y='65' fill='white' font-family='Arial' font-weight='bold' font-size='40'%3EБ%3C/text%3E%3C/svg%3E"
+        href="data:image/svg+xml,%3Csvg xmlns='http://w3.org' viewBox='0 0 100 100'%3E%3Crect x='20' y='10' width='60' height='80' rx='5' fill='%232980b9'/%3E%3Cpath d='M30 10v80M20 25h60M20 40h60' stroke='white' stroke-width='2'/%3E%3Ctext x='42' y='65' fill='white' font-family='Arial' font-weight='bold' font-size='40'%3EБ%3C/text%3E%3C/svg%3E"
     />
     <style>
         body {
@@ -19,7 +19,6 @@
             padding: 0 30px;
             background-color: #fcfcfc;
         }
-        /* Prettier Links */
         a {
             color: #3498db;
             text-decoration: none;
@@ -35,13 +34,39 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 5px solid #2980b9;
-            padding: 20px;
+            border-left: 4px solid #2980b9;
+            padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
-            display: block;
-            margin: 25px 0;
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
             white-space: pre-wrap;
-            border-radius: 6px;
+            border-radius: 4px;
+            position: relative;
+            min-height: 32px;
+            font-size: 0.95em;
+        }
+        .samp-clickable {
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .samp-clickable:hover {
+            background-color: #ededed;
+        }
+        .samp-hidden {
+            display: none !important;
+        }
+        .samp-toggle {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #2980b9;
+            font-weight: bold;
+            font-size: 1.4em;
+            line-height: 1;
+            pointer-events: none;
         }
         #backToTop {
             position: fixed;
@@ -66,7 +91,7 @@
         }
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
-            color: #87ceeb; /* Slightly deeper skyblue on hover */
+            color: #87ceeb;
         }
     </style>
     <script type="module">
@@ -100,7 +125,6 @@
             links.forEach(link => {
                 const targetId = link.getAttribute('href').replace(/^#\/?/, "");
                 const targetFile = refMap[targetId];
-                
                 if (targetFile && targetFile !== window.location.pathname.split('/').pop()) {
                     filesToPrefetch.add(targetFile);
                 }
@@ -114,8 +138,34 @@
             });
 
             if (isSafari) {
-                fetch(file);
+                filesToPrefetch.forEach(file => fetch(file));
             }
+
+            const allSamps = document.querySelectorAll('.samp');
+            let currentGroup = [];
+            allSamps.forEach((samp, i) => {
+                currentGroup.push(samp);
+                const next = samp.nextElementSibling;
+                if (!next || !next.classList.contains('samp')) {
+                    if (currentGroup.length > 1) {
+                        const [first, ...rest] = currentGroup;
+                        rest.forEach(el => el.classList.add('samp-hidden'));
+                        
+                        first.classList.add('samp-clickable');
+                        const indicator = document.createElement('div');
+                        indicator.className = 'samp-toggle';
+                        indicator.textContent = '+';
+                        first.appendChild(indicator);
+
+                        first.onclick = () => {
+                            const isHidden = rest[0].classList.contains('samp-hidden');
+                            rest.forEach(el => el.classList.toggle('samp-hidden'));
+                            indicator.textContent = isHidden ? '−' : '+';
+                        };
+                    }
+                    currentGroup = [];
+                }
+            });
 
             window.addEventListener("scroll", () => {
                 if (window.scrollY > 300) {
@@ -123,7 +173,7 @@
                 } else {
                     topBtn.style.display = "none";
                 }
-            }, { passive: true }); // "passive" helps Android scroll performance
+            }, { passive: true });
 
             topBtn.addEventListener("click", () => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
