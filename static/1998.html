@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="2" data-ref="Обособени части" id="bski424">Обособени части</h1><h2 data-lvl="0" data-ref="80." id="80">80.</h2><p>Обособени части.</p><h2 data-lvl="0" data-ref="80.1." id="80.1">80.1.</h2><p>Обособените части на изречението, въведени безсъюзно, се отделят със запетая от останалите части на изречението.</p><div class="samp first-samp collapsed"><p><i class="ex">Изморена от пристъпите на въображението си, тя заспа призори.</i></p></div><div class="samp"><p><i class="ex">Отец Ередиа пишеше нещо на масата, отрупана с много книжа.</i></p></div><div class="samp"><p><i class="ex">Децата, родени извън брака, имат равни права с родените в брака.</i></p></div><div class="samp"><p><i class="ex">Иван, новият ни колега, се справяше добре с работата.</i></p></div><div class="samp"><p><i class="ex">А долу, в долината, виждате ли каква млечна пелена се разстила?</i></p></div><div class="samp"><p><i class="ex">Тогава полковникът избяга с жена си тук, в старата колиба.</i></p></div><div class="samp"><p><i class="ex">Днес, 15.09.2010 г., се проведе заседание със следния дневен ред.</i></p></div><div class="samp"><p><i class="ex">И тогава, в това мълчание, всички чуха тропот на конски копита.</i></p></div><div class="samp"><p><i class="ex">Мислейки за предстоящото заседание на Управителния съвет на банката, Заимов неусетно извървя разстоянието от университета до бившия царски дворец.</i></p></div><div class="samp"><p><i class="ex">Аз се долепих до гърба на баща си, превеждайки му шепнешком думите на хана.</i></p></div><p>[За употреба на тире вж. т. <a href="#102.3">102.3</a>; за употреба на скоби вж. т. <a href="#100.1">100.1</a>.]</p><h2 data-lvl="0" data-ref="80.2." id="80.2">80.2.</h2><p>Обособените части на изречението, въведени с <i class="frag">макар и, сиреч,</i> <i class="frag">т.е., или</i> (в значение на <i class="frag">т.е., сиреч</i>), <i class="frag">като</i> и др., се отделят със запетаи от останалите части на изречението.</p><div class="samp first-samp collapsed"><p><i class="ex">Днешният ден, макар и обикновен делничен ден, беше великолепен.</i></p></div><div class="samp"><p><i class="ex">Александър II бил женен за лелята на принц Александър – Мария фон Хесен, сиреч за сестрата на баща си.</i></p></div><div class="samp"><p><i class="ex">Съдът се произнася единствено върху конкретно дело, т.е. върху конкретно обвинение.</i></p></div><div class="samp"><p><i class="ex">Лаокоон, или за отношението на изкуството към действителността.</i></p></div><div class="samp"><p><i class="ex">Гласните струни, или гласилките, представляват две мускулни ленти вътре в ларинкса.</i></p></div><div class="samp"><p><i class="ex">Ние, като истински професионалисти, не сме съгласни с такова решение.</i></p></div><div class="samp"><p><i class="ex">Някои страни, като България и Русия, отхвърлиха предложението.</i></p></div><p>[За употреба на тире вж. т. <a href="#102.3">102.3</a>; за употреба на скоби вж. т. <a href="#100.1">100.1</a>.]</p><h2 data-lvl="0" data-ref="80.3." id="80.3">80.3.</h2><p>Не се отделят със запетая неударен едносричен съюз и разположена непосредствено след него обособена част.</p><div class="samp first-samp collapsed"><p><i class="ex">И уверен в късмета си, Христо отказал да се застрахова.</i></p></div><div class="samp"><p><i class="ex">Но тръгвайки на такъв тежък преход през зимата, рискуваш живота си.</i></p></div><p>[За употреба на тире вж. т. <a href="#102.3.2">102.3.2</a>.]</p></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Фразеологизирани наречия" id="bski182">Фразеологизирани наречия</h1><h2 data-lvl="0" data-ref="54.12." id="54.12">54.12.</h2><p>Фразеологизирани наречия, образувани чрез свързване на две повелителни глаголни форми в равноправно отношение помежду им.</p><div class="samp"><p><i class="ex">иди-дойди, кажи-речи</i></p></div><h2 data-lvl="0" data-ref="54.12.1." id="54.12.1">54.12.1.</h2><p>Сложни наречия като:</p><div class="samp"><p><i class="ex">току-виж, току-речи, току-така</i></p></div><h2 data-lvl="0" data-ref="54.13." id="54.13">54.13.</h2><p>Наречия и неопределителни местоимения, образувани с частиците <i class="frag">еди-</i>, <i class="frag">-годе</i>, <i class="frag">що-</i>.</p><div class="samp first-samp collapsed"><p><i class="ex">еди-как (си), еди-какво (си), еди-какъв (си), еди-кога (си), еди-кой (си), еди-къде (си), еди-що (си);</i></p></div><div class="samp"><p><i class="ex">току-що, що-годе</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

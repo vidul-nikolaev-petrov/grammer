@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Индекс с кавички в края на изречение" id="bski959">Индекс с кавички в края на изречение</h1><h2 data-lvl="0" data-ref="135.4." id="135.4">135.4.</h2><p>Съчетаване на индекс с кавички в края на изречението.</p><h2 data-lvl="0" data-ref="135.4.1." id="135.4.1">135.4.1.</h2><p>Индексът е пред кавичките, когато бележката се отнася до последната дума или израз в кавичките.</p><div class="samp"><p>Същата идея е прокарана и в статията „Младият българин Любен Каравелов и другарят му Владимир Йованович<sup>38</sup>“.</p></div><h2 data-lvl="0" data-ref="135.4.2." id="135.4.2">135.4.2.</h2><p>Индексът е след кавичките, когато бележката се отнася до целия ограден в кавички текст.</p><div class="samp first-samp collapsed"><p>Не може да се отрече, че географските описания в хрониката „са доста точни“<sup>3</sup>.</p></div><div class="samp"><p>„Наближавахме чешката граница. С нас пътуваха и комисарите, пратени от правителството да се научат как се нарежда изложение, та да наредят и Пловдивското.“<sup>25</sup></p></div><div class="samp"><p>„Как тия ученици – се пита Априлов – ще почнат обучение по български в своето отечество?“<sup>43</sup></p></div><div class="samp"><p>„Когато Юстиниан се завърнал от България, неговите хора в Константинопол започнали да го мразят и да не го уважават…“*</p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

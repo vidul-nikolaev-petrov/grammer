@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Пренасяне на буквосъчетанието -ьо" id="bski330">Пренасяне на буквосъчетанието <i class="frag">-ьо</i></h1><h2 data-lvl="0" data-ref="66.4." id="66.4">66.4.</h2><p>Буквосъчетанието <i class="frag">ьо</i> винаги се пренася с буквата за предходната съгласна.</p><div class="samp"><p><i class="ex">Бо-тьо</i> (не: <i class="ex">Бот-ьо</i>), <i class="ex">га-ньовщина</i> (не: <i class="ex">ган-ьовщина</i>), <i class="ex">суф-льор</i> (не: <i class="ex">суфл-ьор</i>)</p></div><h2 data-lvl="0" data-ref="67." id="67">67.</h2><p>Инициалните съкращения не се пренасят.</p><div class="samp"><p><i class="ex">БАН, ГАТТ, МОМН, ОПЕК,</i> <i class="ex">БНБ, ВМРО, ЕООД, МВФ, НДК, СДВР,</i> <i class="ex">МОСВ, ЦСКА,</i> <i class="ex">НАТФИЗ, РИОКОЗ, САПАРД, УНИЦЕФ, ФИФА, ЮНЕСКО</i></p></div><h2 data-lvl="0" data-ref="68." id="68">68.</h2><p>Препинателните знаци не се пишат в началото на реда с изключение на кавичките, скобите и тирето.</p><div class="samp"><p><i class="ex">Един гледа сватба, друг</i><br><i class="ex">– брадва.</i>
 </p></div><br><div class="samp"><p><i class="ex">Дойдоха орли</i><br><i class="ex">– черни, големи.</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>

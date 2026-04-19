@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Звателни форми на -айо, -ейо, -ийо" id="bski60">Звателни форми на <i class="frag">-айо</i>, <i class="frag">-ейо</i>, <i class="frag">-ийо</i></h1><h2 data-lvl="0" data-ref="18.3." id="18.3">18.3.</h2><p>Съществителните имена от ж.р. на <i class="frag">-ая</i>, <i class="frag">-ея</i>, както и съществителните от м. и ж.р. на <i class="frag">-ия</i> могат да образуват звателни форми със завършеци съответно на <i class="frag">-айо</i>, <i class="frag">-ейо</i> и <i class="frag">-ийо</i>.</p><div class="samp"><p><i class="ex">Мая – Майо!, Рая – Райо!; фея – фейо!, Славея – Славейо!; България – Българийо!, Мария – Марийо!, Евгения – Евгенийо!, орисия – орисийо!, кормчия – кормчийо!</i></p></div><p>[Вж. и Групи <i class="ex">-ея</i>, <i class="ex">-ия</i>, <i class="ex">-еа-</i>, <i class="ex">-иа-</i>, т. <a href="#13">13</a>.]</p></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="6" data-ref="Пренасяне на части от думи на нов ред" id="bski249">Пренасяне на части от думи на нов ред</h1><p>Пренасянето на части от думи в писмен текст се ръководи от изискването да не се пречи на правилното смислово възприемане на думите, когато се делят. Като най-удобно при деленето на думите се приема <i class="ex"><i class="frag">скандирането</i></i>. Съобразно с него се оформят различните възможни и допустими начини за пренасяне на части от думи. По традиция обаче се допуска запазване на целостта на отделните морфеми в тях.</p><p>При пренасяне на части от думи се използва малко тире като показател за прекъсване, за да не се породят двусмислици:</p><div class="samp"><p><i class="ex">зелен-чук, само-лети, смел-чак, сто-личен, вълнени-ята, много-значително, много-странен, прав-див</i></p></div><h2 data-lvl="0" data-ref="65." id="65">65.</h2><p>При пренасяне на части от думи на нов ред важат следните правила:
 </p></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1743.html" class=""><label>Съгласна между две гласни</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1747.html" class=""><label>Две и повече съгласни между две гласни</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1754.html" class=""><label>Две съседни гласни в средисловие</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1758.html" class=""><label>Пренасяне на <i class="frag">й</i>, което е между гласна и съгласна</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1765.html" class=""><label>Пренасяне на <i class="frag">й</i>, което е между две гласни</label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1780.html" class=""><label>Пренасяне на буквосъчетанията <i class="frag">дж</i> и <i class="frag">дз</i></label></a></span></h3><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="1785.html" class=""><label>Пренасяне на буквосъчетанието <i class="frag">-ьо</i></label></a></span></h3></div></div>
 <button id="backToTop" title="Go to top">↑</button>

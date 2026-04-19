@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Оформяне на текст на пиеса, либрето, сценарий" id="bski928">Оформяне на текст на пиеса, либрето, сценарий</h1><p>Текстът на пиеса, либрето, сценарий съдържа репликите на действащите лица, техните имена и роли, описания на реакциите и поведението им, на обстановката и действието на сцената (ремарки).</p><h2 data-lvl="0" data-ref="133." id="133">133.</h2><p>Текст на пиеса, либрето, сценарий се оформя по следния начин:</p><h2 data-lvl="0" data-ref="133.1." id="133.1">133.1.</h2><p>Названието (името или ролята) на действащото лице и неговата реплика се оформят в един абзац и се отделят с точка или с двоеточие. Названието на действащото лице се пише с шрифт, различен от основния.</p><div class="samp first-samp collapsed"><p>АКОРДЕОНИСТА. Един ден ще спечеля много пари и ще си взема билет за самолет, който лети само на запад. Само на запад и само следобед. И ще преследвам един залез.</p><p>ПЯСЪЧНИЯ ЧОВЕК. Обективно погледнато, това е най-хубавият залез, който съм виждал.
 </p></div>
 <div class="samp"><p>ЖАНА: Ти колко приятелки си имал досега! Десет? Дори не им помниш имената. Не ги ли зарязваше от страх?</p><p>ФИЛИП: От страх – не. Просто умирах от скука…</p></div><h2 data-lvl="0" data-ref="133.2." id="133.2">133.2.</h2><p>Репликите на действащите лица се оформят според общите правописни и пунктуационни правила.</p><h2 data-lvl="0" data-ref="133.3." id="133.3">133.3.</h2><p>Ремарка, която се отнася до реакциите или поведението на действащо лице, се разполага преди, в средата или след репликата, пише се с курсив и се поставя в скоби.</p><h2 data-lvl="0" data-ref="133.4." id="133.4">133.4.</h2><p>Ремарка, която е разположена след репликата или между части на репликата, се пише с главна буква и точка накрая.

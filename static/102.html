@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Морфологичен принцип" id="bski461">Морфологичен принцип</h1><h2 data-lvl="0" data-ref="4.1." id="4.1">4.1.</h2><p>Основната част от правилата за писане на думите в българския език се основава върху морфологичния принцип. Според него еднаквите строежни елементи на думите – морфемите (корен, представка, наставка, окончание, определителен член), се пишат по един и същ начин независимо как се изговарят в книжовния език, за да се запази еднакъв графичният облик на съответната морфема и да се улесни четенето: <i class="ex">разкош</i> (изговор <i class="ex">ра<i class="frag">с</i>кош</i>), <i class="ex">хляб</i> (изговор <i class="ex">хля<i class="frag">п</i></i>), <i class="ex">сграда</i> (изговор <i class="ex"><i class="frag">з</i>града</i>), <i class="ex">сватба</i> (изговор <i class="ex">сва<i class="frag">д</i>ба</i>) и под.</p><p>Върху морфологичния принцип се основават и правилата за употреба на главна и малка буква при разграничаването на собствените от нарицателните имена.</p><p>Морфологичният принцип се прилага и в случаите на условно предаване на звука <span>[<i class="frag">ъ</i>]</span> под ударение чрез буквите <i class="frag">а</i> и <i class="frag">я</i> (в глаголни окончания за 1 л. ед.ч. и 3 л. мн.ч. сег.вр. и в членувани форми). Той действа и при използването на графемата <i class="frag">ѝ</i> за означаване на кратките форми на личното и притежателното местоимение за ж.р. с цел разграничаването им от съюза <i class="frag">и</i>.</p></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

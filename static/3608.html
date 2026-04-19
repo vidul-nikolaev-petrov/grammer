@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Оформяне на тестови задачи с множествен отговор" id="bski916">Оформяне на тестови задачи с множествен отговор</h1><h2 data-lvl="0" data-ref="134." id="134">134.</h2><p>За оформянето на тестови задачи с множествен отговор са валидни следните правила:</p><h2 data-lvl="0" data-ref="134.1." id="134.1">134.1.</h2><p>Поредността на всеки от предложените в задачата отговори се отбелязва с главна буква и дясна скоба.</p><div class="samp">Химичните свойства на атомите се определят от: <p>А) електричните сили на привличане между ядрото и електроните <br>Б) електричните сили на отблъскване между електроните<br>В) ядрените сили, които действат в ядрото<br>Г) гравитационните сили на привличане между ядрото и електроните
 </p></div><h2 data-lvl="0" data-ref="134.2." id="134.2">134.2.</h2><p>Предложените към задачата отговори се разполагат вертикално (всеки на нов ред) с цел по-ясното им възприемане, със или без отстъп.</p><div class="samp">
     <p>

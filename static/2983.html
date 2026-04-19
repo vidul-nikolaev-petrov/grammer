@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Дефис в графични съкращения" id="bski1158">Дефис в графични съкращения</h1><h2 data-lvl="0" data-ref="114.7." id="114.7">114.7.</h2><p>Дефис се използва при някои графични съкращения.</p><div class="samp"><p><i class="ex">г-н</i> (господин), <i class="ex">д-р</i> (доктор), <i class="ex">у-ще</i> (училище)</p></div><p>[Вж. Езикови съкращения, т. <a href="#72.4">72.4</a>.]</p><h2 data-lvl="0" data-ref="114.8." id="114.8">114.8.</h2><p>Дефис се използва при обособяване на отделни смислови части от думи.</p><div class="samp first-samp collapsed"><p><i class="ex">не-българин</i></p></div><div class="samp"><p><i class="ex">Гръцката етимология на ‘антропос' (човек) означава „онзи, който е обърнат и гледа нагоре“, а в  ‘чело-век' се поставя определителят „чело“ – най-високата част на самото лице.</i></p></div><h2 data-lvl="0" data-ref="114.9." id="114.9">114.9.</h2><p>Дефис се използва при оформяне на рубрики.</p><div class="samp first-samp collapsed"><p><i class="ex">За обзавеждането на офисите са необходими:</i></p></div><div class="samp"><p><i class="ex">- 5 бюра,</i></p></div><div class="samp"><p><i class="ex">- 7 стола,</i></p></div><div class="samp"><p><i class="ex">- 1 работна маса.</i></p></div><p>[Вж. Оформяне на рубрики, т. <a href="#125.1">125.1</a>.]</p></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

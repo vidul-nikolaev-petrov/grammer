@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Морфологична употреба на главни и малки букви" id="bski348">Морфологична употреба на главни и малки букви</h1></div><div class="lYTjX"><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="821.html" class=""><label>Главни букви</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="840.html" class=""><label>Едносъставни собствени имена</label></a></span></p><p><span class="XTUiN"><a href="898.html" class=""><label>Съставни собствени имена</label></a></span></p><p><span class="XTUiN"><a href="943.html" class=""><label>Главни букви при прилагателни имена</label></a></span></p></div><h3 class="deNwD o1-H2"><span class="XTUiN"><a href="964.html" class=""><label>Малки букви</label></a></span></h3><div class="JHmXs"><p><span class="XTUiN"><a href="967.html" class=""><label>Календарни периоди</label></a></span></p><p><span class="XTUiN"><a href="971.html" class=""><label>Малка буква при <i class="frag">изток</i>, <i class="frag">запад</i>, <i class="frag">север</i>, <i class="frag">юг</i> и под.</label></a></span></p><p><span class="XTUiN"><a href="982.html" class=""><label>Малка буква при <i class="frag">източен</i>, <i class="frag">западен</i>, <i class="frag">северен</i>, <i class="frag">южен</i> и под.</label></a></span></p><p><span class="XTUiN"><a href="988.html" class=""><label>Жителски названия</label></a></span></p><p><span class="XTUiN"><a href="992.html" class=""><label>Названия на раси, племена, етноси и под.</label></a></span></p><p><span class="XTUiN"><a href="996.html" class=""><label>Названия на парични единици</label></a></span></p><p><span class="XTUiN"><a href="1000.html" class=""><label>Названия на стилове в изкуството</label></a></span></p><p><span class="XTUiN"><a href="1004.html" class=""><label>Музикални термини</label></a></span></p><p><span class="XTUiN"><a href="1008.html" class=""><label>Названия на геологически епохи и ери</label></a></span></p><p><span class="XTUiN"><a href="1012.html" class=""><label>Названия на исторически периоди</label></a></span></p><p><span class="XTUiN"><a href="1017.html" class=""><label>Имена на философски и религиозни движения и под.</label></a></span></p><p><span class="XTUiN"><a href="1021.html" class=""><label>Имена на езици</label></a></span></p><p><span class="XTUiN"><a href="1025.html" class=""><label>Прилагателни от собствени имена</label></a></span></p><p><span class="XTUiN"><a href="1031.html" class=""><label>Малки букви при членни форми и служебни думи</label></a></span></p><p><span class="XTUiN"><a href="1036.html" class=""><label>Специалности и професионални направления</label></a></span></p><p><span class="XTUiN"><a href="1046.html" class=""><label>Образователни и научни степени и под.</label></a></span></p><p><span class="XTUiN"><a href="1050.html" class=""><label>Съществителни нарицателни от собствени имена</label></a></span></p><p><span class="XTUiN"><a href="1090.html" class=""><label>Съществителни нарицателни в съставни собствени имена</label></a></span></p><p><span class="XTUiN"><a href="1096.html" class=""><label>Притежателни прилагателни в състава на термини</label></a></span></p><p><span class="XTUiN"><a href="1100.html" class=""><label>Прилагателни за качествена характеристика от собствени имена</label></a></span></p><p><span class="XTUiN"><a href="1105.html" class=""><label>Фразеологизми с прилагателни от собствени имена</label></a></span></p><p><span class="XTUiN"><a href="1109.html" class=""><label>Съществителни нарицателни от абревиатури</label></a></span></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

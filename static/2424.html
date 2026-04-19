@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Непунктуационна употреба на двоеточието" id="bski988">Непунктуационна употреба на двоеточието</h1><p>Като знак с непунктуационна функция двоеточието се използва в следните случаи:</p><h2 data-lvl="0" data-ref="99." id="99">99.</h2><p>При означаване на числов резултат от състезание.</p><div class="samp first-samp collapsed"><p><i class="ex">Срещата завърши наравно – 3:3.</i></p></div><div class="samp"><p><i class="ex">Националите ни отстъпиха с 65:87.</i></p></div><h2 data-lvl="0" data-ref="99.1." id="99.1">99.1.</h2><p>Двоеточие се пише за означаване на съотношение между величини.</p><div class="samp first-samp collapsed"><p><i class="ex">мащаб 1:2 500 000</i></p></div><div class="samp"><p><i class="ex">риск 1:5000</i></p></div><h2 data-lvl="0" data-ref="99.2." id="99.2">99.2.</h2><p>Двоеточие се пише за означаване на време.</p><div class="samp"><p><i class="ex">10:25 ч., 15:07:00</i></p></div><p>[За употреба на запетая вж. т. <a href="#96.2">96.2</a>; за употреба на точка вж. т. <a href="#109.2">109.2</a>.]</p><h2 data-lvl="0" data-ref="99.3." id="99.3">99.3.</h2><p>Двоеточие се пише като знак за деление в математиката.</p><div class="samp"><p><i class="ex">20 : 5 = 4</i></p></div><h2 data-lvl="0" data-ref="99.4." id="99.4">99.4.</h2><p>Двоеточие се пише за въвеждане на сведения за цитирани страници в библиографски препратки при някои видове цитиране (в зависимост от прилагания стандарт).</p><div class="samp"><p><i class="ex">(Димитров 2009: 19 – 20)</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

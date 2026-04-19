@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="2" data-ref="Имена с една главна буква" id="bski138">Имена с една главна буква</h1><h2 data-lvl="0" data-ref="39.1." id="39.1">39.1.</h2><p>Когато съставното собствено име не включва друго собствено име, с главна буква се пише само първата съставка.
 </p><div class="samp"><p><i class="ex">Апостола на свободата, Голямата ябълка</i> (прозвище на Ню Йорк)<i class="ex">, Самотен листец</i> (псевдоним на Н. Г. Данчев)<i class="ex">, Стар делия</i> (псевдоним на В. Павурджиев)<i class="ex">;</i></p><p><i class="ex">Бъдни вечер, Нова година, Ден на народните будители;</i></p><p><i class="ex">Атлантически океан, Бяло море, Големия(т) каньон, Гринуички меридиан, Горна баня, Малка мечка, Две могили, Попови ливади, Петрова нива, Слънчева система, Съединени американски щати, Черна гора;</i></p><p><i class="ex">Българска академия на науките, Български червен кръст, Демократическа партия, Народно събрание, Нов български университет;</i></p><p><i class="ex">Айфелова кула, Бранденбургска врата;</i></p><p><i class="ex">Априлско въстание, Балканска война, Великото преселение на народите, Виенска конвенция, Втора световна война, Великата френска революция;</i> </p><p>(орден) <i class="ex">„Стара планина“,</i> (награда) <i class="ex">„Златен век“</i>; </p><p><i class="ex">„Вестник за жената“;</i></p><p><i class="ex">Закон за българското гражданство, Лисабонски договор, Шенгенско споразумение;</i> (сорт) <i class="ex">„Златна превъзходна“,</i> (порода) <i class="ex">„Каракачанска овчарка“,</i> (бисквити) <i class="ex">„Житен дар“;</i></p><p>(специалност) <i class="ex">„Българска филология“,</i> (отдел) <i class="ex">„Връзки с обществеността“</i>
 </p></div>

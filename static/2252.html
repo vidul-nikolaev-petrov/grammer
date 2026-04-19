@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="1" data-ref="Два съюза по съседство" id="bski773">Два съюза по съседство</h1><h2 data-lvl="0" data-ref="93." id="93">93.</h2><p>Не се пише запетая между два съюза, които следват непосредствено един след друг и въвеждат различни прости изречения, при условие че първият съюз е неударен и едносричен.</p><div class="samp first-samp collapsed"><p><i class="ex">Снощи дълго звънях, но като не ми отворихте, си тръгнах.</i></p></div><div class="samp"><p><i class="ex">Предложете им, а ако не се съгласят, ги изпратете при мен.</i></p></div><div class="samp"><p><i class="ex">В този миг си мислех, че ако всички разберат, с мен е свършено.</i></p></div><p>[Срв. Тире, т. <a href="#102.12">102.12</a>.]</p><h2 data-lvl="0" data-ref="93.1." id="93.1">93.1.</h2><p>Ако първият от двата съюза е многосричен, съюзите се разделят със запетая.</p><div class="samp first-samp collapsed"><p><i class="ex">Не съм съгласен, понеже, ако поставим нещата на друга плоскост, губещите ще станат печеливши.</i></p></div><div class="samp"><p><i class="ex">Депресията е състояние, което не засяга тялото, въпреки че, ако не ѝ се противопостави, човек може да се разболее сериозно.</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

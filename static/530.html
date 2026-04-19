@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Формите кого, когото, някого, никого" id="bski66">Формите <i class="frag">кого</i>, <i class="frag">когото</i>, <i class="frag">някого</i>, <i class="frag">никого</i></h1><h2 data-lvl="0" data-ref="20." id="20">20.</h2><p>Употреба на формите <i class="frag">кого</i>, <i class="frag">когото</i>, <i class="frag">някого</i>, <i class="frag">никого</i>.</p><h2 data-lvl="0" data-ref="20.1." id="20.1">20.1.</h2><p>Употребата на местоименните форми за м.р. ед.ч. <i class="ex">кого</i>, <i class="ex">когото</i>,   <i class="ex">някого</i>, <i class="ex">никого</i> е задължителна в писмен текст. Те се отнасят за лица и изпълняват служба на допълнение в изречението.</p><div class="samp first-samp collapsed"><p><i class="ex">Кого ще поканиш на рождения си ден?</i></p></div><div class="samp"><p><i class="ex">На кого можеш да се довериш?</i></p></div><div class="samp"><p><i class="ex">Човекът, когото срещнахме, е братовчед ми.</i></p></div><div class="samp"><p><i class="ex">Търсим някого, който ще ни помогне.</i></p></div><div class="samp"><p><i class="ex">Не разговаряйте с никого!</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

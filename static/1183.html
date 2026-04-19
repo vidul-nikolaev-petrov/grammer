@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Главна буква при думи, отнасящи се до Бог" id="bski701">Главна буква при думи, отнасящи се до Бог</h1><h2 data-lvl="0" data-ref="51." id="51">51.</h2><p>С главна буква се пишат съществителни, прилагателни имена и местоимения, които се отнасят до Бог с изключение на случая в т. <a href="#51.1">51.1</a>.</p><div class="samp first-samp collapsed"><p><i class="ex">Защото Ти си пазител на душите и телата ни.</i></p></div><div class="samp"><p><i class="ex">Отче наш, Който си на небесата,...</i></p></div><div class="samp"><p><i class="ex">Вдигнал набожно взор към небесата, той приемаше благословия от нашия Спасител.</i></p></div><div class="samp"><p><i class="ex">Христос е Син Божи и Богочовек.</i></p></div><div class="samp"><p><i class="ex">И царството Му не ще има край.</i></p></div><div class="samp"><p><i class="ex">В християнството Светият Дух е едно от лицата на Светата Троица.</i></p></div><h2 data-lvl="0" data-ref="51.1." id="51.1">51.1.</h2><p>Във фразеологични съчетания съществителните Бог и Господ се пишат с малка буква.</p><div class="samp first-samp collapsed"><p><i class="ex">Не дай боже да се върне!</i></p></div><div class="samp"><p><i class="ex">Пази боже сляпо да прогледа!</i></p></div><div class="samp"><p><i class="ex">Един господ знае кога ще свърши всичко това.</i></p></div><div class="samp"><p><i class="ex">Здрав съм, слава богу!</i></p></div><div class="samp"><p><i class="ex">Каква жена, боже мой!</i></p></div><div class="samp"><p><i class="ex">Помогнете ми, за бога!</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

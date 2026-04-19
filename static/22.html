@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Буква а" id="bski514">Буква а</h1><h2 data-lvl="0" data-ref="1.2." id="1.2">1.2.</h2><p>Буквата <i class="frag">а</i> се използва за отбелязване освен на звука <span>[<i class="frag">а</i>]</span> и на звука <span>[<i class="frag">ъ</i>]</span> под ударение в следните случаи:</p><h2 data-lvl="0" data-ref="1.2.1." id="1.2.1">1.2.1.</h2><p>В членуваните с кратък член форми на съществителни имена от м.р.</p><div class="samp"><p><i class="ex">дом – дома̀</i> (изговор <i class="ex">домъ̀</i>), <i class="ex">клас – класа̀</i> (изговор <i class="ex">класъ̀</i>), <i class="ex">мъж – мъжа̀</i> (изговор <i class="ex">мъжъ̀</i>), <i class="ex">син – сина̀</i> (изговор <i class="ex">синъ̀</i>), <i class="ex">свят – света̀</i> (изговор <i class="ex">светъ̀</i>)</p></div><h2 data-lvl="0" data-ref="1.2.2." id="1.2.2">1.2.2.</h2><p>В глаголни окончания за 1 л. ед.ч. и 3 л. мн.ч. сег.вр.</p><div class="samp"><p><i class="ex">донеса̀</i> (изговор <i class="ex">донесъ̀</i>), <i class="ex">чета̀</i> (изговор <i class="ex">четъ̀</i>), <i class="ex">дада̀т</i> (изговор <i class="ex">дадъ̀т</i>), <i class="ex">крада̀т</i> (изговор <i class="ex">крадъ̀т</i>)</p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

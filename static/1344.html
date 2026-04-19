@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Сложни прилагателни с първа съставка числително" id="bski725">Сложни прилагателни с първа съставка числително</h1><h2 data-lvl="0" data-ref="53.16." id="53.16">53.16.</h2><p>Сложни прилагателни имена, образувани от съчетания от едносъставно числително и съществително име, се пишат слято.</p><div class="samp"><p><i class="ex">едноминутен</i> (от <i class="ex">една</i> <i class="ex">минута</i>)<i class="ex">,</i> <i class="ex">двучасов</i> (от <i class="ex">два часа</i>)<i class="ex">,</i> триетажен (от <i class="ex">три етажа</i>)<i class="ex">,</i> <i class="ex">четиристаен</i> (от <i class="ex">четири</i> <i class="ex">стаи</i>)<i class="ex">,</i> <i class="ex">осемгодишен</i> (от <i class="ex">осем</i> <i class="ex">години</i>)<i class="ex">,</i> <i class="ex">петнайсетдневен</i> (от <i class="ex">петнайсет</i> <i class="ex">дни</i>)<i class="ex">,</i> <i class="ex">трийсетметров</i> (от <i class="ex">трийсет</i> <i class="ex">метра</i>)<i class="ex">,</i> <i class="ex">тристепенен</i> (от <i class="ex">три степени</i>)</p></div><h2 data-lvl="0" data-ref="53.16.1." id="53.16.1">53.16.1.</h2><p>Когато числителното име е написано с цифри, то се свързва с главната основа чрез малко тире.</p><div class="samp"><p><i class="ex">5-годишен, 45-градусов, 105-килограмов</i></p></div><h2 data-lvl="0" data-ref="53.16.2." id="53.16.2">53.16.2.</h2><p>Когато числителното име е съставно по строеж и не е написано с цифри, всички думи в съчетанието се пишат разделно.</p><div class="samp"><p><i class="ex">двайсет и пет метров, седемдесет и пет годишен</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

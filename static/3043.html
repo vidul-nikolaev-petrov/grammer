@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Наклонена черта [/]" id="bski1197">Наклонена черта [/]</h1><h2 data-lvl="0" data-ref="117." id="117">117.</h2><p>Наклонена черта без шпации се използва в следните случаи:</p><h2 data-lvl="0" data-ref="117.1." id="117.1">117.1.</h2><p>Наклонена черта без шпации се използва за изразяване на съотношение между величини, когато е пропуснат предлогът.</p><div class="samp"><p><i class="ex">60 км/час</i> (60 километра в час), <i class="ex">10 имп./мин</i> (10 импулса в минута), <i class="ex">7.50 лв./кв. м</i> (7.50 лева за квадратен метър); <i class="ex">19/24</i> (формат), <i class="ex">13/15/19</i> (размер)</p></div><p>[За употреба на дефис вж. т. <a href="#114.11">114.11</a>.]</p><h2 data-lvl="0" data-ref="117.2." id="117.2">117.2.</h2><p>Наклонена черта без шпации се използва за изразяване на отношения между понятия, когато са пропуснати съюзите <i class="frag">и, или</i>.</p><div class="samp"><p><i class="ex">преводи от/на английски, дублетите проблем/проблема, категорията определеност/неопределеност, тел./факс 900-90-90, купува/наема, отговорете с да/не</i></p></div><h2 data-lvl="0" data-ref="117.3." id="117.3">117.3.</h2><p>Наклонена черта без шпации се използва при някои графични съкращения, установени по традиция.</p><div class="samp"><p><i class="ex">в/ху</i> (върху), <i class="ex">с/ка</i> (сметка), <i class="ex">м/у</i> (между)</p></div><p>[Вж. Езикови съкращения, т. <a href="#72.4">72.4</a>; за употреба на дефис вж. т. <a href="#114.7">114.7</a>.]</p><h2 data-lvl="0" data-ref="117.4." id="117.4">117.4.</h2><p>Допуска се употреба на наклонена черта при записване на обикновени дроби.</p><div class="samp"><p><i class="ex">½, ¾, 4/5, 9/10</i>
 </p></div><h2 data-lvl="0" data-ref="117.5." id="117.5">117.5.</h2><p>Наклонена черта с шпации се използва за отделяне на стиховете в цитат от лирически текст, когато цитатът е разположен на един ред с авторовия текст.</p><p>[Вж. Оформяне на текст с цитат, т. <a href="#127.6.2">127.6.2</a>.]</p></div></div>
 <button id="backToTop" title="Go to top">↑</button>

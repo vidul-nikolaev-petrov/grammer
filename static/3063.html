@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Индекс и звездичка [*]" id="bski1056">Индекс и звездичка [*]</h1><h2 data-lvl="0" data-ref="118." id="118">118.</h2><p>Индексът се означава с повдигната арабска цифра или със звездичка. Пред индекса не се оставя шпация.</p><h2 data-lvl="0" data-ref="118.1." id="118.1">118.1.</h2><p>Индексът се използва за препратки към бележки или библиографски сведения под линия, в края на текста или на негова структурна част.</p><div class="samp"><p>В заглавието в снет „вид“<sup>1</sup> са темите, идеите, жанровите конструкции на цялото. </p><hr class="fline"><p><sup>1</sup> Терминът се въвежда във философски план от Г. Хегел. </p>
 </div><p>или:</p><div class="samp"><p>В заглавието в снет „вид“* са темите, идеите, жанровите конструкции на цялото. </p><hr class="fline">* Терминът се въвежда във философски план от Г. Хегел.
 </div><p>[За употреба на индекс при библиографско цитиране вж. т. <a href="#129">129</a>; за съчетаване на индекс с пунктуационни знаци в края на изречението вж. т. <a href="#135">135</a>.]</p><h2 data-lvl="0" data-ref="118.2." id="118.2">118.2.</h2><p>Когато не е индекс, звездичката се използва в следните случаи:</p><h2 data-lvl="0" data-ref="118.2.1." id="118.2.1">118.2.1.</h2><p>Звездичката се използва като знак за обособяване на отделни структурни части в текста.

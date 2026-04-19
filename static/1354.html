@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Сложни прилагателни с първа съставка наречие" id="bski575">Сложни прилагателни с първа съставка наречие</h1><h2 data-lvl="0" data-ref="53.17." id="53.17">53.17.</h2><p>Сложни прилагателни имена, в които подчинената основа е наречие, свързано с главната основа със съединителна гласна (или завършващо на гласна, която изпълнява ролята на съединителна).</p><div class="samp first-samp collapsed"><p><i class="ex">аленочервен, бледосин, вечнозелен, жабешкозелен, изумруденозелен, мастиленозелен, медночервен, огненочервен, отровнозелен, светлосин, турскосин, тъмнокафяв, яркочервен;</i></p></div><div class="samp"><p><i class="ex">взаимноперпендикулярен, вътрешнопартиен, домашнотъкан, душевноболен, крайнодесен, правопропорционален, световноизвестен,</i> <i class="ex">средноаритметичен, сърдечноболен</i></p></div><h2 data-lvl="0" data-ref="53.17.1." id="53.17.1">53.17.1.</h2><p>Съчетания от наречие и прилагателно име (причастие) се пишат разделно, когато не представляват смислово единство.</p><div class="samp"><p><i class="ex">особено опасен, прясно боядисан, свободно падащ, безследно изчезнал</i></p></div><p>[Вж. Разделно писане, т. <a href="#55.6">55.6</a>.]
 </p></div></div>
 <button id="backToTop" title="Go to top">↑</button>

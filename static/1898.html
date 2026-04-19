@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Образуване на инициални съкращения" id="bski570">Образуване на инициални съкращения</h1><h2 data-lvl="0" data-ref="76." id="76">76.</h2><p>Инициалните съкращения се образуват от:</p><h2 data-lvl="0" data-ref="76.1." id="76.1">76.1.</h2><p>Първата буква на всяка самостойна дума в съкращавания израз (съставно собствено име, номенклатурно название, устойчиво словосъчетание или термин); първите букви на самостойните думи и първите букви на основите на сложните думи в съкращавания израз; първите букви на основите, образуващи съкращаваната сложна дума.</p><div class="samp"><p><i class="ex">СУ – Софийски университет, СЗО – Световна здравна организация, ЕС – Европейски съюз, БНТ – Българска национална телевизия, ДВ – Държавен вестник, ДДС – данък върху добавената стойност, АД – акционерно дружество, АТЦ – автоматична телефонна централа, БВП – брутен вътрешен продукт, ООД – дружество с ограничена отговорност; ХДС – Християндемократически съюз, ВВС – Военновъздушни сили, ССА – Селскостопанска академия, АЕЦ – атомна електроцентрала, ППК – противопожарен кран; ЕКГ – електрокардиограма, електрокардиологичен, АГ – акушеро-гинекологичен, тв – телевизионен, жп – железопътен</i></p></div><h2 data-lvl="0" data-ref="76.2." id="76.2">76.2.</h2><p>Първите букви на всички самостойни думи или основи на сложни думи и допълнителни букви от някои от тях, за да се избегне омонимията.</p><div class="samp"><p><i class="ex">И<i class="frag">Мик</i>Б – Институт по <i class="frag">мик</i>робиология,</i> и <i class="ex">ИМБ – Институт по молекулярна биология; М<i class="frag">Вн</i>Р – Министерство на <i class="frag">вън</i>шните</i> <i class="ex">работи,</i> и <i class="ex">МВР – Министерство на вътрешните работи</i></p></div><h2 data-lvl="0" data-ref="76.3." id="76.3">76.3.</h2><p>Допуска се по традиция или за благозвучие в отделни инициални съкращения да се включат съюз <i class="ex">и</i> и буква от предлог.</p><div class="samp"><p><i class="ex">НИИГ<i class="frag">И</i>К – Научноизследователски институт по геодезия <i class="frag">и</i> картография, В<i class="frag">и</i>К – Водоснабдяване <i class="frag">и</i> канализация, АЖ<i class="frag">Б</i>О – Асоциация „Жени <i class="frag">б</i>ез остеопороза“</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

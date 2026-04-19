@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Знак за ударение [`]" id="bski1165">Знак за ударение [`]</h1><h2 data-lvl="0" data-ref="115." id="115">115.</h2><p>Знак за ударение се използва в следните случаи:</p><h2 data-lvl="0" data-ref="115.1." id="115.1">115.1.</h2><p>Знак за ударение се използва върху букви за гласни в отделни думи в свързан текст, за да се избегне двусмислие.</p><div class="samp"><p><i class="ex">сѐдмица</i> и <i class="ex">седмѝца, хо̀ра</i> и <i class="ex">хора̀, па̀ра</i> и <i class="ex">пара̀</i></p></div><h2 data-lvl="0" data-ref="115.2." id="115.2">115.2.</h2><p>Знак за ударение се използва при кратките форми на личното и на притежателното местоимение за 3 л. ж.р. ед.ч.</p><div class="samp first-samp collapsed"><p><i class="ex">Трябва да ѝ изпратиш поздравления.</i></p></div><div class="samp"><p><i class="ex">Книгата ѝ лежеше на масата.</i></p></div><h2 data-lvl="0" data-ref="115.3." id="115.3">115.3.</h2><p>Знак за ударение се използва върху буквата за гласната в частицата <i class="ex">по</i> при степенуване на съществителни, глаголи и съчетания с предлог.</p><div class="samp"><p><i class="ex">по̀ юнак, по̀ обичам, по̀ към тебе, още по̀ на запад</i></p></div><h2 data-lvl="0" data-ref="115.4." id="115.4">115.4.</h2><p>Знак за ударение се използва при транскрибирани собствени имена от чужди езици, ако е необходимо да се посочи мястото на ударението.</p><div class="samp"><p><i class="ex">Ма̀ртин</i> и <i class="ex">Мартѝн, А̀гата</i> и <i class="ex">Ага̀та, Ива̀нов</i> и <i class="ex">Ивано̀в</i></p></div><h2 data-lvl="0" data-ref="115.5." id="115.5">115.5.</h2><p>Знак за ударение се използва в специализирани издания като речници, справочници, енциклопедии.</p><div class="samp first-samp collapsed"><p><i class="ex">ка̀жа, ка̀жеш, ка̀жем; ка̀зах, ка̀за; ка̀жех, ка̀жеше; ка̀зал; ка̀жел; ка̀зан; кажѝ!, кажѐте!</i> </p></div><div class="samp"><p><i class="frag">водопрово̀д</i> <i class="ex">– част от водопроводна мрежа или инсталация, по която се подава чиста вода към потребителя.</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

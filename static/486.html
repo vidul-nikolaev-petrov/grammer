@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="2" data-ref="Бройна форма на съществителни на -азъм, -изъм и под." id="bski124">Бройна форма на съществителни на <i class="frag">-азъм</i>, <i class="frag">-изъм</i> и под.</h1><h2 data-lvl="0" data-ref="19.2.2.3." id="19.2.2.3">19.2.2.3.</h2><p>При образуване на бройна форма за множествено число от съществителни на -<i class="frag">ър</i>, <i class="frag">-ъл</i>, <i class="frag">-изъм</i>, <i class="frag">-азъм</i> вметнатият <span>[<i class="frag">ъ</i>]</span> се запазва.</p><div class="samp"><p><i class="ex">диоптър</i> – <i class="ex">три</i> <i class="ex">диоптъра</i>, <i class="ex">театър</i> – <i class="ex">пет</i> <i class="ex">театъра</i>, <i class="ex">компютър</i> – <i class="ex">сто</i> <i class="ex">компютъра, чехъл</i> – <i class="ex">два</i> <i class="ex">чехъла, афоризъм</i> – <i class="ex">няколко афоризъма, плеоназъм – няколкото плеоназъма</i></p></div><p>[Вж. Вмятане и изпадане на гласни и съгласни, т. <a href="#8.3">8.3</a> и <a href="#8.4">8.4</a>.]</p></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

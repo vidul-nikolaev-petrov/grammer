@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Тире пред изречение с въпросителна дума" id="bski1041">Тире пред изречение с въпросителна дума</h1><h2 data-lvl="0" data-ref="102.9." id="102.9">102.9.</h2><p>С тире се отделя словосъчетание с показателно местоимение, което е конкретизирано с изречение, въведено с въпросителна дума.</p><div class="samp first-samp collapsed"><p><i class="ex">Този въпрос – кой всъщност трябва да свидетелства срещу извършителя, не беше решен.</i></p></div><div class="samp"><p><i class="ex">Онова мъчително колебание – как да изрази по недвусмислен начин чувствата си, отново се прокрадваше в съзнанието му.</i></p></div><h2 data-lvl="0" data-ref="102.10." id="102.10">102.10.</h2><p>Тире се пише между две прости изречения в състава на сложното, когато едното от тях има обобщаващ характер, а другото го конкретизира.</p><div class="samp first-samp collapsed"><p><i class="ex">Пламен мислеше само за едно нещо – да се измъкне по-скоро от стаята.</i></p></div><div class="samp"><p><i class="ex">Много се чудих за следното – имат ли, нямат ли място такива разсъждения.</i></p></div><p>[За употреба на двоеточие вж. т. <a href="#98.3">98.3</a>.]</p></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

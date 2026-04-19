@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Звателни форми на господин, госпожа, госпожица" id="bski100">Звателни форми на <i class="frag">господин</i>, <i class="frag">госпожа</i>, <i class="frag">госпожица</i></h1><h2 data-lvl="0" data-ref="18.5." id="18.5">18.5.</h2><p>Звателните форми на съществителните имена <i class="ex">господин</i>, <i class="ex">госпожа</i> и <i class="ex">госпожица</i> са <i class="ex">господине</i>, <i class="ex">госпожо</i>, <i class="ex">госпожице</i>.</p><div class="samp first-samp collapsed"><p><i class="ex">Господине, моля Ви!</i></p></div><div class="samp"><p><i class="ex">Госпожице, заповядайте!</i></p></div><div class="samp"><p><i class="ex">Госпожо, приемете моите поздрави!</i></p></div><h2 data-lvl="0" data-ref="18.5.1." id="18.5.1">18.5.1.</h2><p>Съществителното име <i class="ex">господин</i> при обръщение, когато е придружено от названия за длъжности, титли, звания или от собствени имена, се употребява с основната си, а не със звателната си форма.</p><div class="samp first-samp collapsed"><p><i class="ex">Господин Президент, имате думата.</i></p></div><div class="samp"><p><i class="ex">Господин Стефанов, Вие прочетохте ли заповедта?</i></p></div><div class="samp"><p><i class="ex">Господин Директор, нека обсъждането продължи на следващото заседание.</i></p></div><h2 data-lvl="0" data-ref="18.5.2." id="18.5.2">18.5.2.</h2><p>Съществителното име <i class="ex">госпожа</i> при обръщение се употребява винаги със звателната си форма независимо дали е употребено самостоятелно, или е придружено от название за длъжност, титла, звание или от собствено име.</p><div class="samp first-samp collapsed"><p><i class="ex">Госпожо, знаете ли къде се намира Градската художествена галерия?</i></p></div><div class="samp"><p><i class="ex">Госпожо Министър, какви средства се предвиждат за инвалидите през следващата година?</i></p></div><div class="samp"><p><i class="ex">Г-жо Андреева, търсих Ви вчера.</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="3" data-ref="Сложни съществителни с равноправни съставки" id="bski496">Сложни съществителни с равноправни съставки</h1><p>Полуслято се пишат сложни съществителни имена с равноправно отношение между изграждащите ги основи от типа <i class="ex"><i class="frag">главна основа – главна основа</i></i> (при нарицателните имена смисълът подсказва, че между двете основи може да се вмъкне съюзът <i class="ex">и</i>). Към тях се отнасят следните случаи:</p><h2 data-lvl="0" data-ref="54.2." id="54.2"> 54.2.</h2><p>Сложни съществителни имена, образувани чрез свързването на основите на две съществителни нарицателни или собствени (лични и географски) имена.</p><div class="samp first-samp collapsed"><p><i class="ex">зидаро-мазач, касиер-домакин, лозаро-винарство, плод-зеленчук, план-програма, покупко-продажба, пренос-превоз, старт-финал, товаро-разтоварач;</i></p></div><div class="samp"><p><i class="ex">Ана-Мария, Жан-Жак, Иван-Александър, Иван-Страцимир,</i></p></div><div class="samp"><p><i class="ex">Карл-Хайнц, Константин-Кирил, Мария-Десислава;</i></p></div><div class="samp"><p><i class="ex">Андерсен-Нексьо, Иванова-Карапетрова, Жолио-Кюри, Немирович-Данченко, Римски-Корсаков, Салтиков-Шчедрин;</i></p></div><div class="samp"><p><i class="ex">Австро-Унгария, Асиро-Вавилония, Елзас-Лотарингия</i></p></div><h2 data-lvl="0" data-ref="54.2.1." id="54.2.1">54.2.1.</h2><p>Когато личните имена от този тип се пишат съкратено, дефисът между буквите, които представляват отделните им части, се запазва.</p><div class="samp"><p><i class="ex">Ж.-Ж. Русо, Р.-М. Рилке</i></p></div><p>[Вж. Езикови съкращения, т. <a href="#72.3">72.3</a>.]</p><h2 data-lvl="0" data-ref="54.2.2." id="54.2.2">54.2.2.</h2><p>Не се пише дефис, когато втората съставка на собствените имена е династично име.</p><div class="samp"><p><i class="ex">Иван Асен, Иван Шишман</i></p></div><h2 data-lvl="0" data-ref="54.2.3." id="54.2.3">54.2.3.</h2><p>Под влияние на чужди езици някои сложни остарели и съвременни географски имена по традиция се пишат слято.</p><div class="samp"><p><i class="ex">Будапеща, Индокитай, Чехословакия</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

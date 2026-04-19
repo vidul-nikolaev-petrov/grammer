@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="4" data-ref="Правила за съкращаване" id="bski395">Правила за съкращаване</h1><h2 data-lvl="0" data-ref="69." id="69">69.</h2><p>Съкращаването чрез запазване на началните букви от думата става по два начина:</p><h2 data-lvl="0" data-ref="69.1." id="69.1">69.1.</h2><p>Запазва се само първата буква от думата.</p><div class="samp"><p><i class="ex">ч. – час; с. – село; м.р. – мъжки род; о. – остров, отец; х. – хижа, хотел; Е. – Елисавета, А. – Антон, Ж. – Живко, Р. – Радослав</i></p></div><h2 data-lvl="0" data-ref="69.2." id="69.2">69.2.</h2><p>Запазват се няколко букви от началото на думата, като последната от тях винаги е съгласна.</p><div class="samp first-samp collapsed"><p><i class="ex">зв. – звателен</i> (падеж)<i class="ex">; ср. – среден</i> (род)<i class="ex">; мн. – много; бл. – блок; пл. – планина, площад; чл. – член; вх. – вход;</i></p></div><div class="samp"><p><i class="ex">Стр. – Страшимир, Кр. – Красимир, Вл. – Владимир, Дим. – Димитър, Ив. – Иван;</i></p></div><div class="samp"><p><i class="ex">напр. – например, заб. – забележка, ап. – апартамент, изх. – изходящ;</i></p></div><div class="samp"><p><i class="ex">ал. – алинея, кор. – кореспондент, ет. – етаж; обикн. – обикновено;</i></p></div><div class="samp"><p><i class="ex">деят. – деятелен</i> (залог)<i class="ex">; зоол. – зоологически; геол. – геоложки, геологически</i></p></div><h2 data-lvl="0" data-ref="69.3." id="69.3">69.3.</h2><p>Не се допуска графично съкращаване, ако от думата след съкратената част остава само една буква или една сричка.</p><h2 data-lvl="0" data-ref="70." id="70">70.</h2><p>При съкращаването чрез съгласни се запазват всички или повечето букви за съгласни.</p><div class="samp"><p><i class="ex">млн. – милион, млрд. – милиард, лв. – лев, вж. – виж, нсв. – несвършен</i> (вид на глагола)<i class="ex">, срв. – сравни, нпр. – непреходен</i> (глагол)<i class="ex">, сз. – съюз</i> (термин)</p></div><h2 data-lvl="0" data-ref="71." id="71">71.</h2><p>В отделни случаи при съкращаване се запазват букви от началото и от края на думата.</p><div class="samp first-samp collapsed"><p><i class="ex">д-р – доктор, п-в – полуостров, з-д – завод;</i></p></div><div class="samp"><p><i class="ex">у-ще – училище, с-ма – система, в-ние – въстание;</i></p></div><div class="samp"><p><i class="ex">пр-во – правителство, пр-ще – пристанище;</i></p></div><div class="samp"><p><i class="ex">в/у – върху, п/в – против</i></p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

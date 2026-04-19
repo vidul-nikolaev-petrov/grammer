@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Многоточие [...]" id="bski1102">Многоточие [...]</h1><h2 data-lvl="0" data-ref="113." id="113">113.</h2><p>Знакът <i class="ex">многоточие</i> се употребява в следните случаи:</p><h2 data-lvl="0" data-ref="113.1." id="113.1">113.1.</h2><p>Знакът <i class="ex">многоточие</i> се употребява за означаване на пауза при прекъсната или недоизказана мисъл вътре или в края на изречението.</p><div class="samp first-samp collapsed"><p><i class="ex">Значи, ще се превърнем в отшелници, в аскети... в лицемери, които не виждат красотата на новия свят!</i></p></div><div class="samp"><p><i class="ex">Звънтят, ехтят камбани...</i></p></div><div class="samp"><p><i class="ex">Каква си... бяла, бяла... каква си хубава...</i></p></div><div class="samp"><p><i class="ex">Не може вече, сърце слабее, кураж се губи...</i></p></div><div class="samp"><p><i class="ex">На мене да остане, не вярвам, ама жени нали са...</i></p></div><div class="samp"><p><i class="ex">В неделя със...</i></p></div><h2 data-lvl="0" data-ref="113.2." id="113.2">113.2.</h2><p>Знакът <i class="ex">многоточие</i> се употребява за означаване на пропусната част от цитат.</p><div class="samp"><p><i class="ex">Авторът казва очевидното: „... програмата не притежава собствен ум [...], ако оставиш всичко на   нея, със същия успех можеш да хвърляш зарчета“.</i></p></div><p>[За употреба на многоточие при заглавие и подзаглавие вж. т. <a href="#119.5">119.5</a> и <a href="#120.1">120.1</a>; за употреба на  многоточие при цитиране вж. т. <a href="#127.3">127.3</a>; за съчетаване на многоточие с други пунктуационни и непунктуационни знаци вж. т. <a href="#135">135</a> и <a href="#136">136</a>.]</p></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>

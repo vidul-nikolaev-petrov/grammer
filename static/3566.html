@@ -34,7 +34,7 @@
         h2 { color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }
         .samp {
             background-color: #f4f4f4;
-            border-left: 4px solid #2980b9;
+            border-left: 4px solid #777;
             padding: 5px 45px 5px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
@@ -92,6 +92,33 @@
         #backToTop:hover {
             background-color: rgba(173, 216, 230, 0.2);
             color: #87ceeb;
+        }
+        #searchBtn {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            width: 38px;
+            height: 38px;
+            background-color: rgba(255, 255, 255, 0.02); 
+            color: #add8e6;
+            border: 1px solid rgba(173, 216, 230, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            z-index: 9999;
+            opacity: 0.5;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.4s ease;
+        }
+        #searchBtn:hover {
+            opacity: 0.9;
+            background-color: rgba(173, 216, 230, 0.1);
+            transform: scale(1.1);
         }
     </style>
     <script type="module">
@@ -182,6 +209,7 @@
     </script>
 </head>
 <body>
+<a href="index.html" id="searchBtn" title="Към показалеца">◉</a>
 <div class="aMhyJ"><div class=""><h1 data-lvl="5" data-ref="Оформяне на текст с полупряка реч" id="bski1004">Оформяне на текст с полупряка реч</h1><p>Полупряка реч е вътрешната реч или мислите на герой от художествен текст, които авторът представя с присъщите за този герой изразни средства, но не ги предава като пряка реч.</p><h2 data-lvl="0" data-ref="132." id="132">132.</h2><p>Текст с полупряка реч се оформя по следния начин:</p><h2 data-lvl="0" data-ref="132.1." id="132.1">132.1.</h2><p>Полупряката реч се пише на същия ред, на който се пише и авторската реч, но се оформя без кавички и без тире.</p><div class="samp"><p>Излиза и отива у Стоенкини. Още от вратнята сърцето ѝ затреперва. На, сега ще ѝ каже Стоянка, че приела много здраве от Стоенча, че за Коледа си иде.</p></div><h2 data-lvl="0" data-ref="132.2." id="132.2">132.2.</h2><p>Ако полупряката реч е самостоятелно изречение, то започва с главна буква и завършва с препинателен знак, както при пряка реч.</p><div class="samp first-samp collapsed"><p>Гледаше мрачно и втренчено пред себе си. Сълзите ѝ се попиваха от горчива мъка, от безропотно примирение. Да, ясно беше. Той не искаше да загуби свободата си, да ограничи възможностите си с едно провинциално момиче, което не можеше да му осигури нито пари, нито връзки с недостъпния свят.</p></div><div class="samp"><p>В душата ѝ кипяха недоумение и гняв. Нима войната не бе разбила и нейния живот? Нима не бе загубила тия отминали години безвъзвратно? Нима не ги губеше и сега?</p></div><div class="samp"><p>Мария се наведе напред и хвърли поглед върху циферблата на скоростта. Стрелката показваше сто километра в час. Каросерията трепереше от напрежение, въздухът свистеше, а дърветата и храстите отлитаха назад като пометени от вихрушка. Е, папа го прекаляваше!...</p></div><h2 data-lvl="0" data-ref="132.3." id="132.3">132.3.</h2><p>Ако полупряката реч е включена в авторовото изречение, преди нея се пише двоеточие, тя започва с малка буква и завършва с препинателен знак, както при пряка реч.</p><div class="samp"><p>Шибил я гледаше учуден: какъв ще е тоя дявол?</p></div></div></div>
 <button id="backToTop" title="Go to top">↑</button>
 </body>
