@@ -65,6 +65,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             z-index: 9999;
             backdrop-filter: blur(4px); 
             -webkit-backdrop-filter: blur(4px);
+            -webkit-tap-highlight-color: transparent;
+            outline: none;
+            user-select: none;
             transition: all 0.3s ease;
         }}
         #backToTop:hover {{
