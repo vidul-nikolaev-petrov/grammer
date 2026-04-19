@@ -261,6 +261,29 @@
                 -webkit-animation: slide-up 0.2s ease-out;
                 animation: slide-up 0.2s ease-out;
             }
+
+            #index-link-container {
+                position: absolute;
+                bottom: 20px;
+                left: 0;
+                right: 0;
+                text-align: center;
+                width: 100%;
+                z-index: 10;
+            }
+            .index-btn {
+                font-size: 14px;
+                color: var(--text-muted);
+                text-decoration: none;
+                opacity: 0.6;
+                transition: opacity 0.2s;
+                background: var(--bg-card);
+                padding: 0 10px;
+            }
+            .index-btn:hover {
+                opacity: 1;
+                color: var(--primary);
+            }
         </style>
     </head>
     <body>
@@ -332,6 +355,11 @@
                             d="M0 30 L40 30 L45 25 L55 35 L60 30 L80 30 L85 10 L95 50 L100 30 L120 30 L125 25 L135 35 L140 30 L200 30"
                         />
                     </svg>
+                </div>
+                <div id="index-link-container">
+                    <a href="static/index.html" class="index-btn"
+                        >Азбучен показалец</a
+                    >
                 </div>
             </div>
         </div>
