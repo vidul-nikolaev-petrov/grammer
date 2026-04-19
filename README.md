@@ -1,6 +1,6 @@
 # Правопис и пунктуация — Standalone Search Engine
 
-Може да се ползва и офлайн, и [онлайн](https://vidul-nikolaev-petrov.github.io/grammer/).
+Може да се ползва и офлайн, и [онлайн](https://vidul-nikolaev-petrov.github.io/grammar/).
 
 * **Производителност**
   - Oптимизирано търсене (`linear access pattern`) в кеша (`L2/3`).
