@@ -50,8 +50,8 @@ def clean_and_save(path, chunks):
             # Scan until the closing </p>
             while temp_i < len(chunks):
                 p_content_indices.append(temp_i)
-                if chunks[temp_i]["type"] == "data" and "[Вж. и " in chunks[temp_i]["content"]:
-                    should_delete = True
+                # if chunks[temp_i]["type"] == "data" and "[Вж. и " in chunks[temp_i]["content"]:
+                #    should_delete = True
                 if chunks[temp_i].get("tag_name") == "p" and chunks[temp_i]["content"] == "</p>":
                     break
                 temp_i += 1
