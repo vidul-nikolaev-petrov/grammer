@@ -50,30 +50,27 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             border-radius: 6px;
         }}
     </style>
-    <script>
-    document.addEventListener("click", async (e) => {{
-        const link = e.target.closest("a");
-        if (link && link.getAttribute("href") && link.getAttribute("href").startsWith("#")) {{
-            const targetId = link.getAttribute("href").replace(/^#\\/?/, "");
-            
-            const localElement = document.getElementById(targetId);
-            if (localElement) {{
-                e.preventDefault();
-                localElement.scrollIntoView({{ behavior: 'smooth' }});
-            }} else {{
-                e.preventDefault();
-                try {{
-                    const response = await fetch("refs.json");
-                    const refMap = await response.json();
-                    if (refMap[targetId]) {{
-                        window.location.href = refMap[targetId] + "#" + targetId;
-                    }}
-                }} catch (err) {{
-                    console.error("Navigation error");
+    <script type="module">
+        import {{ refMap }} from './refs.js';
+
+        document.addEventListener("click", (e) => {{
+            const link = e.target.closest("a");
+            if (!link) return;
+
+            const href = link.getAttribute("href");
+            if (href && href.startsWith("#")) {{
+                const targetId = href.replace(/^#\/?/, "");
+                const localElement = document.getElementById(targetId);
+
+                if (localElement) {{
+                    e.preventDefault();
+                    localElement.scrollIntoView({{ behavior: 'smooth' }});
+                }} else if (refMap[targetId]) {{
+                    e.preventDefault();
+                    window.location.href = refMap[targetId] + "#" + targetId;
                 }}
             }}
-        }}
-    }});
+        }});
     </script>
 </head>
 <body>

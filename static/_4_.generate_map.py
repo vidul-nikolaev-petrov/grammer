@@ -21,9 +21,12 @@ def create_map():
                     # Store which file contains this ID
                     ref_map[header_id] = name
 
-    with open("refs.json", "w", encoding="utf-8") as f:
-        json.dump(ref_map, f)
-    print("Created refs.json with " + str(len(ref_map)) + " references.")
+    with open("refs.js", "w", encoding="utf-8") as f:
+        f.write("export const refMap = ")
+        json.dump(ref_map, f, indent=4)
+        f.write(";")
+
+    print("Created refs.js with " + str(len(ref_map)) + " references.")
 
 if __name__ == "__main__":
     create_map()
