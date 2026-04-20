@@ -18,7 +18,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             font-size: 18px;
             line-height: 1.8;
-            color: #222;
+            color: #404040;
             max-width: 850px;
             margin: 50px auto;
             padding: 0 30px;
@@ -42,13 +42,14 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             padding: 2px 45px 2px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
+            color: #212121;
             align-items: center;
             margin: 8px 0;
             white-space: pre-wrap;
             border-radius: 8px;
             position: relative;
             min-height: 24px;
-            font-size: 0.90em;
+            font-size: 0.88em;
         }}
         i.ex {{
             font-style: normal;
