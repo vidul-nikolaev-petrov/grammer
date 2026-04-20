@@ -51,7 +51,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             min-height: 24px;
             font-size: 0.88em;
         }}
-        i.ex {{
+        div.samp p i {{
             font-style: normal;
         }}
         .samp-clickable {{
