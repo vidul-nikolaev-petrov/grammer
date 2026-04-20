@@ -39,17 +39,19 @@ HTML_TEMPLATE = """<!DOCTYPE html>
         h2 {{ color: #2980b9; margin-top: 1.8em; font-size: 1.2em; }}
         .samp {{
             background-color: #f4f4f4;
-            border-left: 4px solid #777;
-            padding: 5px 45px 5px 15px;
+            padding: 2px 45px 2px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
             display: flex;
             align-items: center;
             margin: 8px 0;
             white-space: pre-wrap;
-            border-radius: 4px;
+            border-radius: 8px;
             position: relative;
-            min-height: 32px;
-            font-size: 0.95em;
+            min-height: 24px;
+            font-size: 0.90em;
+        }}
+        i.ex {{
+            font-style: normal;
         }}
         .samp-clickable {{
             cursor: pointer;
@@ -68,7 +70,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             top: 50%;
             transform: translateY(-50%);
             color: #777;
-            opacity: 0.25;
+            opacity: 0.33;
             font-weight: bold;
             font-size: 1.4em;
             line-height: 1;
