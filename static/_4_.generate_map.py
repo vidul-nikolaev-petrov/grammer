@@ -23,7 +23,7 @@ def create_map():
 
     with open("refs.js", "w", encoding="utf-8") as f:
         f.write("export const refMap = ")
-        json.dump(ref_map, f, indent=4)
+        json.dump(ref_map, f) 
         f.write(";")
 
     print("Created refs.js with " + str(len(ref_map)) + " references.")

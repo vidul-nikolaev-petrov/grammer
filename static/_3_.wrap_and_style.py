@@ -148,8 +148,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             if (!link) return;
 
             const href = link.getAttribute("href");
+
             if (href && href.startsWith("#")) {{
-                const targetId = href.replace(/^#\\/?/, "");
+                const targetId = href.replace('#', '');
                 const localElement = document.getElementById(targetId);
 
                 if (localElement) {{
@@ -162,16 +163,23 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             }}
         }});
 
-        window.addEventListener('load', () => {{
-            const links = document.querySelectorAll('a[href^="#"]');
+        const startPrefetching = () => {{
+            const links = document.querySelectorAll('a[href]');
             const filesToPrefetch = new Set();
-            const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-            const topBtn = document.getElementById("backToTop");
+            const currentFile = window.location.pathname.split('/').pop();
 
             links.forEach(link => {{
-                const targetId = link.getAttribute('href').replace(/^#\\/?/, "");
-                const targetFile = refMap[targetId];
-                if (targetFile && targetFile !== window.location.pathname.split('/').pop()) {{
+                const href = link.getAttribute('href');
+                let targetFile = null;
+
+                if (href.startsWith('#')) {{
+                    const targetId = href.replace('#', "");
+                    targetFile = typeof refMap !== 'undefined' ? refMap[targetId] : null;
+                }} else if (href.endsWith('.html')) {{
+                    targetFile = href.split('#')[0];
+                }}
+
+                if (targetFile && targetFile !== currentFile && targetFile !== 'index.html') {{
                     filesToPrefetch.add(targetFile);
                 }}
             }});
@@ -180,65 +188,75 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 const linkTag = document.createElement('link');
                 linkTag.rel = 'prefetch';
                 linkTag.href = file;
+                linkTag.as = 'document';
                 document.head.appendChild(linkTag);
-            }});
-
-            if (isSafari) {{
-                filesToPrefetch.forEach(file => fetch(file));
-            }}
-
-            window.addEventListener("scroll", () => {{
-                if (window.scrollY > 300) {{
-                    topBtn.style.display = "block";
-                }} else {{
-                    topBtn.style.display = "none";
+                
+                if (!linkTag.relList?.supports('prefetch')) {{
+                    fetch(file, {{ priority: 'low', mode: 'no-cors' }}).catch(() => {{}});
                 }}
-            }}, {{ passive: true }});
-
-            topBtn.addEventListener("click", () => {{
-                window.scrollTo({{ top: 0, behavior: 'smooth' }});
             }});
+        }};
 
-            const initSamps = () => {{
-                const allSamps = document.querySelectorAll('.samp');
-                let currentGroup = [];
+        const initSamps = () => {{
+            const allSamps = document.querySelectorAll('.samp');
+            let currentGroup = [];
 
-                allSamps.forEach((samp) => {{
-                    currentGroup.push(samp);
-                    const next = samp.nextElementSibling;
+            allSamps.forEach((samp) => {{
+                currentGroup.push(samp);
+                const next = samp.nextElementSibling;
 
-                    if (!next || !next.classList.contains('samp')) {{
-                        const [first, ...rest] = currentGroup;
+                if (!next || !next.classList.contains('samp')) {{
+                    const [first, ...rest] = currentGroup;
 
-                        if (rest.length > 0) {{
-                            first.classList.add('samp-clickable');
+                    if (rest.length > 0) {{
+                        first.classList.add('samp-clickable');
+                        
+                        const indicator = document.createElement('div');
+                        indicator.className = 'samp-toggle';
+                        indicator.textContent = '+';
+                        first.appendChild(indicator);
+
+                        first.onclick = () => {{
+                            const isExpanding = indicator.textContent === '+';
                             
-                            const indicator = document.createElement('div');
-                            indicator.className = 'samp-toggle';
-                            indicator.textContent = '+';
-                            first.appendChild(indicator);
+                            rest.forEach(el => {{
+                                el.classList.toggle('js-expanded', isExpanding);
+                            }});
 
-                            first.onclick = () => {{
-                                const isExpanding = indicator.textContent === '+';
-                                
-                                rest.forEach(el => {{
-                                    el.classList.toggle('js-expanded', isExpanding);
-                                }});
-
-                                indicator.textContent = isExpanding ? '−' : '+';
-                            }};
-                        }}
-                        currentGroup = [];
+                            indicator.textContent = isExpanding ? '−' : '+';
+                        }};
                     }}
-                }});
-            }};
+                    currentGroup = [];
+                }}
+            }});
+        }};
 
-            if (document.readyState !== 'loading') {{
-                initSamps();
-            }} else {{
-                document.addEventListener('DOMContentLoaded', initSamps);
+        const topBtn = () => {{
+            const topBtn = document.getElementById("backToTop");
+
+            if (topBtn) {{
+                window.addEventListener("scroll", () => {{
+                    const isVisible = window.scrollY > 300;
+                    topBtn.style.display = isVisible ? "block" : "none";
+                }}, {{ passive: true }});
+
+                topBtn.onclick = () => {{
+                    window.scrollTo({{ top: 0 }});
+                }};
             }}
-        }});
+        }};
+
+        const runAll = () => {{
+            topBtn();
+            initSamps();
+            setTimeout(startPrefetching, 100); 
+        }};
+
+        if (document.readyState !== 'loading') {{
+            runAll();
+        }} else {{
+            document.addEventListener('DOMContentLoaded', runAll);
+        }}
     </script>
 </head>
 <body>
