@@ -41,7 +41,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             background-color: #f4f4f4;
             padding: 2px 45px 2px 15px;
             font-family: 'Consolas', 'Monaco', monospace;
-            display: flex;
+            display: none;
             color: #212121;
             align-items: center;
             margin: 8px 0;
@@ -50,6 +50,13 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             position: relative;
             min-height: 24px;
             font-size: 0.88em;
+        }}
+        .samp:first-child,
+        :not(.samp) + .samp {{
+            display: flex !important;
+        }}
+        .samp.js-expanded {{
+            display: flex !important;
         }}
         div.samp p i {{
             font-style: normal;
@@ -139,7 +146,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 
             const href = link.getAttribute("href");
             if (href && href.startsWith("#")) {{
-                const targetId = href.replace(/^#\/?/, "");
+                const targetId = href.replace(/^#\\/?/, "");
                 const localElement = document.getElementById(targetId);
 
                 if (localElement) {{
@@ -159,7 +166,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             const topBtn = document.getElementById("backToTop");
 
             links.forEach(link => {{
-                const targetId = link.getAttribute('href').replace(/^#\/?/, "");
+                const targetId = link.getAttribute('href').replace(/^#\\/?/, "");
                 const targetFile = refMap[targetId];
                 if (targetFile && targetFile !== window.location.pathname.split('/').pop()) {{
                     filesToPrefetch.add(targetFile);
@@ -177,32 +184,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 filesToPrefetch.forEach(file => fetch(file));
             }}
 
-            const allSamps = document.querySelectorAll('.samp');
-            let currentGroup = [];
-            allSamps.forEach((samp, i) => {{
-                currentGroup.push(samp);
-                const next = samp.nextElementSibling;
-                if (!next || !next.classList.contains('samp')) {{
-                    if (currentGroup.length > 1) {{
-                        const [first, ...rest] = currentGroup;
-                        rest.forEach(el => el.classList.add('samp-hidden'));
-                        
-                        first.classList.add('samp-clickable');
-                        const indicator = document.createElement('div');
-                        indicator.className = 'samp-toggle';
-                        indicator.textContent = '+';
-                        first.appendChild(indicator);
-
-                        first.onclick = () => {{
-                            const isHidden = rest[0].classList.contains('samp-hidden');
-                            rest.forEach(el => el.classList.toggle('samp-hidden'));
-                            indicator.textContent = isHidden ? '−' : '+';
-                        }};
-                    }}
-                    currentGroup = [];
-                }}
-            }});
-
             window.addEventListener("scroll", () => {{
                 if (window.scrollY > 300) {{
                     topBtn.style.display = "block";
@@ -214,6 +195,46 @@ HTML_TEMPLATE = """<!DOCTYPE html>
             topBtn.addEventListener("click", () => {{
                 window.scrollTo({{ top: 0, behavior: 'smooth' }});
             }});
+
+            const initSamps = () => {{
+                const allSamps = document.querySelectorAll('.samp');
+                let currentGroup = [];
+
+                allSamps.forEach((samp) => {{
+                    currentGroup.push(samp);
+                    const next = samp.nextElementSibling;
+
+                    if (!next || !next.classList.contains('samp')) {{
+                        const [first, ...rest] = currentGroup;
+
+                        if (rest.length > 0) {{
+                            first.classList.add('samp-clickable');
+                            
+                            const indicator = document.createElement('div');
+                            indicator.className = 'samp-toggle';
+                            indicator.textContent = '+';
+                            first.appendChild(indicator);
+
+                            first.onclick = () => {{
+                                const isExpanding = indicator.textContent === '+';
+                                
+                                rest.forEach(el => {{
+                                    el.classList.toggle('js-expanded', isExpanding);
+                                }});
+
+                                indicator.textContent = isExpanding ? '−' : '+';
+                            }};
+                        }}
+                        currentGroup = [];
+                    }}
+                }});
+            }};
+
+            if (document.readyState !== 'loading') {{
+                initSamps();
+            }} else {{
+                document.addEventListener('DOMContentLoaded', initSamps);
+            }}
         }});
     </script>
 </head>
